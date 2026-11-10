@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Prerelease Deckbuilding Rules vs 3,600,000 Games · Limited Junkyard</title>
+<meta name="description" content="Six sealed deckbuilding rules tested on 875,442 decks from 17Lands: splashes, sources, double-colored costs, five-drops, mana dorks, landcycling, and the 17-land default that turned out to be wrong.">
+<meta property="og:title" content="My Prerelease Deckbuilding Rules vs 3,600,000 Games">
+<meta property="og:description" content="Six sealed deckbuilding rules tested on 875,442 decks from 17Lands: splashes, sources, double-colored costs, five-drops, mana dorks, landcycling, and the 17-land default that turned out to be wrong.">
+<link rel="icon" href="../logo.png">
+<style>
+  /* Display: Cinzel. Body: Crimson Pro (close to the book serif on Magic cards). Both SIL OFL, bundled. */
+  @font-face { font-family: "Cinzel"; font-weight: 400 900; font-display: block;
+    src: url("fonts/Cinzel-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212; }
+  @font-face { font-family: "Cinzel"; font-weight: 400 900; font-display: block;
+    src: url("fonts/Cinzel-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: normal; font-display: block;
+    src: url("fonts/CrimsonPro-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: normal; font-display: block;
+    src: url("fonts/CrimsonPro-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: italic; font-display: block;
+    src: url("fonts/CrimsonPro-italic-latin.woff2") format("woff2"); }
+  :root { --bg: #f6f1e6; --panel: #fffdf8; --ink: #1d1b18; --muted: #6d6555; --gold: #8a6d1d; --line: #ddd2b8;
+          --holds: #2f7d4f; --tweak: #b7791f; --broken: #b3261e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #15171c; --panel: #1e2128; --ink: #ece7da; --muted: #a29d8e; --gold: #d9b44a; --line: #353a46;
+            --holds: #5cc488; --tweak: #e0a845; --broken: #ef6a5f; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 19px/1.55 "Crimson Pro", Georgia, serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+  .brand { background: #1b1a17; color: #f1ead8; }
+  .brand .wrap { display: flex; align-items: center; gap: 14px; padding-top: 12px; padding-bottom: 12px; }
+  .brand img { width: 52px; height: 52px; border-radius: 50%; display: block; }
+  .brand b { font: 700 20px "Cinzel", Georgia, serif; display: block; }
+  .brand a { color: #e6c766; text-decoration: none; }
+  .brand a.name { color: inherit; }
+  .crumb { font-size: 15px; margin: 18px 0 0; }
+  h1, h2, h3 { font-family: "Cinzel", Georgia, serif; line-height: 1.2; letter-spacing: .01em; }
+  h1 { font-size: 30px; margin: 10px 0 6px; }
+  h2 { font-size: 22px; margin: 34px 0 10px; }
+  .meta { color: var(--muted); font-size: 16px; margin: 0 0 16px; }
+  p { margin: 0 0 12px; }
+  a { color: var(--gold); }
+  .watch { position: relative; display: block; margin: 18px 0 16px; border-radius: 12px; overflow: hidden; background: #14161c;
+           box-shadow: 0 10px 28px rgba(0,0,0,.25); }
+  .watch img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; }
+  .play { position: absolute; left: 16px; bottom: 16px; display: inline-flex; align-items: center; gap: 8px; background: #e6c766;
+          color: #1d1b18; border-radius: 999px; padding: 9px 18px; font-weight: 600; font-size: 17px; }
+  .play svg { width: 18px; height: 18px; }
+  .lede { font-size: 21px; }
+  .box { background: var(--panel); border: 1.5px solid #b8962e; border-radius: 12px; padding: 16px 20px; }
+  .box h2 { margin-top: 0; }
+  .box ol { margin: 0; padding-left: 22px; }
+  .box li { margin: 6px 0; }
+  .rules { display: grid; gap: 12px; }
+  .rule { display: grid; grid-template-columns: 44px 1fr auto; gap: 4px 14px; align-items: start; background: var(--panel);
+          border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .rule .n { font: 700 20px "Cinzel", Georgia, serif; color: var(--gold); text-align: center; padding-top: 2px; }
+  .rule .text b { display: block; line-height: 1.3; }
+  .rule .text span { color: var(--muted); font-size: 16px; line-height: 1.4; display: block; margin-top: 4px; }
+  .stamp { font: 700 14px "Cinzel", Georgia, serif; letter-spacing: 2px; text-transform: uppercase; border: 2px solid currentColor;
+           border-radius: 6px; padding: 3px 9px; transform: rotate(-4deg); white-space: nowrap; margin-top: 2px; }
+  .stamp.holds { color: var(--holds); } .stamp.tweak { color: var(--tweak); } .stamp.broken { color: var(--broken); }
+  .chapters { columns: 2 260px; column-gap: 28px; list-style: none; padding: 0; margin: 0; font-size: 17px; }
+  .chapters li { break-inside: avoid; padding: 3px 0; }
+  .chapters a { text-decoration: none; }
+  .chapters a b { display: inline-block; min-width: 3.2em; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .chapters a span { color: var(--ink); }
+  .more { background: var(--panel); border: 1.5px solid #b8962e; border-radius: 10px; padding: 12px 18px; margin-top: 30px; }
+  .more ul { margin: 6px 0 0; padding-left: 20px; }
+  footer { margin-top: 30px; background: #1b1a17; color: #b9b19c; font-size: 14px; }
+  footer .wrap { padding-top: 16px; padding-bottom: 24px; }
+  footer p { margin: 4px 0; }
+  footer b { color: #f1ead8; }
+  footer a { color: #e6c766; }
+  @media (max-width: 520px) {
+    .rule { grid-template-columns: 30px 1fr; }
+    .rule .stamp { grid-column: 2; justify-self: start; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="brand"><div class="wrap">
+  <a href="https://www.youtube.com/@LimitedJunkyard"><img src="../logo.png" alt="Limited Junkyard on YouTube"></a>
+  <div><a class="name" href="https://www.youtube.com/@LimitedJunkyard"><b>Limited Junkyard</b></a><a href="https://www.youtube.com/@LimitedJunkyard">youtube.com/@LimitedJunkyard</a></div>
+</div></div>
+<main class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> · My Rules vs The Data</p>
+  <h1>My Prerelease Deckbuilding Rules vs 3,600,000 Games</h1>
+  <p class="meta">My Rules vs The Data · Episode 1 · 14:20 on YouTube</p>
+
+  <a class="watch" href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4"><img src="manabase.jpg" alt="My Prerelease Deckbuilding Rules vs 3,600,000 Games: the video">
+    <span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg>Watch the video</span></a>
+
+  <p class="lede">Seventeen lands in every sealed deck I&#39;ve ever built, and three and a half million games say I was wrong. I wrote down the six rules I build by and let 17Lands&#39; public data judge them.</p>
+
+  <div class="box">
+    <h2>The sealed mana base, after the data</h2>
+    <ol><li><b>Sixteen lands</b>, or seventeen if your spells average 3.5 mana or more, or you have lots of mana sinks.</li><li>A splash only for bombs and removal, with <b>three real sources</b> at least, four if you can.</li><li>A Treasure is a bonus, <b>not a source</b>.</li><li><b>Six sources</b> for a double-colored card.</li><li>At most <b>five expensive cards</b> (five mana or more) in sealed.</li><li>A mana dork or the first land cycler replaces the <b>seventeenth</b> land, never the sixteenth.</li><li>Choose to <b>play</b>, unless you have a very good reason.</li></ol>
+  </div>
+
+  <h2>The rules on trial</h2>
+  <div class="rules">
+    
+    <div class="rule"><div class="n">I</div>
+      <div class="text"><b>If I splash one card, I want at least three sources of that color.</b><span>The splashed card with 3 sources -0.4, with 4 +0.2, with 5 +0.8. Three opens the door, four keeps it open.</span></div>
+      <div class="stamp holds">Holds</div></div>
+    
+    <div class="rule"><div class="n">II</div>
+      <div class="text"><b>Anything that can repeatedly make a color is a source of that color.</b><span>A Treasure maker barely moves a splash. With the same real sources, the card plays the same with or without one.</span></div>
+      <div class="stamp holds">Holds</div></div>
+    
+    <div class="rule"><div class="n">III</div>
+      <div class="text"><b>A card with a double-colored cost needs at least six sources of that color.</b><span>Five sources or fewer, -0.9 to -1.2 on the card; six, +0.2.</span></div>
+      <div class="stamp holds">Holds</div></div>
+    
+    <div class="rule"><div class="n">IV</div>
+      <div class="text"><b>At most five cards that cost five or more.</b><span>In sealed, six expensive cards -0.7, seven -1.0. Draft barely notices.</span></div>
+      <div class="stamp holds">Holds</div></div>
+    
+    <div class="rule"><div class="n">V</div>
+      <div class="text"><b>A mana producer that costs two or less counts as a land.</b><span>16 lands and a dork play like 17 lands. 15 lands and a dork lost almost three points.</span></div>
+      <div class="stamp holds">Holds</div></div>
+    
+    <div class="rule"><div class="n">VI</div>
+      <div class="text"><b>Basic landcycling counts as half a land, rounded down, never more than one in total.</b><span>One cycler already counts as a land. 17 lands plus a cycler did 0.8 worse than 16 lands plus the cycler.</span></div>
+      <div class="stamp tweak">Tweak</div></div>
+    
+    <div class="rule"><div class="n">0</div>
+      <div class="text"><b>Seventeen lands. The one I never wrote down.</b><span>16 lands beat 17 at the same curve by +0.9; in best-of-three, the closest thing to a paper prerelease, +1.3.</span></div>
+      <div class="stamp broken">Broken</div></div>
+    
+  </div>
+  <p class="meta" style="margin-top:10px">Numbers are win-rate points: +1 is one extra win every hundred games.</p>
+
+  
+  <h2>How many lands</h2>
+  <p>Every forty-card deck without dorks or land cyclers, compared with seventeen lands at the same curve: <b>sixteen lands win +0.9</b> more games per hundred. Eighteen lands fails (-1.0). Fifteen is hard to judge: too few decks to say.</p><p>Arena smooths best-of-one opening hands, which protects sixteen-land decks. Best-of-three has no smoothing, and sixteen still wins there (+1.3). It points the same way in all six sets, and for weak and strong players alike.</p><p>The exception: if your spells cost <b>3.5 or more on average</b>, seventeen is right (sixteen would cost -1.8). Mana sinks shrink the gap too: with none, sixteen wins +1.5; with four or more, they're practically even. Card flow (cycling, looting, card draw) doesn't change it.</p>
+  
+  <h2>Play or draw</h2>
+  <p>Who starts is a coin flip, so this is as clean as data gets. Being on the play is worth <b>four and a half to seven points</b>, in fast decks and slow ones, draft and sealed alike. Choose to play.</p>
+  
+  <h2>How it was tested</h2>
+  <p>17Lands' public datasets for six sets (The Hobbit, Marvel Super Heroes, Secrets of Strixhaven, Lorwyn Eclipsed, Avatar: The Last Airbender and Edge of Eternities), in Premier Draft, Sealed, Traditional Draft and Traditional Sealed: 875,442 decks and about 3.6 million games.</p><p>No random sixteen-land deck is compared with a random seventeen-land deck: good players build differently, and fast decks run fewer lands. Every comparison is between decks of the same set, format, colors, player skill and curve. <b>One point means one extra win every hundred games.</b> Most games are close, and one uncastable card decides them.</p>
+  
+
+  <h2>Chapters</h2>
+  <ul class="chapters">
+    <li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=0s"><b>0:00</b> <span>Intro</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=23s"><b>0:23</b> <span>The six rules</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=72s"><b>1:12</b> <span>Why the mana base decides sealed</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=114s"><b>1:54</b> <span>How I tested it</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=155s"><b>2:35</b> <span>Rule I: the splash</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=311s"><b>5:11</b> <span>Rule II: Treasures</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=349s"><b>5:49</b> <span>Rule III: double-colored costs</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=406s"><b>6:46</b> <span>Rule IV: five-drops</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=468s"><b>7:48</b> <span>Rule V: mana dorks</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=509s"><b>8:29</b> <span>Rule VI: landcycling</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=567s"><b>9:27</b> <span>How many lands</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=718s"><b>11:58</b> <span>Final score</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=742s"><b>12:22</b> <span>The new rules</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=774s"><b>12:54</b> <span>One more thing: mulligans</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=824s"><b>13:44</b> <span>Play or draw</span></a></li><li><a href="https://www.youtube.com/watch?v=gZ2rKH-ThQ4&amp;t=848s"><b>14:08</b> <span>Next time</span></a></li>
+  </ul>
+
+  <div class="more">
+    <h3>More from Limited Junkyard</h3>
+    <ul>
+      <li><a href="../index.html#guides">Free prerelease guides</a>: cheat sheets and every card rated</li>
+      <li><a href="../index.html#decks">Winning decks</a>, card by card</li>
+      <li>New videos every week: <a href="https://www.youtube.com/@LimitedJunkyard">youtube.com/@LimitedJunkyard</a></li>
+    </ul>
+  </div>
+</main>
+<footer><div class="wrap">
+  <p><b>Limited Junkyard</b> · Magic Limited, data first · <a href="https://www.youtube.com/@LimitedJunkyard">https://www.youtube.com/@LimitedJunkyard</a></p>
+  <p>Data: <a href="https://www.17lands.com/public_datasets">17Lands public datasets</a> (CC BY 4.0)</p><p>Card images and mana symbols in the video: Scryfall</p><p>This channel is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.</p>
+  <p>Fonts: Cinzel and Crimson Pro (SIL Open Font License).</p>
+</div></footer>
+</body>
+</html>
