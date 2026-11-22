@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seven of Nine: the dilemma loop · Commander decklists · Limited Junkyard</title>
+<meta name="description" content="A blue-black combo deck that draws its whole library with three cheap cards. Full decklists with prices, every version explained.">
+<meta property="og:title" content="Seven of Nine: the dilemma loop">
+<meta property="og:description" content="A blue-black combo deck that draws its whole library with three cheap cards.">
+<link rel="icon" href="../logo.png">
+<style>
+  /* Display: Cinzel. Body: Crimson Pro (close to the book serif on Magic cards). Both SIL OFL, bundled. */
+  @font-face { font-family: "Cinzel"; font-weight: 400 900; font-display: block;
+    src: url("../fonts/Cinzel-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212; }
+  @font-face { font-family: "Cinzel"; font-weight: 400 900; font-display: block;
+    src: url("../fonts/Cinzel-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: normal; font-display: block;
+    src: url("../fonts/CrimsonPro-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: normal; font-display: block;
+    src: url("../fonts/CrimsonPro-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: italic; font-display: block;
+    src: url("../fonts/CrimsonPro-italic-latin.woff2") format("woff2"); }
+  /* Commander pages: the site's cream-and-gold look (site_article.html), wider for card grids; dark mode follows the system */
+  :root { --bg: #f6f1e6; --panel: #fffdf8; --panel-2: #fbf5e3; --ink: #1d1b18; --muted: #6d6555; --gold: #8a6d1d; --gold-hi: #e6c766;
+          --line: #e2d8c0; --edge: #c9a64a; --night: #1b1a17; --ok: #2f7a4d; --out: #9a3b2c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #15171c; --panel: #1e2128; --panel-2: #262a32; --ink: #ece7da; --muted: #a29d8e; --gold: #d9b44a;
+            --line: #353a46; --edge: #8a7330; --ok: #6cc28f; --out: #e08a78; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.5 "Crimson Pro", Georgia, serif; }
+  a { color: var(--gold); }
+  h1, h2, h3 { font-family: "Cinzel", Georgia, serif; line-height: 1.2; letter-spacing: .01em; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* top bar, same on every Commander page */
+  .top { background: var(--night); color: #f1ead8; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #2c2a25; }
+  .top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+  .top img { width: 40px; height: 40px; border-radius: 50%; display: block; border: 2px solid var(--gold-hi); }
+  .top .name { font: 700 18px "Cinzel", Georgia, serif; color: #f1ead8; text-decoration: none; white-space: nowrap; }
+  .top nav { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+  .top nav a { color: #d9d1bd; text-decoration: none; font-size: 17px; white-space: nowrap; }
+  .top nav a:hover, .top nav a[aria-current] { color: var(--gold-hi); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 8px 17px; font: 600 16px "Crimson Pro", Georgia, serif;
+         text-decoration: none; white-space: nowrap; cursor: pointer; border: 0; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn svg { width: 17px; height: 17px; }
+  .btn.gold { background: var(--gold-hi); color: #1d1b18 !important; box-shadow: 0 4px 14px rgba(230,199,102,.25); }
+  .btn.line { background: transparent; border: 1.5px solid var(--edge); color: var(--gold) !important; }
+  .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 2px; }
+
+  .crumb { font-size: 15px; color: var(--muted); padding: 18px 0 0; }
+  .crumb a { text-decoration: none; }
+  .chip { display: inline-block; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold);
+          border: 1px solid var(--edge); border-radius: 999px; padding: 2px 10px; background: var(--panel-2); white-space: nowrap; }
+  .dots { display: inline-flex; gap: 4px; vertical-align: middle; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.25); display: inline-block; }
+  .dot.W { background: #f8f1d4; } .dot.U { background: #3d8ee0; } .dot.B { background: #2f2a2d; } .dot.R { background: #e2533c; } .dot.G { background: #3f9a5a; }
+  @media (prefers-color-scheme: dark) { .dot.B { background: #0b0a0b; border-color: #6d6555; } }
+
+  footer { margin-top: 56px; background: var(--night); color: #b9b19c; font-size: 14px; }
+  footer .wrap { padding-top: 18px; padding-bottom: 28px; }
+  footer p { margin: 4px 0; }
+  footer b { color: #f1ead8; }
+  footer a { color: var(--gold-hi); }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    .top nav { gap: 12px; }
+    .top nav a.text { display: none; }
+    .top .btn { padding: 6px 12px; font-size: 15px; }
+    .top .long { display: none; }
+  }
+  @media (max-width: 420px) { .top .name { display: none; } }
+  .hero { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 34px; align-items: center; padding: 22px 0 8px; }
+  .hero .cmd img { width: 100%; height: auto; display: block; border-radius: 4.75% / 3.5%; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+  .hero .cmd figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }
+  .hero h1 { font-size: clamp(30px, 4.4vw, 46px); margin: 10px 0 12px; }
+  .hero .lede { font-size: 20px; max-width: 62ch; }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px 30px; margin: 20px 0 22px; padding: 0; }
+  .facts div { display: flex; flex-direction: column; }
+  .facts dt { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .facts dd { margin: 0; font: 700 22px "Cinzel", Georgia, serif; font-variant-numeric: tabular-nums; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .subnav { position: sticky; top: 60px; z-index: 9; background: var(--bg); border-bottom: 1px solid var(--line); margin-top: 26px; }
+  .subnav .wrap { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: thin; }
+  .subnav a { flex: none; text-decoration: none; color: var(--ink); border: 1px solid var(--line); background: var(--panel); border-radius: 999px;
+              padding: 5px 14px; font-size: 16px; white-space: nowrap; }
+  .subnav a:hover { border-color: var(--edge); color: var(--gold); }
+
+  section { padding-top: 46px; scroll-margin-top: 120px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  section > h2, .deckhead h2 { font-size: 27px; }
+  .h2row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; padding-bottom: 8px; border-bottom: 2px solid var(--edge); }
+  .h2row h2 { font-size: 23px; }
+  .h2row .count { color: var(--muted); font-size: 16px; font-variant-numeric: tabular-nums; }
+  .blurb { color: var(--muted); max-width: 72ch; }
+  .prose p { max-width: 70ch; margin-bottom: 10px; font-size: 19px; }
+  .aside { font-size: 15px; color: var(--muted); max-width: 80ch; }
+
+  /* versions */
+  .versions { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .ver { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px;
+         box-shadow: 0 10px 30px rgba(60,45,10,.06); }
+  .ver.main { border: 2px solid var(--edge); }
+  .ver h3 { font-size: 21px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .ver .price { font: 700 30px "Cinzel", Georgia, serif; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .ver .stat { font-size: 16px; color: var(--muted); }
+  .ver .stat b { color: var(--ink); }
+  .ver p { font-size: 17px; }
+  .ver .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+  .copied { font-size: 14px; color: var(--ok); min-height: 1em; }
+  .since { background: var(--panel-2); border-left: 4px solid var(--edge); border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 17px; max-width: 80ch; }
+
+  /* tables */
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; font-variant-numeric: tabular-nums; width: 100%; min-width: 560px; background: var(--panel);
+          border: 1px solid var(--line); border-radius: 12px; font-size: 17px; }
+  th, td { padding: 10px 14px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  thead th { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  th:first-child, td.l { text-align: left; }
+  td.verdict { white-space: normal; text-align: left; color: var(--muted); font-size: 16px; min-width: 170px; }
+  @media (max-width: 1000px) { .c-cmd { display: none; } }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr.main th, tbody tr.main td { font-weight: 700; }
+  tbody th a { text-decoration: none; }
+
+  /* cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 24px 16px; }
+  .grid.small { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 18px 12px; }
+  .card { margin: 0; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .zoom { all: unset; cursor: zoom-in; display: block; border-radius: 4.75% / 3.5%; position: relative; }
+  .zoom:focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 3px; }
+  .card img { display: block; width: 100%; height: auto; border-radius: 4.75% / 3.5%; box-shadow: 0 2px 10px rgba(0,0,0,.28); background: var(--line); }
+  .qty { position: absolute; top: 8%; left: 6%; background: var(--night); color: var(--gold-hi); font: 700 15px "Cinzel", Georgia, serif;
+         border-radius: 999px; padding: 1px 9px; border: 1px solid var(--gold-hi); }
+  figcaption { display: flex; flex-direction: column; gap: 1px; font-size: 15px; line-height: 1.35; }
+  .name { font-weight: 700; }
+  .usd { color: var(--gold); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .note { color: var(--ink); }
+  .artist { color: var(--muted); font-size: 12px; }
+  .grid.small figcaption { font-size: 14px; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: step; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .steps li { counter-increment: step; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .steps li p { font-size: 16px; }
+  .steps li p::before { content: counter(step) ". "; font: 700 17px "Cinzel", Georgia, serif; color: var(--gold); }
+  .steps .card .name, .steps .card .usd, .steps .card .note { display: none; }
+  .numlist { margin: 0; padding-left: 24px; max-width: 70ch; font-size: 19px; }
+  .numlist li { margin-bottom: 6px; }
+  .explain { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 24px; align-items: start; background: var(--panel);
+             border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+
+  .keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .key { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 14px; align-items: start; background: var(--panel);
+         border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  .key .card figcaption { display: none; }
+  .key h3 { font-size: 17px; margin-bottom: 4px; }
+  .key p { font-size: 17px; }
+
+  .swaps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .swaps li { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 14px; align-items: start; background: var(--panel);
+              border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
+  .swaps .card figcaption { display: none; }
+  .swaps p { font-size: 16px; }
+  .swaps .out { color: var(--out); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .swaps .in { color: var(--ok); font-weight: 700; }
+  .swaps .artist { display: block; margin-top: 4px; }
+  .variant { background: var(--panel-2); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+  .variant h3 { font-size: 21px; }
+
+  .deck { border-top: 3px double var(--edge); margin-top: 54px; padding-top: 30px; }
+  .deckhead { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 26px; align-items: center; }
+  .deckhead .num { font: 700 15px "Cinzel", Georgia, serif; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; }
+  .deckhead h2 { margin: 4px 0 8px; font-size: 30px; }
+  .deckhead .verdict { font-size: 20px; font-style: italic; }
+  .deckhead .facts { margin: 14px 0 0; }
+  .basics { color: var(--muted); }
+  details.txt summary { cursor: pointer; color: var(--gold); }
+  details.txt pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; max-height: 300px; overflow: auto;
+                    font-size: 14px; line-height: 1.45; white-space: pre; }
+  .listacts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+  dialog { border: 0; padding: 0; background: transparent; max-width: min(92vw, 488px); }
+  dialog::backdrop { background: rgba(6,10,14,.8); }
+  dialog img { display: block; width: 100%; height: auto; border-radius: 4.75% / 3.5%; }
+  dialog button { all: unset; cursor: zoom-out; display: block; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; gap: 18px; }
+    .hero .cmd { width: 190px; }
+    .deckhead { grid-template-columns: 110px minmax(0, 1fr); gap: 16px; }
+    .deckhead h2 { font-size: 24px; }
+    .explain { grid-template-columns: 1fr; }
+    .explain .card { width: 160px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+    .grid.small { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 8px; }
+    .grid.small .artist { display: none; }
+    .swaps { grid-template-columns: 1fr; }
+    .swaps li { grid-template-columns: 84px minmax(0, 1fr); }
+    .key { grid-template-columns: 96px minmax(0, 1fr); }
+    .keys { grid-template-columns: 1fr; }
+    .prose p, .numlist { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+<header class="top"><div class="wrap">
+  <a href="https://www.youtube.com/@LimitedJunkyard"><img src="../logo.png" alt="Limited Junkyard on YouTube"></a>
+  <a class="name" href="../index.html">Limited Junkyard</a>
+  <nav>
+    <a class="text" href="../index.html">Home</a>
+    <a href="index.html" aria-current="page">Commander<span class="long"> decks</span></a>
+    <a class="btn gold" href="https://www.youtube.com/@LimitedJunkyard"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg>YouTube</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> › <a href="index.html">Commander decks</a> › Seven of Nine</p>
+
+  <div class="hero">
+    <figure class="cmd card" style="margin:0"><button type="button" class="zoom" data-src="cards/seven-of-nine.jpg" data-name="Seven of Nine" aria-label="Enlarge Seven of Nine"><img src="cards/seven-of-nine.jpg" alt="Seven of Nine" width="488" height="680"></button>
+      <figcaption>Art: Bastien L. Deharme</figcaption></figure>
+    <div>
+      <span class="chip">Commander #1 · Star Trek</span> <span class="dots"><span class="dot U" title="U"></span><span class="dot B" title="B"></span></span>
+      <h1>Seven of Nine: the dilemma loop</h1>
+      <p class="lede">A blue-black combo deck. Three cheap cards make Seven of Nine draw your whole library, and one more card turns the empty library into a win. Everything else in the deck finds those cards.</p>
+      
+      <dl class="facts"><div><dt>Versions</dt><dd>3</dd></div>
+        <div><dt>Extra budget</dt><dd>$54</dd></div><div><dt>Basic</dt><dd>$66</dd></div><div><dt>Pricier</dt><dd>$320</dd></div>
+        <div><dt>Loop ready by turn 7</dt><dd>74%</dd></div></dl>
+      
+      <div class="cta">
+        <a class="btn gold" href="https://www.youtube.com/watch?v=FYpZKvBKn2k"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg>Watch the video</a>
+        <a class="btn line" href="#versions">Pick a version ↓</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<nav class="subnav" aria-label="On this page"><div class="wrap">
+  <a href="#versions">Versions</a><a href="#how">How it wins</a><a href="#numbers">How often</a>
+  <a href="#commander">Commander</a><a href="#loop-1-land-dropper">Loop 1: land dropper</a><a href="#loop-2-untapper">Loop 2: untapper</a><a href="#loop-3-the-land-comes-back">Loop 3: the land comes back</a><a href="#the-kill">The kill</a><a href="#finder-a-two-mana-piece">Finder: a two-mana piece</a><a href="#finder-a-three-mana-piece">Finder: a three-mana piece</a><a href="#finder-the-land">Finder: the land</a><a href="#finder-any-card">Finder: any card</a><a href="#card-selection">Card selection</a><a href="#protection">Protection</a><a href="#mana">Mana</a><a href="#lands">Lands</a>
+  <a href="#v-budget">Extra budget changes</a><a href="#v-pricier">Pricier changes</a>
+</div></nav>
+<main class="wrap">
+  <section id="versions">
+    <h2>Pick your version</h2>
+    <div class="versions">
+      
+      <article class="ver">
+        <h3>Extra budget</h3>
+        <span class="price">$53.85</span>
+        <span class="stat">Loop ready by turn 7: <b>69%</b> · by turn 10: <b>93%</b></span>
+        <p>The five dearest cards out for cheap ones that do nearly the same job. The loop comes together a little later.</p>
+        <p class="stat">5 cards change from the basic list.</p>
+        <div class="acts">
+          <button type="button" class="btn line copy" data-target="list-budget">Copy the 100 cards</button>
+          <a class="btn line" href="#v-budget">See the changes</a>
+        </div>
+        <span class="copied" aria-live="polite"></span>
+        <textarea id="list-budget" hidden>1 Seven of Nine
+1 Walking Atlas
+1 PuPu UFO
+1 Retreat to Coralhelm
+1 Elven Raft-Steerer
+1 Trade Routes
+1 Oboro Breezecaller
+1 Laboratory Maniac
+1 Elim Garak, Simple Tailor
+1 Tribute Mage
+1 Muddle the Mixture
+1 Dimir Infiltrator
+1 Shred Memory
+1 Scour for Scrap
+1 Strategic Planning
+1 Drift of Phantasms
+1 Dimir Machinations
+1 Perplex
+1 Ringsight
+1 Expedition Map
+1 Trinket Mage
+1 Wishclaw Talisman
+1 Diabolic Tutor
+1 Mastermind&#39;s Acquisition
+1 Clutch of the Undercity
+1 Coveted Prize
+1 Dimir House Guard
+1 Illicit Shipment
+1 Increasing Ambition
+1 Razaketh&#39;s Rite
+1 Sphinx Summoner
+1 Final Parting
+1 Ponder
+1 Preordain
+1 Brainstorm
+1 Consider
+1 Opt
+1 Serum Visions
+1 Sleight of Hand
+1 Impulse
+1 Anticipate
+1 Telling Time
+1 Thassa&#39;s Intervention
+1 Rescue
+1 You See a Guard Approach
+1 Dimir Charm
+1 Test of Priorities
+1 Consider the Prime Directive
+1 Foil
+1 An Offer You Can&#39;t Refuse
+1 Tishana&#39;s Tidebinder
+1 Sol Ring
+1 Arcane Signet
+1 Dimir Signet
+1 Talisman of Dominance
+1 Mind Stone
+1 Fellwar Stone
+1 Sky Diamond
+1 Prismatic Lens
+1 Star Compass
+1 Charcoal Diamond
+1 Dark Ritual
+1 Dimir Aqueduct
+1 Arid Archway
+1 Guildless Commons
+1 Tolaria West
+1 The Unicomplex
+1 Ni&#39;Var Science Academy
+1 Command Tower
+1 Underground River
+1 Drowned Catacomb
+1 Darkwater Catacombs
+1 Choked Estuary
+1 Sunken Hollow
+1 Dismal Backwater
+1 Fabled Passage
+1 Temple of Deceit
+12 Island
+11 Swamp</textarea>
+      </article>
+      
+      <article class="ver main">
+        <h3>Basic <span class="chip">The list below</span></h3>
+        <span class="price">$65.98</span>
+        <span class="stat">Loop ready by turn 7: <b>74%</b> · by turn 10: <b>95%</b></span>
+        <p>The list below. Every card under $5, and four counterspells to protect the turn you win.</p>
+        
+        <div class="acts">
+          <button type="button" class="btn line copy" data-target="list-basic">Copy the 100 cards</button>
+          <a class="btn line" href="#commander">See the cards</a>
+        </div>
+        <span class="copied" aria-live="polite"></span>
+        <textarea id="list-basic" hidden>1 Seven of Nine
+1 Walking Atlas
+1 PuPu UFO
+1 Retreat to Coralhelm
+1 Elven Raft-Steerer
+1 Trade Routes
+1 Oboro Breezecaller
+1 Laboratory Maniac
+1 Elim Garak, Simple Tailor
+1 Tribute Mage
+1 Muddle the Mixture
+1 Dimir Infiltrator
+1 Shred Memory
+1 Scour for Scrap
+1 Merchant Scroll
+1 Drift of Phantasms
+1 Dimir Machinations
+1 Perplex
+1 Ringsight
+1 Expedition Map
+1 Trinket Mage
+1 Wishclaw Talisman
+1 Diabolic Tutor
+1 Mastermind&#39;s Acquisition
+1 Beseech the Queen
+1 Coveted Prize
+1 Dimir House Guard
+1 Profane Tutor
+1 Increasing Ambition
+1 Razaketh&#39;s Rite
+1 Dark Petition
+1 Final Parting
+1 Ponder
+1 Preordain
+1 Brainstorm
+1 Consider
+1 Opt
+1 Serum Visions
+1 Sleight of Hand
+1 Impulse
+1 Anticipate
+1 Telling Time
+1 Thassa&#39;s Intervention
+1 Rescue
+1 You See a Guard Approach
+1 Dimir Charm
+1 Test of Priorities
+1 Consider the Prime Directive
+1 Foil
+1 An Offer You Can&#39;t Refuse
+1 Tishana&#39;s Tidebinder
+1 Sol Ring
+1 Arcane Signet
+1 Dimir Signet
+1 Talisman of Dominance
+1 Mind Stone
+1 Fellwar Stone
+1 Thought Vessel
+1 Prismatic Lens
+1 Star Compass
+1 Charcoal Diamond
+1 Dark Ritual
+1 Dimir Aqueduct
+1 Arid Archway
+1 Guildless Commons
+1 Tolaria West
+1 The Unicomplex
+1 Ni&#39;Var Science Academy
+1 Command Tower
+1 Underground River
+1 Drowned Catacomb
+1 Darkwater Catacombs
+1 Choked Estuary
+1 Sunken Hollow
+1 Dismal Backwater
+1 Fabled Passage
+1 Temple of Deceit
+12 Island
+11 Swamp</textarea>
+      </article>
+      
+      <article class="ver">
+        <h3>Pricier</h3>
+        <span class="price">$319.72</span>
+        <span class="stat">Loop ready by turn 7: <b>75%</b> · by turn 10: <b>92%</b></span>
+        <p>Three free counterspells and an untapped dual land to protect the winning turn, and the best tutors in black and blue: the loop is ready by turn six in 46% of games instead of 40%.</p>
+        <p class="stat">9 cards change from the basic list.</p>
+        <div class="acts">
+          <button type="button" class="btn line copy" data-target="list-pricier">Copy the 100 cards</button>
+          <a class="btn line" href="#v-pricier">See the changes</a>
+        </div>
+        <span class="copied" aria-live="polite"></span>
+        <textarea id="list-pricier" hidden>1 Seven of Nine
+1 Walking Atlas
+1 PuPu UFO
+1 Retreat to Coralhelm
+1 Elven Raft-Steerer
+1 Trade Routes
+1 Oboro Breezecaller
+1 Laboratory Maniac
+1 Elim Garak, Simple Tailor
+1 Tribute Mage
+1 Muddle the Mixture
+1 Dimir Infiltrator
+1 Shred Memory
+1 Scour for Scrap
+1 Merchant Scroll
+1 Drift of Phantasms
+1 Dimir Machinations
+1 Perplex
+1 Ringsight
+1 Expedition Map
+1 Trinket Mage
+1 Wishclaw Talisman
+1 Diabolic Tutor
+1 Mastermind&#39;s Acquisition
+1 Vampiric Tutor
+1 Scheming Symmetry
+1 Dimir House Guard
+1 Profane Tutor
+1 Increasing Ambition
+1 Grim Tutor
+1 Demonic Tutor
+1 Fabricate
+1 Ponder
+1 Preordain
+1 Brainstorm
+1 Consider
+1 Opt
+1 Serum Visions
+1 Sleight of Hand
+1 Impulse
+1 Anticipate
+1 Telling Time
+1 Force of Will
+1 Rescue
+1 You See a Guard Approach
+1 Dimir Charm
+1 Test of Priorities
+1 Pact of Negation
+1 Foil
+1 An Offer You Can&#39;t Refuse
+1 Tishana&#39;s Tidebinder
+1 Sol Ring
+1 Arcane Signet
+1 Dimir Signet
+1 Talisman of Dominance
+1 Mind Stone
+1 Fellwar Stone
+1 Thought Vessel
+1 Prismatic Lens
+1 Star Compass
+1 Charcoal Diamond
+1 Fierce Guardianship
+1 Dimir Aqueduct
+1 Arid Archway
+1 Guildless Commons
+1 Tolaria West
+1 The Unicomplex
+1 Ni&#39;Var Science Academy
+1 Command Tower
+1 Underground River
+1 Drowned Catacomb
+1 Darkwater Catacombs
+1 Choked Estuary
+1 Sunken Hollow
+1 Watery Grave
+1 Fabled Passage
+1 Temple of Deceit
+12 Island
+11 Swamp</textarea>
+      </article>
+      
+    </div>
+    <p class="aside">Prices: the cheapest printing of each card, Scryfall, 22 November 2026; basic lands not counted. The lists paste into Moxfield, Archidekt or TCGplayer's mass entry.</p>
+    <p class="since">Changed since the video (2026-11-22): Oboro Breezecaller replaces Meloku (two mana, so the two-mana finders get it); Foil, An Offer You Can&#39;t Refuse and Tishana&#39;s Tidebinder replace Supreme Will, Lore and Loyal Inventor to protect the winning turn; Fabled Passage replaces Fetid Pools. The loop is ready by turn seven a little more often (74% instead of 71%).</p>
+  </section>
+
+  <section id="how">
+    <h2>How it wins</h2>
+    <ol class="steps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/walking-atlas.jpg" data-name="Walking Atlas" aria-label="Enlarge Walking Atlas"><img loading="lazy" src="cards/walking-atlas.jpg" alt="Walking Atlas" width="488" height="680"></button>
+<figcaption><span class="name">Walking Atlas</span><span class="usd">$1.72</span><span class="artist">Art: Rob Alexander</span></figcaption></figure><p>Tap it: a land goes from your hand onto the battlefield.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-aqueduct.jpg" data-name="Dimir Aqueduct" aria-label="Enlarge Dimir Aqueduct"><img loading="lazy" src="cards/dimir-aqueduct.jpg" alt="Dimir Aqueduct" width="488" height="680"></button>
+<figcaption><span class="name">Dimir Aqueduct</span><span class="usd">$0.34</span><span class="artist">Art: John Avon</span></figcaption></figure><p>The land enters and returns itself to your hand.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/retreat-to-coralhelm.jpg" data-name="Retreat to Coralhelm" aria-label="Enlarge Retreat to Coralhelm"><img loading="lazy" src="cards/retreat-to-coralhelm.jpg" alt="Retreat to Coralhelm" width="488" height="680"></button>
+<figcaption><span class="name">Retreat to Coralhelm</span><span class="usd">$0.42</span><span class="artist">Art: Kieran Yanner</span></figcaption></figure><p>A land entered, so you choose a mode: untap the Atlas. That choice is a dilemma.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/seven-of-nine.jpg" data-name="Seven of Nine" aria-label="Enlarge Seven of Nine"><img loading="lazy" src="cards/seven-of-nine.jpg" alt="Seven of Nine" width="488" height="680"></button>
+<figcaption><span class="name">Seven of Nine</span><span class="usd">$0.24</span><span class="artist">Art: Bastien L. Deharme</span></figcaption></figure><p>You faced a dilemma, so you draw a card. Tap the Atlas again.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/laboratory-maniac.jpg" data-name="Laboratory Maniac" aria-label="Enlarge Laboratory Maniac"><img loading="lazy" src="cards/laboratory-maniac.jpg" alt="Laboratory Maniac" width="488" height="680"></button>
+<figcaption><span class="name">Laboratory Maniac</span><span class="usd">$0.38</span><span class="artist">Art: Jason Felix</span></figcaption></figure><p>Basics you draw go onto the battlefield the same way and stay. Tap three for the Maniac when you draw him, keep looping, and when the library is empty the next draw wins.</p></li></ol>
+    <p class="aside">Putting a land onto the battlefield with an ability isn&#39;t playing a land, so the one-land-a-turn rule doesn&#39;t apply. Every pass draws a card, and that draw isn&#39;t optional: without the Maniac in play, stop while the library still has cards. Elim Garak is the other way to win, and Rescue is the way out if it goes wrong.</p>
+  </section>
+
+  <section id="numbers">
+    <h2>How often the loop is ready</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Version</th><th>Price</th><th>Turn 5</th><th>Turn 6</th><th>Turn 7</th><th>Turn 8</th><th>Turn 10</th></tr></thead>
+      <tbody>
+        <tr class=""><th scope="row">Extra budget</th><td>$54</td><td>9%</td><td>36%</td><td>69%</td><td>84%</td><td>93%</td></tr><tr class="main"><th scope="row">Basic</th><td>$66</td><td>10%</td><td>40%</td><td>74%</td><td>88%</td><td>95%</td></tr><tr class=""><th scope="row">Pricier</th><td>$320</td><td>14%</td><td>46%</td><td>75%</td><td>85%</td><td>92%</td></tr>
+        <tr><th scope="row">Basic + a kill that removal can&#39;t stop</th><td>$64</td><td>10%</td><td>38%</td><td>70%</td><td>84%</td><td>93%</td></tr>
+      </tbody></table></div>
+    <p class="aside">15,000 simulated games per list, one player and no opponents, mana colors ignored: a ceiling for comparing the lists, not a win rate. Counterspells do nothing in a game with no opponents, so the lists with more of them look a little worse late. "Ready" means all three loop pieces and the mana to start that turn. It's an infinite combo: tell your table before the game.</p>
+  </section>
+
+  
+  <section id="commander">
+    
+    <div class="h2row"><h2>Commander</h2><span class="count">1 card</span></div>
+    <p class="blurb">Every time you choose a mode, on a spell or on an ability, she draws you a card. The whole deck is built to make that choice free and endless.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/seven-of-nine.jpg" data-name="Seven of Nine" aria-label="Enlarge Seven of Nine"><img loading="lazy" src="cards/seven-of-nine.jpg" alt="Seven of Nine" width="488" height="680"></button>
+<figcaption><span class="name">Seven of Nine</span><span class="usd">$0.24</span><span class="note">Stays in the command zone until the three loop pieces are ready, then comes down and draws the deck.</span><span class="artist">Art: Bastien L. Deharme</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="loop-1-land-dropper">
+    
+    <div class="h2row"><h2>Loop 1: land dropper</h2><span class="count">2 cards</span></div>
+    <p class="blurb">A creature that taps to put a land from your hand onto the battlefield. It has to be in play a turn before it can tap.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/walking-atlas.jpg" data-name="Walking Atlas" aria-label="Enlarge Walking Atlas"><img loading="lazy" src="cards/walking-atlas.jpg" alt="Walking Atlas" width="488" height="680"></button>
+<figcaption><span class="name">Walking Atlas</span><span class="usd">$1.72</span><span class="note">The first piece. Until the loop is ready it is an extra land drop every turn.</span><span class="artist">Art: Rob Alexander</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/pupu-ufo.jpg" data-name="PuPu UFO" aria-label="Enlarge PuPu UFO"><img loading="lazy" src="cards/pupu-ufo.jpg" alt="PuPu UFO" width="488" height="680"></button>
+<figcaption><span class="name">PuPu UFO</span><span class="usd">$1.22</span><span class="note">The same ability on a 0/4 flyer, so it also blocks.</span><span class="artist">Art: Racrufi</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="loop-2-untapper">
+    
+    <div class="h2row"><h2>Loop 2: untapper</h2><span class="count">2 cards</span></div>
+    <p class="blurb">When a land enters, these make you choose a mode, and one mode untaps the dropper. That choice is the dilemma. Only these two exist in blue and black.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/retreat-to-coralhelm.jpg" data-name="Retreat to Coralhelm" aria-label="Enlarge Retreat to Coralhelm"><img loading="lazy" src="cards/retreat-to-coralhelm.jpg" alt="Retreat to Coralhelm" width="488" height="680"></button>
+<figcaption><span class="name">Retreat to Coralhelm</span><span class="usd">$0.42</span><span class="note">An enchantment, so creature removal doesn&#39;t touch it.</span><span class="artist">Art: Kieran Yanner</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/elven-raft-steerer.jpg" data-name="Elven Raft-Steerer" aria-label="Enlarge Elven Raft-Steerer"><img loading="lazy" src="cards/elven-raft-steerer.jpg" alt="Elven Raft-Steerer" width="488" height="680"></button>
+<figcaption><span class="name">Elven Raft-Steerer</span><span class="usd">$0.25</span><span class="note">The second copy. A creature, so it is the easier one to kill.</span><span class="artist">Art: Christina Kraus</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="loop-3-the-land-comes-back">
+    
+    <div class="h2row"><h2>Loop 3: the land comes back</h2><span class="count">2 cards</span></div>
+    <p class="blurb">The dropper needs the same land in hand again. Three lands below return themselves; these two return any land, paid for with the mana the lands just made.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/trade-routes.jpg" data-name="Trade Routes" aria-label="Enlarge Trade Routes"><img loading="lazy" src="cards/trade-routes.jpg" alt="Trade Routes" width="488" height="680"></button>
+<figcaption><span class="name">Trade Routes</span><span class="usd">$3.79</span><span class="note">Tap a land for mana, pay that mana to return it, drop it again. Two mana, so the two-mana finders get it.</span><span class="artist">Art: Matt Cavotta</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/oboro-breezecaller.jpg" data-name="Oboro Breezecaller" aria-label="Enlarge Oboro Breezecaller"><img loading="lazy" src="cards/oboro-breezecaller.jpg" alt="Oboro Breezecaller" width="488" height="680"></button>
+<figcaption><span class="name">Oboro Breezecaller</span><span class="usd">$0.84</span><span class="note">Tap the dropped land and one more for two mana, pay it to return the dropped land and untap the other: every pass is free. Two mana, so the two-mana finders get it too.</span><span class="artist">Art: Rebecca Guay</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="the-kill">
+    
+    <div class="h2row"><h2>The kill</h2><span class="count">2 cards</span></div>
+    <p class="blurb">The loop puts as much of the library in your hand as you want; one of these two turns that into a win. Without Laboratory Maniac in play, leave a few cards in the library: Seven&#39;s draw is not optional, and a dilemma with an empty library loses the game.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/laboratory-maniac.jpg" data-name="Laboratory Maniac" aria-label="Enlarge Laboratory Maniac"><img loading="lazy" src="cards/laboratory-maniac.jpg" alt="Laboratory Maniac" width="488" height="680"></button>
+<figcaption><span class="name">Laboratory Maniac</span><span class="usd">$0.38</span><span class="note">Wins on the spot: with him in play, a draw from an empty library wins the game, so the loop just keeps going until it does. Three mana, so the untapper finders get him. If he is killed in response to that last draw, you lose.</span><span class="artist">Art: Jason Felix</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/elim-garak-simple-tailor.jpg" data-name="Elim Garak, Simple Tailor" aria-label="Enlarge Elim Garak, Simple Tailor"><img loading="lazy" src="cards/elim-garak-simple-tailor.jpg" alt="Elim Garak, Simple Tailor" width="488" height="680"></button>
+<figcaption><span class="name">Elim Garak, Simple Tailor</span><span class="usd">$0.35</span><span class="note">The safe one: every pass of the loop takes 2 life from each opponent, twenty passes in all. If he is removed you just stop. With him in play the loop does not need Seven of Nine at all.</span><span class="artist">Art: Alexander Gering</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="finder-a-two-mana-piece">
+    
+    <div class="h2row"><h2>Finder: a two-mana piece</h2><span class="count">6 cards</span></div>
+    <p class="blurb">Each of these becomes Walking Atlas, PuPu UFO, Trade Routes or Oboro Breezecaller. Transmute: pay three and discard the card to search for a card with the same mana value.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/tribute-mage.jpg" data-name="Tribute Mage" aria-label="Enlarge Tribute Mage"><img loading="lazy" src="cards/tribute-mage.jpg" alt="Tribute Mage" width="488" height="680"></button>
+<figcaption><span class="name">Tribute Mage</span><span class="usd">$1.06</span><span class="note">Fetches either dropper and leaves a body behind.</span><span class="artist">Art: Scott Murphy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/muddle-the-mixture.jpg" data-name="Muddle the Mixture" aria-label="Enlarge Muddle the Mixture"><img loading="lazy" src="cards/muddle-the-mixture.jpg" alt="Muddle the Mixture" width="488" height="680"></button>
+<figcaption><span class="name">Muddle the Mixture</span><span class="usd">$1.94</span><span class="note">Transmutes for a dropper, Trade Routes or Oboro, or stays in hand as a counterspell on the winning turn.</span><span class="artist">Art: Luca Zontini</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-infiltrator.jpg" data-name="Dimir Infiltrator" aria-label="Enlarge Dimir Infiltrator"><img loading="lazy" src="cards/dimir-infiltrator.jpg" alt="Dimir Infiltrator" width="488" height="680"></button>
+<figcaption><span class="name">Dimir Infiltrator</span><span class="usd">$0.61</span><span class="note">Transmute for any two-mana piece.</span><span class="artist">Art: Jim Nelson</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/shred-memory.jpg" data-name="Shred Memory" aria-label="Enlarge Shred Memory"><img loading="lazy" src="cards/shred-memory.jpg" alt="Shred Memory" width="488" height="680"></button>
+<figcaption><span class="name">Shred Memory</span><span class="usd">$1.39</span><span class="note">Transmute for any two-mana piece.</span><span class="artist">Art: Hideaki Takamura</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/scour-for-scrap.jpg" data-name="Scour for Scrap" aria-label="Enlarge Scour for Scrap"><img loading="lazy" src="cards/scour-for-scrap.jpg" alt="Scour for Scrap" width="488" height="680"></button>
+<figcaption><span class="name">Scour for Scrap</span><span class="usd">$0.45</span><span class="note">Finds a dropper, or brings a dead one back from the graveyard. Modal, so it draws with Seven out.</span><span class="artist">Art: Filip Burburan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/merchant-scroll.jpg" data-name="Merchant Scroll" aria-label="Enlarge Merchant Scroll"><img loading="lazy" src="cards/merchant-scroll.jpg" alt="Merchant Scroll" width="488" height="680"></button>
+<figcaption><span class="name">Merchant Scroll</span><span class="usd">$1.26</span><span class="note">Fetches Muddle the Mixture, Scour for Scrap or Perplex, whichever finds the missing piece.</span><span class="artist">Art: David Martin</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="finder-a-three-mana-piece">
+    
+    <div class="h2row"><h2>Finder: a three-mana piece</h2><span class="count">4 cards</span></div>
+    <p class="blurb">Each of these becomes an untapper, Garak or Laboratory Maniac. The untapper is the role with the fewest copies, so these matter most.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/drift-of-phantasms.jpg" data-name="Drift of Phantasms" aria-label="Enlarge Drift of Phantasms"><img loading="lazy" src="cards/drift-of-phantasms.jpg" alt="Drift of Phantasms" width="488" height="680"></button>
+<figcaption><span class="name">Drift of Phantasms</span><span class="usd">$0.47</span><span class="note">Transmute for an untapper. A 0/5 flying blocker when you don&#39;t need to.</span><span class="artist">Art: Michael Phillippi</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-machinations.jpg" data-name="Dimir Machinations" aria-label="Enlarge Dimir Machinations"><img loading="lazy" src="cards/dimir-machinations.jpg" alt="Dimir Machinations" width="488" height="680"></button>
+<figcaption><span class="name">Dimir Machinations</span><span class="usd">$1.54</span><span class="note">Transmute for an untapper.</span><span class="artist">Art: Greg Staples</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/perplex.jpg" data-name="Perplex" aria-label="Enlarge Perplex"><img loading="lazy" src="cards/perplex.jpg" alt="Perplex" width="488" height="680"></button>
+<figcaption><span class="name">Perplex</span><span class="usd">$1.68</span><span class="note">Transmute for an untapper, or a counterspell.</span><span class="artist">Art: Tsutomu Kawade</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/ringsight.jpg" data-name="Ringsight" aria-label="Enlarge Ringsight"><img loading="lazy" src="cards/ringsight.jpg" alt="Ringsight" width="488" height="680"></button>
+<figcaption><span class="name">Ringsight</span><span class="usd">$0.34</span><span class="note">Finds a card that shares a color with a legend of yours in play: Seven of Nine or Garak.</span><span class="artist">Art: Campbell White</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="finder-the-land">
+    
+    <div class="h2row"><h2>Finder: the land</h2><span class="count">2 cards</span></div>
+    <p class="blurb">A self-returning land has to be in hand on the winning turn. Tolaria West, in the lands, does the same job.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/expedition-map.jpg" data-name="Expedition Map" aria-label="Enlarge Expedition Map"><img loading="lazy" src="cards/expedition-map.jpg" alt="Expedition Map" width="488" height="680"></button>
+<figcaption><span class="name">Expedition Map</span><span class="usd">$0.00</span><span class="note">One mana now, two later, for Dimir Aqueduct.</span><span class="artist">Art: Franz Vohwinkel</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/trinket-mage.jpg" data-name="Trinket Mage" aria-label="Enlarge Trinket Mage"><img loading="lazy" src="cards/trinket-mage.jpg" alt="Trinket Mage" width="488" height="680"></button>
+<figcaption><span class="name">Trinket Mage</span><span class="usd">$0.58</span><span class="note">Fetches Expedition Map, or Sol Ring when the land is already in hand.</span><span class="artist">Art: Scott Chou</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="finder-any-card">
+    
+    <div class="h2row"><h2>Finder: any card</h2><span class="count">11 cards</span></div>
+    <p class="blurb">Whatever is missing. The cheap ones go first; the five-mana ones are for the long game.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/wishclaw-talisman.jpg" data-name="Wishclaw Talisman" aria-label="Enlarge Wishclaw Talisman"><img loading="lazy" src="cards/wishclaw-talisman.jpg" alt="Wishclaw Talisman" width="488" height="680"></button>
+<figcaption><span class="name">Wishclaw Talisman</span><span class="usd">$1.95</span><span class="note">Three mana in total for any card. An opponent gets the Talisman, so use it on the turn you win.</span><span class="artist">Art: Daarken</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/diabolic-tutor.jpg" data-name="Diabolic Tutor" aria-label="Enlarge Diabolic Tutor"><img loading="lazy" src="cards/diabolic-tutor.jpg" alt="Diabolic Tutor" width="488" height="680"></button>
+<figcaption><span class="name">Diabolic Tutor</span><span class="usd">$1.04</span><span class="note">Any card, to hand.</span><span class="artist">Art: Greg Staples</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mastermind-s-acquisition.jpg" data-name="Mastermind&#39;s Acquisition" aria-label="Enlarge Mastermind&#39;s Acquisition"><img loading="lazy" src="cards/mastermind-s-acquisition.jpg" alt="Mastermind&#39;s Acquisition" width="488" height="680"></button>
+<figcaption><span class="name">Mastermind&#39;s Acquisition</span><span class="usd">$1.52</span><span class="note">Any card, and it is modal, so with Seven out it draws one too.</span><span class="artist">Art: Svetlin Velinov</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/beseech-the-queen.jpg" data-name="Beseech the Queen" aria-label="Enlarge Beseech the Queen"><img loading="lazy" src="cards/beseech-the-queen.jpg" alt="Beseech the Queen" width="488" height="680"></button>
+<figcaption><span class="name">Beseech the Queen</span><span class="usd">$3.46</span><span class="note">Any card that costs no more than your land count; every piece does.</span><span class="artist">Art: Jason Chan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/coveted-prize.jpg" data-name="Coveted Prize" aria-label="Enlarge Coveted Prize"><img loading="lazy" src="cards/coveted-prize.jpg" alt="Coveted Prize" width="488" height="680"></button>
+<figcaption><span class="name">Coveted Prize</span><span class="usd">$0.29</span><span class="note">Five mana, one less with a Wizard or Rogue in play (the Mages, Garak).</span><span class="artist">Art: Lie Setiawan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-house-guard.jpg" data-name="Dimir House Guard" aria-label="Enlarge Dimir House Guard"><img loading="lazy" src="cards/dimir-house-guard.jpg" alt="Dimir House Guard" width="488" height="680"></button>
+<figcaption><span class="name">Dimir House Guard</span><span class="usd">$0.27</span><span class="note">Transmutes for Diabolic Tutor, Mastermind&#39;s Acquisition or Scour for Scrap.</span><span class="artist">Art: John Zeleznik</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/profane-tutor.jpg" data-name="Profane Tutor" aria-label="Enlarge Profane Tutor"><img loading="lazy" src="cards/profane-tutor.jpg" alt="Profane Tutor" width="488" height="680"></button>
+<figcaption><span class="name">Profane Tutor</span><span class="usd">$4.28</span><span class="note">Two mana on turn two, any card on turn four.</span><span class="artist">Art: Richard Kane Ferguson</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/increasing-ambition.jpg" data-name="Increasing Ambition" aria-label="Enlarge Increasing Ambition"><img loading="lazy" src="cards/increasing-ambition.jpg" alt="Increasing Ambition" width="488" height="680"></button>
+<figcaption><span class="name">Increasing Ambition</span><span class="usd">$2.20</span><span class="note">Any card now, two more from the graveyard late.</span><span class="artist">Art: Volkan Baǵa</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/razaketh-s-rite.jpg" data-name="Razaketh&#39;s Rite" aria-label="Enlarge Razaketh&#39;s Rite"><img loading="lazy" src="cards/razaketh-s-rite.jpg" alt="Razaketh&#39;s Rite" width="488" height="680"></button>
+<figcaption><span class="name">Razaketh&#39;s Rite</span><span class="usd">$0.40</span><span class="note">Any card for five, or cycle it for one when the pieces are already there.</span><span class="artist">Art: Izzy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dark-petition.jpg" data-name="Dark Petition" aria-label="Enlarge Dark Petition"><img loading="lazy" src="cards/dark-petition.jpg" alt="Dark Petition" width="488" height="680"></button>
+<figcaption><span class="name">Dark Petition</span><span class="usd">$2.99</span><span class="note">Any card, and it often refunds three black mana to cast it.</span><span class="artist">Art: Igor Kieryluk</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/final-parting.jpg" data-name="Final Parting" aria-label="Enlarge Final Parting"><img loading="lazy" src="cards/final-parting.jpg" alt="Final Parting" width="488" height="680"></button>
+<figcaption><span class="name">Final Parting</span><span class="usd">$0.52</span><span class="note">Two cards: the piece to hand, and a dropper to the graveyard for Scour for Scrap.</span><span class="artist">Art: Eric Deschamps</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="card-selection">
+    
+    <div class="h2row"><h2>Card selection</h2><span class="count">11 cards</span></div>
+    <p class="blurb">Cheap looks at the top of the library, to hit land drops early and dig for pieces later.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/ponder.jpg" data-name="Ponder" aria-label="Enlarge Ponder"><img loading="lazy" src="cards/ponder.jpg" alt="Ponder" width="488" height="680"></button>
+<figcaption><span class="name">Ponder</span><span class="usd">$0.69</span><span class="note">Three cards deep for one mana.</span><span class="artist">Art: Berto Martinez</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/preordain.jpg" data-name="Preordain" aria-label="Enlarge Preordain"><img loading="lazy" src="cards/preordain.jpg" alt="Preordain" width="488" height="680"></button>
+<figcaption><span class="name">Preordain</span><span class="usd">$0.78</span><span class="note">Two cards deep, then a draw.</span><span class="artist">Art: Svetlin Velinov</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/brainstorm.jpg" data-name="Brainstorm" aria-label="Enlarge Brainstorm"><img loading="lazy" src="cards/brainstorm.jpg" alt="Brainstorm" width="488" height="680"></button>
+<figcaption><span class="name">Brainstorm</span><span class="usd">$0.36</span><span class="note">Three new cards; any finder shuffles the two you put back.</span><span class="artist">Art: Andreas Zafiratos</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/consider.jpg" data-name="Consider" aria-label="Enlarge Consider"><img loading="lazy" src="cards/consider.jpg" alt="Consider" width="488" height="680"></button>
+<figcaption><span class="name">Consider</span><span class="usd">$0.31</span><span class="note">One look, one draw.</span><span class="artist">Art: Marina Banker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/opt.jpg" data-name="Opt" aria-label="Enlarge Opt"><img loading="lazy" src="cards/opt.jpg" alt="Opt" width="488" height="680"></button>
+<figcaption><span class="name">Opt</span><span class="usd">$0.32</span><span class="note">One look, one draw.</span><span class="artist">Art: Craig J Spearing</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/serum-visions.jpg" data-name="Serum Visions" aria-label="Enlarge Serum Visions"><img loading="lazy" src="cards/serum-visions.jpg" alt="Serum Visions" width="488" height="680"></button>
+<figcaption><span class="name">Serum Visions</span><span class="usd">$0.62</span><span class="note">A draw, then sets up the next two.</span><span class="artist">Art: Ben Thompson</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/sleight-of-hand.jpg" data-name="Sleight of Hand" aria-label="Enlarge Sleight of Hand"><img loading="lazy" src="cards/sleight-of-hand.jpg" alt="Sleight of Hand" width="488" height="680"></button>
+<figcaption><span class="name">Sleight of Hand</span><span class="usd">$0.34</span><span class="note">The better of two.</span><span class="artist">Art: Scott Murphy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/impulse.jpg" data-name="Impulse" aria-label="Enlarge Impulse"><img loading="lazy" src="cards/impulse.jpg" alt="Impulse" width="488" height="680"></button>
+<figcaption><span class="name">Impulse</span><span class="usd">$0.14</span><span class="note">The best of four.</span><span class="artist">Art: Sam Guay</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/anticipate.jpg" data-name="Anticipate" aria-label="Enlarge Anticipate"><img loading="lazy" src="cards/anticipate.jpg" alt="Anticipate" width="488" height="680"></button>
+<figcaption><span class="name">Anticipate</span><span class="usd">$0.16</span><span class="note">The best of three.</span><span class="artist">Art: Kieran Yanner</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/telling-time.jpg" data-name="Telling Time" aria-label="Enlarge Telling Time"><img loading="lazy" src="cards/telling-time.jpg" alt="Telling Time" width="488" height="680"></button>
+<figcaption><span class="name">Telling Time</span><span class="usd">$0.32</span><span class="note">The best of three.</span><span class="artist">Art: L.A. Draws</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thassa-s-intervention.jpg" data-name="Thassa&#39;s Intervention" aria-label="Enlarge Thassa&#39;s Intervention"><img loading="lazy" src="cards/thassa-s-intervention.jpg" alt="Thassa&#39;s Intervention" width="488" height="680"></button>
+<figcaption><span class="name">Thassa&#39;s Intervention</span><span class="usd">$0.46</span><span class="note">Two cards from the top X, or a counterspell. Modal either way.</span><span class="artist">Art: Zack Stella</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="protection">
+    
+    <div class="h2row"><h2>Protection</h2><span class="count">8 cards</span></div>
+    <p class="blurb">Answers for the turn you win. Foil costs no mana, so nothing has to be held back for it. The modal ones also draw a card with Seven of Nine in play. Rescue is the one that must not be modal: it is the way out when the library is empty.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/rescue.jpg" data-name="Rescue" aria-label="Enlarge Rescue"><img loading="lazy" src="cards/rescue.jpg" alt="Rescue" width="488" height="680"></button>
+<figcaption><span class="name">Rescue</span><span class="usd">$0.15</span><span class="note">Returns Seven of Nine to your hand, so the loop stops drawing: the answer when Laboratory Maniac is gone and Garak was the last card in the library. No modes, so casting it draws nothing. It also saves a loop piece from removal.</span><span class="artist">Art: Joe Slucher</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/you-see-a-guard-approach.jpg" data-name="You See a Guard Approach" aria-label="Enlarge You See a Guard Approach"><img loading="lazy" src="cards/you-see-a-guard-approach.jpg" alt="You See a Guard Approach" width="488" height="680"></button>
+<figcaption><span class="name">You See a Guard Approach</span><span class="usd">$0.31</span><span class="note">One mana to give the dropper hexproof in response to removal.</span><span class="artist">Art: Mila Pesic</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-charm.jpg" data-name="Dimir Charm" aria-label="Enlarge Dimir Charm"><img loading="lazy" src="cards/dimir-charm.jpg" alt="Dimir Charm" width="488" height="680"></button>
+<figcaption><span class="name">Dimir Charm</span><span class="usd">$0.35</span><span class="note">Counters a board wipe that is a sorcery, or kills a small blocker. With one card left in the library it can destroy your own Seven of Nine: the choice draws that last card first.</span><span class="artist">Art: Zoltan Boros</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/test-of-priorities.jpg" data-name="Test of Priorities" aria-label="Enlarge Test of Priorities"><img loading="lazy" src="cards/test-of-priorities.jpg" alt="Test of Priorities" width="488" height="680"></button>
+<figcaption><span class="name">Test of Priorities</span><span class="usd">$0.27</span><span class="note">Blinks the dropper out from under removal, or digs three cards. With one card left in the library it can blink Seven of Nine out the same way.</span><span class="artist">Art: Paolo Puggioni</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/consider-the-prime-directive.jpg" data-name="Consider the Prime Directive" aria-label="Enlarge Consider the Prime Directive"><img loading="lazy" src="cards/consider-the-prime-directive.jpg" alt="Consider the Prime Directive" width="488" height="680"></button>
+<figcaption><span class="name">Consider the Prime Directive</span><span class="usd">$0.17</span><span class="note">A soft counterspell, or taps a blocker and draws.</span><span class="artist">Art: Zoltan Boros</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/foil.jpg" data-name="Foil" aria-label="Enlarge Foil"><img loading="lazy" src="cards/foil.jpg" alt="Foil" width="488" height="680"></button>
+<figcaption><span class="name">Foil</span><span class="usd">$1.67</span><span class="note">Counters anything for free: discard an Island and one more card. The loop leaves you plenty of both.</span><span class="artist">Art: Donato Giancola</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/an-offer-you-can-t-refuse.jpg" data-name="An Offer You Can&#39;t Refuse" aria-label="Enlarge An Offer You Can&#39;t Refuse"><img loading="lazy" src="cards/an-offer-you-can-t-refuse.jpg" alt="An Offer You Can&#39;t Refuse" width="488" height="680"></button>
+<figcaption><span class="name">An Offer You Can&#39;t Refuse</span><span class="usd">$2.49</span><span class="note">One blue mana for any noncreature spell: the board wipe, the removal, the Stifle. The two Treasures don&#39;t matter once you win.</span><span class="artist">Art: Dallas Williams</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/tishana-s-tidebinder.jpg" data-name="Tishana&#39;s Tidebinder" aria-label="Enlarge Tishana&#39;s Tidebinder"><img loading="lazy" src="cards/tishana-s-tidebinder.jpg" alt="Tishana&#39;s Tidebinder" width="488" height="680"></button>
+<figcaption><span class="name">Tishana&#39;s Tidebinder</span><span class="usd">$1.38</span><span class="note">Flash: counters an activated or triggered ability, such as a sacrifice outlet or a creature&#39;s removal trigger, and that creature loses its abilities while this stays.</span><span class="artist">Art: Nino Vecia</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="mana">
+    
+    <div class="h2row"><h2>Mana</h2><span class="count">11 cards</span></div>
+    <p class="blurb">The loop costs about ten mana across three turns, plus finders. Ten rocks get Seven of Nine out a turn early.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/sol-ring.jpg" data-name="Sol Ring" aria-label="Enlarge Sol Ring"><img loading="lazy" src="cards/sol-ring.jpg" alt="Sol Ring" width="488" height="680"></button>
+<figcaption><span class="name">Sol Ring</span><span class="usd">$1.14</span><span class="note">The best one.</span><span class="artist">Art: Hector Ortiz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/arcane-signet.jpg" data-name="Arcane Signet" aria-label="Enlarge Arcane Signet"><img loading="lazy" src="cards/arcane-signet.jpg" alt="Arcane Signet" width="488" height="680"></button>
+<figcaption><span class="name">Arcane Signet</span><span class="usd">$0.33</span><span class="note">Either color.</span><span class="artist">Art: Tomáš Honz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-signet.jpg" data-name="Dimir Signet" aria-label="Enlarge Dimir Signet"><img loading="lazy" src="cards/dimir-signet.jpg" alt="Dimir Signet" width="488" height="680"></button>
+<figcaption><span class="name">Dimir Signet</span><span class="usd">$0.40</span><span class="note">Both colors.</span><span class="artist">Art: Raoul Vitale</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/talisman-of-dominance.jpg" data-name="Talisman of Dominance" aria-label="Enlarge Talisman of Dominance"><img loading="lazy" src="cards/talisman-of-dominance.jpg" alt="Talisman of Dominance" width="488" height="680"></button>
+<figcaption><span class="name">Talisman of Dominance</span><span class="usd">$0.32</span><span class="note">Either color, for 1 life.</span><span class="artist">Art: Piotr Foksowicz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mind-stone.jpg" data-name="Mind Stone" aria-label="Enlarge Mind Stone"><img loading="lazy" src="cards/mind-stone.jpg" alt="Mind Stone" width="488" height="680"></button>
+<figcaption><span class="name">Mind Stone</span><span class="usd">$0.25</span><span class="note">Colorless, and a card later.</span><span class="artist">Art: Racrufi</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fellwar-stone.jpg" data-name="Fellwar Stone" aria-label="Enlarge Fellwar Stone"><img loading="lazy" src="cards/fellwar-stone.jpg" alt="Fellwar Stone" width="488" height="680"></button>
+<figcaption><span class="name">Fellwar Stone</span><span class="usd">$0.99</span><span class="note">Usually either color.</span><span class="artist">Art: John Avon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thought-vessel.jpg" data-name="Thought Vessel" aria-label="Enlarge Thought Vessel"><img loading="lazy" src="cards/thought-vessel.jpg" alt="Thought Vessel" width="488" height="680"></button>
+<figcaption><span class="name">Thought Vessel</span><span class="usd">$1.44</span><span class="note">No maximum hand size, for the turn you stop the loop with thirty cards in hand.</span><span class="artist">Art: Leesha Hannigan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/prismatic-lens.jpg" data-name="Prismatic Lens" aria-label="Enlarge Prismatic Lens"><img loading="lazy" src="cards/prismatic-lens.jpg" alt="Prismatic Lens" width="488" height="680"></button>
+<figcaption><span class="name">Prismatic Lens</span><span class="usd">$0.42</span><span class="note">Colorless, or a color for one more.</span><span class="artist">Art: Alan Pollack</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/star-compass.jpg" data-name="Star Compass" aria-label="Enlarge Star Compass"><img loading="lazy" src="cards/star-compass.jpg" alt="Star Compass" width="488" height="680"></button>
+<figcaption><span class="name">Star Compass</span><span class="usd">$0.35</span><span class="note">Enters tapped.</span><span class="artist">Art: Alix Branwyn</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/charcoal-diamond.jpg" data-name="Charcoal Diamond" aria-label="Enlarge Charcoal Diamond"><img loading="lazy" src="cards/charcoal-diamond.jpg" alt="Charcoal Diamond" width="488" height="680"></button>
+<figcaption><span class="name">Charcoal Diamond</span><span class="usd">$0.35</span><span class="note">Enters tapped.</span><span class="artist">Art: Gaboleps</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dark-ritual.jpg" data-name="Dark Ritual" aria-label="Enlarge Dark Ritual"><img loading="lazy" src="cards/dark-ritual.jpg" alt="Dark Ritual" width="488" height="680"></button>
+<figcaption><span class="name">Dark Ritual</span><span class="usd">$0.44</span><span class="note">Kept for the winning turn: two extra mana to cast Seven and the last piece together.</span><span class="artist">Art: Nino Is</span></figcaption></figure></div>
+    
+    
+  </section>
+  
+  <section id="lands">
+    
+    <div class="h2row"><h2>Lands</h2><span class="count">38 cards</span></div>
+    <p class="blurb">38 lands. The first three are loop pieces: they return themselves to hand when they enter. While the loop runs, every basic you draw goes into play untapped through the dropper, and that mana casts the kill. Stop before the library is empty: every pass draws a card.</p>
+    <div class="grid"><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-aqueduct.jpg" data-name="Dimir Aqueduct" aria-label="Enlarge Dimir Aqueduct"><img loading="lazy" src="cards/dimir-aqueduct.jpg" alt="Dimir Aqueduct" width="488" height="680"></button>
+<figcaption><span class="name">Dimir Aqueduct</span><span class="usd">$0.34</span><span class="note">The loop&#39;s land. Hold one in hand; a second one is a fine land drop.</span><span class="artist">Art: John Avon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/arid-archway.jpg" data-name="Arid Archway" aria-label="Enlarge Arid Archway"><img loading="lazy" src="cards/arid-archway.jpg" alt="Arid Archway" width="488" height="680"></button>
+<figcaption><span class="name">Arid Archway</span><span class="usd">$1.63</span><span class="note">The second copy.</span><span class="artist">Art: Raymond Bonilla</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/guildless-commons.jpg" data-name="Guildless Commons" aria-label="Enlarge Guildless Commons"><img loading="lazy" src="cards/guildless-commons.jpg" alt="Guildless Commons" width="488" height="680"></button>
+<figcaption><span class="name">Guildless Commons</span><span class="usd">$1.26</span><span class="note">The third copy.</span><span class="artist">Art: Cliff Childs</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/tolaria-west.jpg" data-name="Tolaria West" aria-label="Enlarge Tolaria West"><img loading="lazy" src="cards/tolaria-west.jpg" alt="Tolaria West" width="488" height="680"></button>
+<figcaption><span class="name">Tolaria West</span><span class="usd">$0.44</span><span class="note">Transmutes for any land, so it is a fourth Aqueduct.</span><span class="artist">Art: Khang Le</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/the-unicomplex.jpg" data-name="The Unicomplex" aria-label="Enlarge The Unicomplex"><img loading="lazy" src="cards/the-unicomplex.jpg" alt="The Unicomplex" width="488" height="680"></button>
+<figcaption><span class="name">The Unicomplex</span><span class="usd">$1.43</span><span class="note">Its enters choice is a dilemma: a land that draws a card with Seven out.</span><span class="artist">Art: JB Casacop</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/ni-var-science-academy.jpg" data-name="Ni&#39;Var Science Academy" aria-label="Enlarge Ni&#39;Var Science Academy"><img loading="lazy" src="cards/ni-var-science-academy.jpg" alt="Ni&#39;Var Science Academy" width="488" height="680"></button>
+<figcaption><span class="name">Ni&#39;Var Science Academy</span><span class="usd">$0.84</span><span class="note">The same, in blue.</span><span class="artist">Art: Raphael Lacoste</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/command-tower.jpg" data-name="Command Tower" aria-label="Enlarge Command Tower"><img loading="lazy" src="cards/command-tower.jpg" alt="Command Tower" width="488" height="680"></button>
+<figcaption><span class="name">Command Tower</span><span class="usd">$0.20</span><span class="note">Both colors, untapped.</span><span class="artist">Art: Arthur Yuan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/underground-river.jpg" data-name="Underground River" aria-label="Enlarge Underground River"><img loading="lazy" src="cards/underground-river.jpg" alt="Underground River" width="488" height="680"></button>
+<figcaption><span class="name">Underground River</span><span class="usd">$0.35</span><span class="note">Both colors, untapped.</span><span class="artist">Art: Piotr Dura</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/drowned-catacomb.jpg" data-name="Drowned Catacomb" aria-label="Enlarge Drowned Catacomb"><img loading="lazy" src="cards/drowned-catacomb.jpg" alt="Drowned Catacomb" width="488" height="680"></button>
+<figcaption><span class="name">Drowned Catacomb</span><span class="usd">$0.31</span><span class="note">Both colors, untapped with a basic.</span><span class="artist">Art: Lordigan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/darkwater-catacombs.jpg" data-name="Darkwater Catacombs" aria-label="Enlarge Darkwater Catacombs"><img loading="lazy" src="cards/darkwater-catacombs.jpg" alt="Darkwater Catacombs" width="488" height="680"></button>
+<figcaption><span class="name">Darkwater Catacombs</span><span class="usd">$0.34</span><span class="note">Turns one mana into both colors.</span><span class="artist">Art: Monte Michael Moore</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/choked-estuary.jpg" data-name="Choked Estuary" aria-label="Enlarge Choked Estuary"><img loading="lazy" src="cards/choked-estuary.jpg" alt="Choked Estuary" width="488" height="680"></button>
+<figcaption><span class="name">Choked Estuary</span><span class="usd">$0.35</span><span class="note">Both colors, untapped with a basic in hand.</span><span class="artist">Art: Jessica Rossier</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/sunken-hollow.jpg" data-name="Sunken Hollow" aria-label="Enlarge Sunken Hollow"><img loading="lazy" src="cards/sunken-hollow.jpg" alt="Sunken Hollow" width="488" height="680"></button>
+<figcaption><span class="name">Sunken Hollow</span><span class="usd">$0.32</span><span class="note">Both colors, untapped with two basics.</span><span class="artist">Art: Nadia Hurianova</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dismal-backwater.jpg" data-name="Dismal Backwater" aria-label="Enlarge Dismal Backwater"><img loading="lazy" src="cards/dismal-backwater.jpg" alt="Dismal Backwater" width="488" height="680"></button>
+<figcaption><span class="name">Dismal Backwater</span><span class="usd">$0.20</span><span class="note">Both colors, tapped.</span><span class="artist">Art: Alayna Danner</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fabled-passage.jpg" data-name="Fabled Passage" aria-label="Enlarge Fabled Passage"><img loading="lazy" src="cards/fabled-passage.jpg" alt="Fabled Passage" width="488" height="680"></button>
+<figcaption><span class="name">Fabled Passage</span><span class="usd">$0.45</span><span class="note">Fetches a basic; untapped from the fourth land on. Thins a land out of the library the loop draws.</span><span class="artist">Art: Arthur Yuan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/temple-of-deceit.jpg" data-name="Temple of Deceit" aria-label="Enlarge Temple of Deceit"><img loading="lazy" src="cards/temple-of-deceit.jpg" alt="Temple of Deceit" width="488" height="680"></button>
+<figcaption><span class="name">Temple of Deceit</span><span class="usd">$0.35</span><span class="note">Both colors, and a scry.</span><span class="artist">Art: Jonas De Ro</span></figcaption></figure></div>
+    
+    <p class="basics">Plus 12 Island and 11 Swamp.</p>
+  </section>
+  
+
+  
+  <section id="v-budget">
+    <div class="h2row"><h2>Extra budget: what changes</h2><span class="count">$53.85 · loop ready by turn 7: 69%</span></div>
+    
+    <h3 style="font-size:19px;margin-top:6px">Cut to about $50</h3>
+    <p class="blurb">Six of the dearest cards out, for cards under fifty cents.</p>
+    <ul class="swaps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/illicit-shipment.jpg" data-name="Illicit Shipment" aria-label="Enlarge Illicit Shipment"><img loading="lazy" src="cards/illicit-shipment.jpg" alt="Illicit Shipment" width="488" height="680"></button>
+<figcaption><span class="name">Illicit Shipment</span><span class="usd">$0.28</span><span class="artist">Art: Josu Hernaiz</span></figcaption></figure><p><span class="out">Profane Tutor</span> $4.28<br>
+      <span class="in">Illicit Shipment</span> <span class="usd">$0.28</span><br>Any card for five mana instead of two now and two turns of waiting.<span class="artist">Art: Josu Hernaiz</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/clutch-of-the-undercity.jpg" data-name="Clutch of the Undercity" aria-label="Enlarge Clutch of the Undercity"><img loading="lazy" src="cards/clutch-of-the-undercity.jpg" alt="Clutch of the Undercity" width="488" height="680"></button>
+<figcaption><span class="name">Clutch of the Undercity</span><span class="usd">$0.24</span><span class="artist">Art: Pete Venters</span></figcaption></figure><p><span class="out">Beseech the Queen</span> $3.46<br>
+      <span class="in">Clutch of the Undercity</span> <span class="usd">$0.24</span><br>Transmutes for a four-mana tutor.<span class="artist">Art: Pete Venters</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/sphinx-summoner.jpg" data-name="Sphinx Summoner" aria-label="Enlarge Sphinx Summoner"><img loading="lazy" src="cards/sphinx-summoner.jpg" alt="Sphinx Summoner" width="488" height="680"></button>
+<figcaption><span class="name">Sphinx Summoner</span><span class="usd">$0.34</span><span class="artist">Art: Jaime Jones</span></figcaption></figure><p><span class="out">Dark Petition</span> $2.99<br>
+      <span class="in">Sphinx Summoner</span> <span class="usd">$0.34</span><br>Fetches a dropper and is a 3/3 flyer.<span class="artist">Art: Jaime Jones</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/strategic-planning.jpg" data-name="Strategic Planning" aria-label="Enlarge Strategic Planning"><img loading="lazy" src="cards/strategic-planning.jpg" alt="Strategic Planning" width="488" height="680"></button>
+<figcaption><span class="name">Strategic Planning</span><span class="usd">$0.20</span><span class="artist">Art: Donato Giancola</span></figcaption></figure><p><span class="out">Merchant Scroll</span> $1.26<br>
+      <span class="in">Strategic Planning</span> <span class="usd">$0.20</span><br>A plain look at three cards.<span class="artist">Art: Donato Giancola</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/sky-diamond.jpg" data-name="Sky Diamond" aria-label="Enlarge Sky Diamond"><img loading="lazy" src="cards/sky-diamond.jpg" alt="Sky Diamond" width="488" height="680"></button>
+<figcaption><span class="name">Sky Diamond</span><span class="usd">$0.24</span><span class="artist">Art: Gaboleps</span></figcaption></figure><p><span class="out">Thought Vessel</span> $1.44<br>
+      <span class="in">Sky Diamond</span> <span class="usd">$0.24</span><br>A rock that enters tapped.<span class="artist">Art: Gaboleps</span></p></li></ul>
+    
+    <div class="listacts"><button type="button" class="btn line copy" data-target="list-budget">Copy the extra budget list</button><span class="copied" aria-live="polite"></span></div>
+  </section>
+  
+  <section id="v-pricier">
+    <div class="h2row"><h2>Pricier: what changes</h2><span class="count">$319.72 · loop ready by turn 7: 75%</span></div>
+    
+    <h3 style="font-size:19px;margin-top:6px">The first upgrade</h3>
+    <p class="blurb">A free counterspell and an untapped dual land. Pact costs nothing on the turn you win; the shockland enters untapped for 2 life.</p>
+    <ul class="swaps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/pact-of-negation.jpg" data-name="Pact of Negation" aria-label="Enlarge Pact of Negation"><img loading="lazy" src="cards/pact-of-negation.jpg" alt="Pact of Negation" width="488" height="680"></button>
+<figcaption><span class="name">Pact of Negation</span><span class="usd">$12.24</span><span class="artist">Art: Jason Chan</span></figcaption></figure><p><span class="out">Consider the Prime Directive</span> $0.17<br>
+      <span class="in">Pact of Negation</span> <span class="usd">$12.24</span><br>Counters anything for free. Five mana next upkeep, but on the turn you win there is no next upkeep.<span class="artist">Art: Jason Chan</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/watery-grave.jpg" data-name="Watery Grave" aria-label="Enlarge Watery Grave"><img loading="lazy" src="cards/watery-grave.jpg" alt="Watery Grave" width="488" height="680"></button>
+<figcaption><span class="name">Watery Grave</span><span class="usd">$7.63</span><span class="artist">Art: Raymond Bonilla</span></figcaption></figure><p><span class="out">Dismal Backwater</span> $0.20<br>
+      <span class="in">Watery Grave</span> <span class="usd">$7.63</span><br>Both colors, untapped for 2 life. An Island and a Swamp, so Foil can discard it.<span class="artist">Art: Raymond Bonilla</span></p></li></ul>
+    
+    <h3 style="font-size:19px;margin-top:6px">Upgrades to protect the loop</h3>
+    <p class="blurb">Two more counterspells that cost no mana, for when the budget allows: Force of Will about $55, Fierce Guardianship about $40. Not measured: the simulator has no opponents.</p>
+    <ul class="swaps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/force-of-will.jpg" data-name="Force of Will" aria-label="Enlarge Force of Will"><img loading="lazy" src="cards/force-of-will.jpg" alt="Force of Will" width="488" height="680"></button>
+<figcaption><span class="name">Force of Will</span><span class="usd">$54.00</span><span class="artist">Art: Donato Giancola</span></figcaption></figure><p><span class="out">Thassa&#39;s Intervention</span> $0.46<br>
+      <span class="in">Force of Will</span> <span class="usd">$54.00</span><br>Free: exile a blue card from hand and pay 1 life. Works on any turn, also against a fast combo before Seven is out.<span class="artist">Art: Donato Giancola</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/fierce-guardianship.jpg" data-name="Fierce Guardianship" aria-label="Enlarge Fierce Guardianship"><img loading="lazy" src="cards/fierce-guardianship.jpg" alt="Fierce Guardianship" width="488" height="680"></button>
+<figcaption><span class="name">Fierce Guardianship</span><span class="usd">$40.41</span><span class="artist">Art: Randy Vargas</span></figcaption></figure><p><span class="out">Dark Ritual</span> $0.44<br>
+      <span class="in">Fierce Guardianship</span> <span class="usd">$40.41</span><br>Free while Seven of Nine is in play (a commander in the command zone doesn&#39;t count), against any noncreature spell: on the winning turn she always is.<span class="artist">Art: Randy Vargas</span></p></li></ul>
+    
+    <h3 style="font-size:19px;margin-top:6px">Upgrades for speed</h3>
+    <p class="blurb">Dearer tutors bring the loop a turn sooner in some games. They do not raise how often it is ready by turn seven.</p>
+    <ul class="swaps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/fabricate.jpg" data-name="Fabricate" aria-label="Enlarge Fabricate"><img loading="lazy" src="cards/fabricate.jpg" alt="Fabricate" width="488" height="680"></button>
+<figcaption><span class="name">Fabricate</span><span class="usd">$6.89</span><span class="artist">Art: Fajareka Setiawan</span></figcaption></figure><p><span class="out">Final Parting</span> $0.52<br>
+      <span class="in">Fabricate</span> <span class="usd">$6.89</span><br>Three mana for a dropper to hand.<span class="artist">Art: Fajareka Setiawan</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/scheming-symmetry.jpg" data-name="Scheming Symmetry" aria-label="Enlarge Scheming Symmetry"><img loading="lazy" src="cards/scheming-symmetry.jpg" alt="Scheming Symmetry" width="488" height="680"></button>
+<figcaption><span class="name">Scheming Symmetry</span><span class="usd">$8.09</span><span class="artist">Art: Seb McKinnon</span></figcaption></figure><p><span class="out">Coveted Prize</span> $0.29<br>
+      <span class="in">Scheming Symmetry</span> <span class="usd">$8.09</span><br>One mana, any card, on top of the library.<span class="artist">Art: Seb McKinnon</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/grim-tutor.jpg" data-name="Grim Tutor" aria-label="Enlarge Grim Tutor"><img loading="lazy" src="cards/grim-tutor.jpg" alt="Grim Tutor" width="488" height="680"></button>
+<figcaption><span class="name">Grim Tutor</span><span class="usd">$23.97</span><span class="artist">Art: DZO</span></figcaption></figure><p><span class="out">Razaketh&#39;s Rite</span> $0.40<br>
+      <span class="in">Grim Tutor</span> <span class="usd">$23.97</span><br>Any card to hand for three.<span class="artist">Art: DZO</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/vampiric-tutor.jpg" data-name="Vampiric Tutor" aria-label="Enlarge Vampiric Tutor"><img loading="lazy" src="cards/vampiric-tutor.jpg" alt="Vampiric Tutor" width="488" height="680"></button>
+<figcaption><span class="name">Vampiric Tutor</span><span class="usd">$50.82</span><span class="artist">Art: Raymond Swanland</span></figcaption></figure><p><span class="out">Beseech the Queen</span> $3.46<br>
+      <span class="in">Vampiric Tutor</span> <span class="usd">$50.82</span><br>One mana, any card, on top.<span class="artist">Art: Raymond Swanland</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/demonic-tutor.jpg" data-name="Demonic Tutor" aria-label="Enlarge Demonic Tutor"><img loading="lazy" src="cards/demonic-tutor.jpg" alt="Demonic Tutor" width="488" height="680"></button>
+<figcaption><span class="name">Demonic Tutor</span><span class="usd">$58.62</span><span class="artist">Art: Zack Stella</span></figcaption></figure><p><span class="out">Dark Petition</span> $2.99<br>
+      <span class="in">Demonic Tutor</span> <span class="usd">$58.62</span><br>Any card to hand for two.<span class="artist">Art: Zack Stella</span></p></li></ul>
+    
+    <div class="listacts"><button type="button" class="btn line copy" data-target="list-pricier">Copy the pricier list</button><span class="copied" aria-live="polite"></span></div>
+  </section>
+  
+
+  
+  <section>
+    <div class="h2row"><h2>One more idea: a kill that removal can&#39;t stop</h2><span class="count">loop ready by turn 7: 70%</span></div>
+    <p class="blurb">With fifty cards in hand, Skirge Familiar turns every discarded card into a black mana, and that pays for Exsanguinate. It is a mana ability, so nobody can respond to the discards; only a counterspell stops it. It needs no dilemma, so it also works with an empty library. Two slots, which is why it is not in the list.</p>
+    <ul class="swaps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/skirge-familiar.jpg" data-name="Skirge Familiar" aria-label="Enlarge Skirge Familiar"><img loading="lazy" src="cards/skirge-familiar.jpg" alt="Skirge Familiar" width="488" height="680"></button>
+<figcaption><span class="name">Skirge Familiar</span><span class="usd">$0.26</span><span class="artist">Art: Uriah Voth</span></figcaption></figure><p><span class="out">Increasing Ambition</span> $2.20<br>
+      <span class="in">Skirge Familiar</span> <span class="usd">$0.26</span><br>Discard a card: add one black mana. Five lands cast it.<span class="artist">Art: Uriah Voth</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/exsanguinate.jpg" data-name="Exsanguinate" aria-label="Enlarge Exsanguinate"><img loading="lazy" src="cards/exsanguinate.jpg" alt="Exsanguinate" width="488" height="680"></button>
+<figcaption><span class="name">Exsanguinate</span><span class="usd">$0.50</span><span class="artist">Art: Marie Magny</span></figcaption></figure><p><span class="out">Serum Visions</span> $0.62<br>
+      <span class="in">Exsanguinate</span> <span class="usd">$0.50</span><br>Discard forty-two cards and each opponent loses 40 life.<span class="artist">Art: Marie Magny</span></p></li></ul>
+  </section>
+  
+</main>
+
+
+
+<footer><div class="wrap">
+  <p><b>Limited Junkyard</b> · <a href="https://www.youtube.com/@LimitedJunkyard">https://www.youtube.com/@LimitedJunkyard</a> · <a href="index.html">All Commander decks</a> · <a href="../index.html">Home</a></p>
+  <p>Card images and prices: Scryfall. Cards are shown whole and unmodified; the artist is credited under each card.</p>
+  <p>This channel is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.</p><p>Star Trek and related marks are trademarks of CBS Studios Inc. This guide is not endorsed by or affiliated with CBS or Paramount.</p><p>Cards from Universes Beyond sets are shown whole, as printed; their franchises&#39; names and marks belong to their owners.</p>
+  <p>Card art: Alan Pollack, Alayna Danner, Alexander Gering, Alix Branwyn, Andreas Zafiratos, Arthur Yuan, Bastien L. Deharme, Ben Thompson, Berto Martinez, Campbell White, Christina Kraus, Cliff Childs, Craig J Spearing, DZO, Daarken, Dallas Williams, David Martin, Donato Giancola, Eren Arik, Eric Deschamps, Fajareka Setiawan, Filip Burburan, Franz Vohwinkel, Gaboleps, Greg Staples, Hector Ortiz, Hideaki Takamura, Igor Kieryluk, Izzy, JB Casacop, Jaime Jones, Jason Chan, Jason Felix, Jessica Rossier, Jim Nelson, Joe Slucher, John Avon, John Zeleznik, Jonas De Ro, Josu Hernaiz, Khang Le, Kieran Yanner, L.A. Draws, Leesha Hannigan, Lie Setiawan, Lordigan, Luca Zontini, Maojin Lee, Marie Magny, Marina Banker, Matt Cavotta, Michael Phillippi, Mila Pesic, Monte Michael Moore, Nadia Hurianova, Nino Is, Nino Vecia, Paolo Puggioni, Pete Venters, Piotr Dura, Piotr Foksowicz, Racrufi, Randy Vargas, Raoul Vitale, Raphael Lacoste, Raymond Bonilla, Raymond Swanland, Rebecca Guay, Richard Kane Ferguson, Rob Alexander, Sam Guay, Scott Chou, Scott Murphy, Seb McKinnon, Svetlin Velinov, Tomáš Honz, Tsutomu Kawade, Uriah Voth, Volkan Baǵa, Zack Stella, Zoltan Boros.</p>
+  <p>Fonts: Cinzel and Crimson Pro (SIL Open Font License).</p>
+</div></footer>
+
+<dialog id="big"><button type="button" aria-label="Close"><img alt=""></button></dialog>
+<script>
+(function () {
+  var dlg = document.getElementById("big"), img = dlg.querySelector("img");
+  document.addEventListener("click", function (ev) {
+    var z = ev.target.closest(".zoom");
+    if (z) { img.src = z.dataset.src; img.alt = z.dataset.name; if (dlg.showModal) dlg.showModal(); return; }
+    if (dlg.open && ev.target.closest("dialog")) { dlg.close(); return; }
+    var b = ev.target.closest(".copy");
+    if (!b) return;
+    var t = document.getElementById(b.dataset.target).value;
+    var msg = b.parentNode.querySelector(".copied") || b.closest("article, .listacts, .variant").querySelector(".copied");
+    var done = function (m) { if (msg) { msg.textContent = m; setTimeout(function () { msg.textContent = ""; }, 2500); } };
+    var fallback = function () { var a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select();
+      try { document.execCommand("copy"); done("Copied"); } catch (e) { done("Select and copy failed"); } a.remove(); };
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { done("Copied: paste it into Moxfield, Archidekt or TCGplayer"); }, fallback);
+    else fallback();
+  });
+})();
+</script>
+</body>
+</html>

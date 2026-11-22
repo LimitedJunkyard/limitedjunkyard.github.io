@@ -1,0 +1,1154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q, Stacking the Deck: four ways to break him · Commander decklists · Limited Junkyard</title>
+<meta name="description" content="Four decks where Q&#39;s random card is the same card every time. One is boring, two are bad, one is ridiculous. Full decklists with prices, every version explained.">
+<meta property="og:title" content="Q, Stacking the Deck: four ways to break him">
+<meta property="og:description" content="Four decks where Q&#39;s random card is the same card every time. One is boring, two are bad, one is ridiculous.">
+<link rel="icon" href="../logo.png">
+<style>
+  /* Display: Cinzel. Body: Crimson Pro (close to the book serif on Magic cards). Both SIL OFL, bundled. */
+  @font-face { font-family: "Cinzel"; font-weight: 400 900; font-display: block;
+    src: url("../fonts/Cinzel-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212; }
+  @font-face { font-family: "Cinzel"; font-weight: 400 900; font-display: block;
+    src: url("../fonts/Cinzel-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: normal; font-display: block;
+    src: url("../fonts/CrimsonPro-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2212; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: normal; font-display: block;
+    src: url("../fonts/CrimsonPro-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Crimson Pro"; font-weight: 400 800; font-style: italic; font-display: block;
+    src: url("../fonts/CrimsonPro-italic-latin.woff2") format("woff2"); }
+  /* Commander pages: the site's cream-and-gold look (site_article.html), wider for card grids; dark mode follows the system */
+  :root { --bg: #f6f1e6; --panel: #fffdf8; --panel-2: #fbf5e3; --ink: #1d1b18; --muted: #6d6555; --gold: #8a6d1d; --gold-hi: #e6c766;
+          --line: #e2d8c0; --edge: #c9a64a; --night: #1b1a17; --ok: #2f7a4d; --out: #9a3b2c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #15171c; --panel: #1e2128; --panel-2: #262a32; --ink: #ece7da; --muted: #a29d8e; --gold: #d9b44a;
+            --line: #353a46; --edge: #8a7330; --ok: #6cc28f; --out: #e08a78; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.5 "Crimson Pro", Georgia, serif; }
+  a { color: var(--gold); }
+  h1, h2, h3 { font-family: "Cinzel", Georgia, serif; line-height: 1.2; letter-spacing: .01em; margin: 0; text-wrap: balance; }
+  p { margin: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* top bar, same on every Commander page */
+  .top { background: var(--night); color: #f1ead8; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #2c2a25; }
+  .top .wrap { display: flex; align-items: center; gap: 12px; height: 60px; }
+  .top img { width: 40px; height: 40px; border-radius: 50%; display: block; border: 2px solid var(--gold-hi); }
+  .top .name { font: 700 18px "Cinzel", Georgia, serif; color: #f1ead8; text-decoration: none; white-space: nowrap; }
+  .top nav { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+  .top nav a { color: #d9d1bd; text-decoration: none; font-size: 17px; white-space: nowrap; }
+  .top nav a:hover, .top nav a[aria-current] { color: var(--gold-hi); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 8px 17px; font: 600 16px "Crimson Pro", Georgia, serif;
+         text-decoration: none; white-space: nowrap; cursor: pointer; border: 0; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn svg { width: 17px; height: 17px; }
+  .btn.gold { background: var(--gold-hi); color: #1d1b18 !important; box-shadow: 0 4px 14px rgba(230,199,102,.25); }
+  .btn.line { background: transparent; border: 1.5px solid var(--edge); color: var(--gold) !important; }
+  .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 2px; }
+
+  .crumb { font-size: 15px; color: var(--muted); padding: 18px 0 0; }
+  .crumb a { text-decoration: none; }
+  .chip { display: inline-block; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold);
+          border: 1px solid var(--edge); border-radius: 999px; padding: 2px 10px; background: var(--panel-2); white-space: nowrap; }
+  .dots { display: inline-flex; gap: 4px; vertical-align: middle; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.25); display: inline-block; }
+  .dot.W { background: #f8f1d4; } .dot.U { background: #3d8ee0; } .dot.B { background: #2f2a2d; } .dot.R { background: #e2533c; } .dot.G { background: #3f9a5a; }
+  @media (prefers-color-scheme: dark) { .dot.B { background: #0b0a0b; border-color: #6d6555; } }
+
+  footer { margin-top: 56px; background: var(--night); color: #b9b19c; font-size: 14px; }
+  footer .wrap { padding-top: 18px; padding-bottom: 28px; }
+  footer p { margin: 4px 0; }
+  footer b { color: #f1ead8; }
+  footer a { color: var(--gold-hi); }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    .top nav { gap: 12px; }
+    .top nav a.text { display: none; }
+    .top .btn { padding: 6px 12px; font-size: 15px; }
+    .top .long { display: none; }
+  }
+  @media (max-width: 420px) { .top .name { display: none; } }
+  .hero { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 34px; align-items: center; padding: 22px 0 8px; }
+  .hero .cmd img { width: 100%; height: auto; display: block; border-radius: 4.75% / 3.5%; box-shadow: 0 12px 30px rgba(0,0,0,.35); }
+  .hero .cmd figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }
+  .hero h1 { font-size: clamp(30px, 4.4vw, 46px); margin: 10px 0 12px; }
+  .hero .lede { font-size: 20px; max-width: 62ch; }
+  .facts { display: flex; flex-wrap: wrap; gap: 10px 30px; margin: 20px 0 22px; padding: 0; }
+  .facts div { display: flex; flex-direction: column; }
+  .facts dt { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .facts dd { margin: 0; font: 700 22px "Cinzel", Georgia, serif; font-variant-numeric: tabular-nums; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+  .subnav { position: sticky; top: 60px; z-index: 9; background: var(--bg); border-bottom: 1px solid var(--line); margin-top: 26px; }
+  .subnav .wrap { display: flex; gap: 8px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; scrollbar-width: thin; }
+  .subnav a { flex: none; text-decoration: none; color: var(--ink); border: 1px solid var(--line); background: var(--panel); border-radius: 999px;
+              padding: 5px 14px; font-size: 16px; white-space: nowrap; }
+  .subnav a:hover { border-color: var(--edge); color: var(--gold); }
+
+  section { padding-top: 46px; scroll-margin-top: 120px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  section > h2, .deckhead h2 { font-size: 27px; }
+  .h2row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; padding-bottom: 8px; border-bottom: 2px solid var(--edge); }
+  .h2row h2 { font-size: 23px; }
+  .h2row .count { color: var(--muted); font-size: 16px; font-variant-numeric: tabular-nums; }
+  .blurb { color: var(--muted); max-width: 72ch; }
+  .prose p { max-width: 70ch; margin-bottom: 10px; font-size: 19px; }
+  .aside { font-size: 15px; color: var(--muted); max-width: 80ch; }
+
+  /* versions */
+  .versions { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
+  .ver { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px;
+         box-shadow: 0 10px 30px rgba(60,45,10,.06); }
+  .ver.main { border: 2px solid var(--edge); }
+  .ver h3 { font-size: 21px; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .ver .price { font: 700 30px "Cinzel", Georgia, serif; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .ver .stat { font-size: 16px; color: var(--muted); }
+  .ver .stat b { color: var(--ink); }
+  .ver p { font-size: 17px; }
+  .ver .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 6px; }
+  .copied { font-size: 14px; color: var(--ok); min-height: 1em; }
+  .since { background: var(--panel-2); border-left: 4px solid var(--edge); border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 17px; max-width: 80ch; }
+
+  /* tables */
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; font-variant-numeric: tabular-nums; width: 100%; min-width: 560px; background: var(--panel);
+          border: 1px solid var(--line); border-radius: 12px; font-size: 17px; }
+  th, td { padding: 10px 14px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  thead th { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  th:first-child, td.l { text-align: left; }
+  td.verdict { white-space: normal; text-align: left; color: var(--muted); font-size: 16px; min-width: 170px; }
+  @media (max-width: 1000px) { .c-cmd { display: none; } }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+  tbody tr.main th, tbody tr.main td { font-weight: 700; }
+  tbody th a { text-decoration: none; }
+
+  /* cards */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); gap: 24px 16px; }
+  .grid.small { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 18px 12px; }
+  .card { margin: 0; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .zoom { all: unset; cursor: zoom-in; display: block; border-radius: 4.75% / 3.5%; position: relative; }
+  .zoom:focus-visible { outline: 3px solid var(--gold-hi); outline-offset: 3px; }
+  .card img { display: block; width: 100%; height: auto; border-radius: 4.75% / 3.5%; box-shadow: 0 2px 10px rgba(0,0,0,.28); background: var(--line); }
+  .qty { position: absolute; top: 8%; left: 6%; background: var(--night); color: var(--gold-hi); font: 700 15px "Cinzel", Georgia, serif;
+         border-radius: 999px; padding: 1px 9px; border: 1px solid var(--gold-hi); }
+  figcaption { display: flex; flex-direction: column; gap: 1px; font-size: 15px; line-height: 1.35; }
+  .name { font-weight: 700; }
+  .usd { color: var(--gold); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .note { color: var(--ink); }
+  .artist { color: var(--muted); font-size: 12px; }
+  .grid.small figcaption { font-size: 14px; }
+
+  .steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: step; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+  .steps li { counter-increment: step; display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  .steps li p { font-size: 16px; }
+  .steps li p::before { content: counter(step) ". "; font: 700 17px "Cinzel", Georgia, serif; color: var(--gold); }
+  .steps .card .name, .steps .card .usd, .steps .card .note { display: none; }
+  .numlist { margin: 0; padding-left: 24px; max-width: 70ch; font-size: 19px; }
+  .numlist li { margin-bottom: 6px; }
+  .explain { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 24px; align-items: start; background: var(--panel);
+             border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+
+  .keys { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .key { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 14px; align-items: start; background: var(--panel);
+         border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  .key .card figcaption { display: none; }
+  .key h3 { font-size: 17px; margin-bottom: 4px; }
+  .key p { font-size: 17px; }
+
+  .swaps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+  .swaps li { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 14px; align-items: start; background: var(--panel);
+              border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
+  .swaps .card figcaption { display: none; }
+  .swaps p { font-size: 16px; }
+  .swaps .out { color: var(--out); text-decoration: line-through; text-decoration-thickness: 1px; }
+  .swaps .in { color: var(--ok); font-weight: 700; }
+  .swaps .artist { display: block; margin-top: 4px; }
+  .variant { background: var(--panel-2); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px; }
+  .variant h3 { font-size: 21px; }
+
+  .deck { border-top: 3px double var(--edge); margin-top: 54px; padding-top: 30px; }
+  .deckhead { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 26px; align-items: center; }
+  .deckhead .num { font: 700 15px "Cinzel", Georgia, serif; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; }
+  .deckhead h2 { margin: 4px 0 8px; font-size: 30px; }
+  .deckhead .verdict { font-size: 20px; font-style: italic; }
+  .deckhead .facts { margin: 14px 0 0; }
+  .basics { color: var(--muted); }
+  details.txt summary { cursor: pointer; color: var(--gold); }
+  details.txt pre { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; max-height: 300px; overflow: auto;
+                    font-size: 14px; line-height: 1.45; white-space: pre; }
+  .listacts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+
+  dialog { border: 0; padding: 0; background: transparent; max-width: min(92vw, 488px); }
+  dialog::backdrop { background: rgba(6,10,14,.8); }
+  dialog img { display: block; width: 100%; height: auto; border-radius: 4.75% / 3.5%; }
+  dialog button { all: unset; cursor: zoom-out; display: block; }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; gap: 18px; }
+    .hero .cmd { width: 190px; }
+    .deckhead { grid-template-columns: 110px minmax(0, 1fr); gap: 16px; }
+    .deckhead h2 { font-size: 24px; }
+    .explain { grid-template-columns: 1fr; }
+    .explain .card { width: 160px; }
+  }
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; }
+    .grid.small { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px 8px; }
+    .grid.small .artist { display: none; }
+    .swaps { grid-template-columns: 1fr; }
+    .swaps li { grid-template-columns: 84px minmax(0, 1fr); }
+    .key { grid-template-columns: 96px minmax(0, 1fr); }
+    .keys { grid-template-columns: 1fr; }
+    .prose p, .numlist { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+<header class="top"><div class="wrap">
+  <a href="https://www.youtube.com/@LimitedJunkyard"><img src="../logo.png" alt="Limited Junkyard on YouTube"></a>
+  <a class="name" href="../index.html">Limited Junkyard</a>
+  <nav>
+    <a class="text" href="../index.html">Home</a>
+    <a href="index.html" aria-current="page">Commander<span class="long"> decks</span></a>
+    <a class="btn gold" href="https://www.youtube.com/@LimitedJunkyard"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg>YouTube</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> › <a href="index.html">Commander decks</a> › Q, Stacking the Deck</p>
+
+  <div class="hero">
+    <figure class="cmd card" style="margin:0"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+      <figcaption>Art: Ryan Valle</figcaption></figure>
+    <div>
+      <span class="chip">Commander #2 · Star Trek</span> <span class="dots"><span class="dot R" title="R"></span></span>
+      <h1>Q, Stacking the Deck: four ways to break him</h1>
+      <p class="lede">When Q enters, you shuffle your library and exile cards from the top until you hit one that isn&#39;t a land. That card gains an ability: exile a card from your hand, make a copy of it, and cast the copy, as many times as you can pay. The catch is the shuffle. These four decks take the luck out: Q finds Glaring Fleshraker every single time, and five copies of it kill the whole table.</p>
+      
+      <dl class="facts"><div><dt>Decks</dt><dd>4</dd></div>
+        <div><dt>97 lands</dt><dd>$22</dd></div><div><dt>Mono-red</dt><dd>$151</dd></div><div><dt>Doomsday</dt><dd>$96</dd></div><div><dt>Elsha draws everything</dt><dd>$270</dd></div></dl>
+      
+      <div class="cta">
+        <a class="btn gold" href="https://www.youtube.com/watch?v=lNJiDXd4BKk"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg>Watch the video</a>
+        <a class="btn line" href="#scoreboard">Compare the four decks ↓</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<nav class="subnav" aria-label="On this page"><div class="wrap">
+  <a href="#scoreboard">Scoreboard</a><a href="#copies">How it kills</a>
+  <a href="#lands">1 · 97 lands</a><a href="#mirror">2 · Mono-red</a><a href="#doomsday">3 · Doomsday</a><a href="#elsha">4 · Elsha</a>
+</div></nav>
+<main class="wrap">
+  <section id="scoreboard">
+    <h2>The four decks</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Deck</th><th class="c-cmd">Commander</th><th>Price</th><th>Turn 6</th><th>Turn 7</th><th>Turn 8</th><th>Turn 10</th><th class="l">Verdict</th></tr></thead>
+      <tbody><tr><th scope="row"><a href="#lands">1. 97 lands</a></th><td class="l c-cmd">Q, Stacking the Deck</td><td>$22</td>
+        <td>84%</td><td>86%</td><td>87%</td><td>91%</td><td class="verdict">The boring one. The best deck for the money.</td></tr><tr><th scope="row"><a href="#mirror">2. Mono-red</a></th><td class="l c-cmd">Q, Stacking the Deck</td><td>$151</td>
+        <td>—</td><td>—</td><td>2%</td><td>8%</td><td class="verdict">A real deck, and bad at this. Two specific cards, and red has about four ways to find them.</td></tr><tr><th scope="row"><a href="#doomsday">3. Doomsday</a></th><td class="l c-cmd">L&#39;Rell, Fierce Visionary</td><td>$96</td>
+        <td>—</td><td>6%</td><td>17%</td><td>35%</td><td class="verdict">Bad, and it finds a way to lose with nobody fighting back.</td></tr><tr><th scope="row"><a href="#elsha">4. Elsha draws everything</a></th><td class="l c-cmd">Elsha of the Infinite</td><td>$270</td>
+        <td>62%</td><td>83%</td><td>91%</td><td>97%</td><td class="verdict">The ridiculous one. The one you&#39;ll actually want to play.</td></tr></tbody>
+    </table></div>
+    <p class="aside">Table dead by turn N. 20,000 simulated games per deck, three opponents at 40 life who do nothing, so the numbers are a ceiling, not a win rate. &#34;—&#34; means that turn wasn&#39;t measured. It&#39;s a combo deck: tell your table before the game. Prices: the cheapest printing of each card, Scryfall, 22 November 2026; basic lands not counted.</p>
+  </section>
+
+  <section id="copies">
+    <h2>How five copies kill everyone</h2>
+    <div class="explain">
+      
+      <figure class="card"><button type="button" class="zoom" data-src="cards/glaring-fleshraker.jpg" data-name="Glaring Fleshraker" aria-label="Enlarge Glaring Fleshraker"><img loading="lazy" src="cards/glaring-fleshraker.jpg" alt="Glaring Fleshraker" width="488" height="680"></button>
+<figcaption><span class="name">Glaring Fleshraker</span><span class="usd">$2.03</span><span class="artist">Art: Raph Lomotan</span></figcaption></figure>
+      <div class="prose"><ol class="numlist"><li>Every copy is a colorless spell, so each Fleshraker already on the battlefield makes an Eldrazi Spawn.</li><li>Every colorless creature that enters makes each Fleshraker deal 1 damage to each opponent. That counts the Spawns and the new Fleshraker.</li><li>So copies 1 to 5 deal 0, 2, 6, 12 and 20 damage: 40 to each opponent.</li><li>From the fourth copy on, the Spawns pay for the next one, so the only limit is cards in hand.</li></ol>
+        <p class="aside" style="margin-top:10px">The copies are cast (rule 707.12), so Drannith Magistrate stops all four decks: your opponents can&#39;t cast spells from anywhere but their hand, and Q becomes a four-mana creature. Kill her first, or don&#39;t start.</p></div>
+    </div>
+  </section>
+
+  
+  <section class="deck" id="lands">
+    <div class="deckhead">
+      <figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure>
+      <div>
+        <span class="num">Deck 1</span> <span class="dots"><span class="dot R" title="R"></span></span>
+        <h2>97 lands</h2>
+        <p class="verdict">The boring one. The best deck for the money.</p>
+        <dl class="facts"><div><dt>Commander</dt><dd style="font-size:18px">Q, Stacking the Deck</dd></div><div><dt>Price</dt><dd>$21.75</dd></div>
+          <div><dt>Table dead by turn 6</dt><dd>84%</dd></div><div><dt>Table dead by turn 7</dt><dd>86%</dd></div><div><dt>Table dead by turn 8</dt><dd>87%</dd></div><div><dt>Table dead by turn 10</dt><dd>91%</dd></div></dl>
+        <p class="aside" style="margin-top:6px">The video&#39;s $35.42 counts the 93 basic lands too (12 Wastes at about $0.69, 81 Mountains at about $0.08).</p>
+      </div>
+    </div>
+    <div class="prose"><p>Q skips lands, so this deck gives him 97 of them and exactly two spells: Glaring Fleshraker, the card that wins, and Twinflame, the card that re-rolls.</p><p>If Q hits Twinflame, copy it onto Q. A copy of Q enters and shuffles again, and now the only spell left in the library is Fleshraker.</p><p>Every copy costs a card from your hand, and here that&#39;s a Mountain. For once, a hand full of Mountains is exactly what you want.</p><p>Q comes down on turn four. One rule: if Fleshraker is in your opening hand, mulligan it away. Q can only find it in the library.</p></div>
+    
+    
+    <h3 style="font-size:20px">Key cards</h3>
+    <div class="keys"><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/glaring-fleshraker.jpg" data-name="Glaring Fleshraker" aria-label="Enlarge Glaring Fleshraker"><img loading="lazy" src="cards/glaring-fleshraker.jpg" alt="Glaring Fleshraker" width="488" height="680"></button>
+<figcaption><span class="name">Glaring Fleshraker</span><span class="usd">$2.03</span><span class="artist">Art: Raph Lomotan</span></figcaption></figure><div><h3>Glaring Fleshraker</h3><p>The card that wins. Five copies are 40 damage to each opponent.</p><p class="artist">Art: Raph Lomotan</p></div></div><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/twinflame.jpg" data-name="Twinflame" aria-label="Enlarge Twinflame"><img loading="lazy" src="cards/twinflame.jpg" alt="Twinflame" width="488" height="680"></button>
+<figcaption><span class="name">Twinflame</span><span class="usd">$1.06</span><span class="artist">Art: Chase Stone</span></figcaption></figure><div><h3>Twinflame</h3><p>The card that re-rolls: a copy of Q enters, shuffles again, and finds Fleshraker.</p><p class="artist">Art: Chase Stone</p></div></div><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/sanctum-of-eternity.jpg" data-name="Sanctum of Eternity" aria-label="Enlarge Sanctum of Eternity"><img loading="lazy" src="cards/sanctum-of-eternity.jpg" alt="Sanctum of Eternity" width="488" height="680"></button>
+<figcaption><span class="name">Sanctum of Eternity</span><span class="usd">$8.00</span><span class="artist">Art: Daniel Ljunggren</span></figcaption></figure><div><h3>Sanctum of Eternity</h3><p>Two mana: Q back to your hand. Recast him with no commander tax, and he rolls again.</p><p class="artist">Art: Daniel Ljunggren</p></div></div></div>
+    
+    
+    <div class="h2row" style="margin-top:10px"><h2>The full list</h2><span class="count">100 cards · 97 lands · $21.75</span></div>
+    <div class="listacts"><button type="button" class="btn line copy" data-target="list-lands">Copy the 100 cards</button><span class="copied" aria-live="polite"></span></div>
+    <textarea id="list-lands" hidden>1 Q, Stacking the Deck
+1 Glaring Fleshraker
+1 Twinflame
+1 Sanctum of Eternity
+1 Eldrazi Temple
+1 War Room
+1 Bonders&#39; Enclave
+12 Wastes
+81 Mountain</textarea>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Commander <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(1)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">The two spells <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(2)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/glaring-fleshraker.jpg" data-name="Glaring Fleshraker" aria-label="Enlarge Glaring Fleshraker"><img loading="lazy" src="cards/glaring-fleshraker.jpg" alt="Glaring Fleshraker" width="488" height="680"></button>
+<figcaption><span class="name">Glaring Fleshraker</span><span class="usd">$2.03</span><span class="artist">Art: Raph Lomotan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/twinflame.jpg" data-name="Twinflame" aria-label="Enlarge Twinflame"><img loading="lazy" src="cards/twinflame.jpg" alt="Twinflame" width="488" height="680"></button>
+<figcaption><span class="name">Twinflame</span><span class="usd">$1.06</span><span class="artist">Art: Chase Stone</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Utility lands <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(4)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/sanctum-of-eternity.jpg" data-name="Sanctum of Eternity" aria-label="Enlarge Sanctum of Eternity"><img loading="lazy" src="cards/sanctum-of-eternity.jpg" alt="Sanctum of Eternity" width="488" height="680"></button>
+<figcaption><span class="name">Sanctum of Eternity</span><span class="usd">$8.00</span><span class="artist">Art: Daniel Ljunggren</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/eldrazi-temple.jpg" data-name="Eldrazi Temple" aria-label="Enlarge Eldrazi Temple"><img loading="lazy" src="cards/eldrazi-temple.jpg" alt="Eldrazi Temple" width="488" height="680"></button>
+<figcaption><span class="name">Eldrazi Temple</span><span class="usd">$3.09</span><span class="artist">Art: James Paick</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/war-room.jpg" data-name="War Room" aria-label="Enlarge War Room"><img loading="lazy" src="cards/war-room.jpg" alt="War Room" width="488" height="680"></button>
+<figcaption><span class="name">War Room</span><span class="usd">$1.58</span><span class="artist">Art: Milivoj Ćeran</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/bonders-enclave.jpg" data-name="Bonders&#39; Enclave" aria-label="Enlarge Bonders&#39; Enclave"><img loading="lazy" src="cards/bonders-enclave.jpg" alt="Bonders&#39; Enclave" width="488" height="680"></button>
+<figcaption><span class="name">Bonders&#39; Enclave</span><span class="usd">$0.85</span><span class="artist">Art: Cliff Childs</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Basic lands <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(93)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/wastes.jpg" data-name="Wastes" aria-label="Enlarge Wastes"><img loading="lazy" src="cards/wastes.jpg" alt="Wastes" width="488" height="680"><span class="qty">×12</span></button>
+<figcaption><span class="name">Wastes</span><span class="artist">Art: Raymond Swanland</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mountain.jpg" data-name="Mountain" aria-label="Enlarge Mountain"><img loading="lazy" src="cards/mountain.jpg" alt="Mountain" width="488" height="680"><span class="qty">×81</span></button>
+<figcaption><span class="name">Mountain</span><span class="artist">Art: VEN</span></figcaption></figure></div>
+    
+  </section>
+  
+  <section class="deck" id="mirror">
+    <div class="deckhead">
+      <figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure>
+      <div>
+        <span class="num">Deck 2</span> <span class="dots"><span class="dot R" title="R"></span></span>
+        <h2>Mono-red</h2>
+        <p class="verdict">A real deck, and bad at this. Two specific cards, and red has about four ways to find them.</p>
+        <dl class="facts"><div><dt>Commander</dt><dd style="font-size:18px">Q, Stacking the Deck</dd></div><div><dt>Price</dt><dd>$151.12</dd></div>
+          <div><dt>Table dead by turn 8</dt><dd>2%</dd></div><div><dt>Table dead by turn 10</dt><dd>8%</dd></div></dl>
+        <p class="aside" style="margin-top:6px">22% by turn 14.</p>
+      </div>
+    </div>
+    <div class="prose"><p>Q is the commander, and this time you choose the card during the game.</p><p>Leveler: when it enters, your whole library is exiled. Normally, that&#39;s just how you lose.</p><p>Then Mirror of Fate: sacrifice it, choose up to seven cards from exile, and they become your library. Fleshraker, and six lands. Then Q comes in, and there&#39;s exactly one spell for him to find.</p><p>The problem is that it needs two specific cards, so it comes together in about one game in five, by turn fourteen.</p></div>
+    
+    
+    <h3 style="font-size:20px">Key cards</h3>
+    <div class="keys"><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/leveler.jpg" data-name="Leveler" aria-label="Enlarge Leveler"><img loading="lazy" src="cards/leveler.jpg" alt="Leveler" width="488" height="680"></button>
+<figcaption><span class="name">Leveler</span><span class="usd">$3.96</span><span class="artist">Art: Carl Critchlow</span></figcaption></figure><div><h3>Leveler</h3><p>Exiles your whole library face up, so you can choose from it.</p><p class="artist">Art: Carl Critchlow</p></div></div><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/mirror-of-fate.jpg" data-name="Mirror of Fate" aria-label="Enlarge Mirror of Fate"><img loading="lazy" src="cards/mirror-of-fate.jpg" alt="Mirror of Fate" width="488" height="680"></button>
+<figcaption><span class="name">Mirror of Fate</span><span class="usd">$0.63</span><span class="artist">Art: Alan Pollack</span></figcaption></figure><div><h3>Mirror of Fate</h3><p>Turns Fleshraker and six lands from exile into your new library.</p><p class="artist">Art: Alan Pollack</p></div></div><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/glaring-fleshraker.jpg" data-name="Glaring Fleshraker" aria-label="Enlarge Glaring Fleshraker"><img loading="lazy" src="cards/glaring-fleshraker.jpg" alt="Glaring Fleshraker" width="488" height="680"></button>
+<figcaption><span class="name">Glaring Fleshraker</span><span class="usd">$2.03</span><span class="artist">Art: Raph Lomotan</span></figcaption></figure><div><h3>Glaring Fleshraker</h3><p>The only spell left for Q to find.</p><p class="artist">Art: Raph Lomotan</p></div></div></div>
+    
+    
+    <div class="h2row" style="margin-top:10px"><h2>The full list</h2><span class="count">100 cards · 37 lands · $151.12</span></div>
+    <div class="listacts"><button type="button" class="btn line copy" data-target="list-mirror">Copy the 100 cards</button><span class="copied" aria-live="polite"></span></div>
+    <textarea id="list-mirror" hidden>1 Q, Stacking the Deck
+1 Glaring Fleshraker
+1 Mirror of Fate
+1 Leveler
+1 Reckless Handling
+1 Gamble
+1 Imperial Recruiter
+1 Kuldotha Forgemaster
+1 Azor&#39;s Gateway
+1 Semblance Anvil
+1 Hex Magic
+1 Twinflame
+1 Molten Duplication
+1 Heat Shimmer
+1 Electroduplicate
+1 Conjurer&#39;s Closet
+1 Reckless Impulse
+1 Wrenn&#39;s Resolve
+1 Light Up the Stage
+1 Opera Love Song
+1 Rob the Archives
+1 Encounter the Unknown
+1 Crossover Collaboration
+1 Embrace the Unknown
+1 Seize Opportunity
+1 Burning Curiosity
+1 Act on Impulse
+1 Ecstatic Beauty
+1 Monastery Raid
+1 Heroes&#39; Hangout
+1 Ignite the Future
+1 Mishra&#39;s Research Desk
+1 Faithless Looting
+1 Tormenting Voice
+1 Thrill of Possibility
+1 Cathartic Reunion
+1 Wild Guess
+1 Demand Answers
+1 Bitter Reunion
+1 Magmatic Insight
+1 Sol Ring
+1 Arcane Signet
+1 Mind Stone
+1 Fellwar Stone
+1 Thought Vessel
+1 Coldsteel Heart
+1 Prismatic Lens
+1 Fractured Powerstone
+1 Everflowing Chalice
+1 Fire Diamond
+1 Lightning Bolt
+1 Chaos Warp
+1 Abrade
+1 Blasphemous Act
+1 Vandalblast
+1 Mizzium Mortars
+1 Brotherhood&#39;s End
+1 Red Elemental Blast
+1 Roast
+1 Return the Favor
+1 Flame Slash
+1 Fiery Confluence
+1 Smash to Smithereens
+1 Volcanic Offering
+1 Sanctum of Eternity
+1 Forsaken City
+1 Eye of Ugin
+1 Inventors&#39; Fair
+10 Wastes
+22 Mountain</textarea>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Commander <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(1)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Win: the card Mirror puts back, and Mirror <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(2)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/glaring-fleshraker.jpg" data-name="Glaring Fleshraker" aria-label="Enlarge Glaring Fleshraker"><img loading="lazy" src="cards/glaring-fleshraker.jpg" alt="Glaring Fleshraker" width="488" height="680"></button>
+<figcaption><span class="name">Glaring Fleshraker</span><span class="usd">$2.03</span><span class="artist">Art: Raph Lomotan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mirror-of-fate.jpg" data-name="Mirror of Fate" aria-label="Enlarge Mirror of Fate"><img loading="lazy" src="cards/mirror-of-fate.jpg" alt="Mirror of Fate" width="488" height="680"></button>
+<figcaption><span class="name">Mirror of Fate</span><span class="usd">$0.63</span><span class="artist">Art: Alan Pollack</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Exile the whole library face up <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(1)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/leveler.jpg" data-name="Leveler" aria-label="Enlarge Leveler"><img loading="lazy" src="cards/leveler.jpg" alt="Leveler" width="488" height="680"></button>
+<figcaption><span class="name">Leveler</span><span class="usd">$3.96</span><span class="artist">Art: Carl Critchlow</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Tutors for Mirror / Leveler / Fleshraker <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(4)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/reckless-handling.jpg" data-name="Reckless Handling" aria-label="Enlarge Reckless Handling"><img loading="lazy" src="cards/reckless-handling.jpg" alt="Reckless Handling" width="488" height="680"></button>
+<figcaption><span class="name">Reckless Handling</span><span class="usd">$0.36</span><span class="artist">Art: Miguel Mercado</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/gamble.jpg" data-name="Gamble" aria-label="Enlarge Gamble"><img loading="lazy" src="cards/gamble.jpg" alt="Gamble" width="488" height="680"></button>
+<figcaption><span class="name">Gamble</span><span class="usd">$15.16</span><span class="artist">Art: Jason A. Engle</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/imperial-recruiter.jpg" data-name="Imperial Recruiter" aria-label="Enlarge Imperial Recruiter"><img loading="lazy" src="cards/imperial-recruiter.jpg" alt="Imperial Recruiter" width="488" height="680"></button>
+<figcaption><span class="name">Imperial Recruiter</span><span class="usd">$7.72</span><span class="artist">Art: Zack Stella</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/kuldotha-forgemaster.jpg" data-name="Kuldotha Forgemaster" aria-label="Enlarge Kuldotha Forgemaster"><img loading="lazy" src="cards/kuldotha-forgemaster.jpg" alt="Kuldotha Forgemaster" width="488" height="680"></button>
+<figcaption><span class="name">Kuldotha Forgemaster</span><span class="usd">$10.82</span><span class="artist">Art: jD</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Exile Fleshraker from hand face up <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(3)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/azor-s-gateway.jpg" data-name="Azor&#39;s Gateway" aria-label="Enlarge Azor&#39;s Gateway"><img loading="lazy" src="cards/azor-s-gateway.jpg" alt="Azor&#39;s Gateway" width="488" height="680"></button>
+<figcaption><span class="name">Azor&#39;s Gateway</span><span class="usd">$2.26</span><span class="artist">Art: Yeong-Hao Han</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/semblance-anvil.jpg" data-name="Semblance Anvil" aria-label="Enlarge Semblance Anvil"><img loading="lazy" src="cards/semblance-anvil.jpg" alt="Semblance Anvil" width="488" height="680"></button>
+<figcaption><span class="name">Semblance Anvil</span><span class="usd">$4.27</span><span class="artist">Art: Dan Murayama Scott</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/hex-magic.jpg" data-name="Hex Magic" aria-label="Enlarge Hex Magic"><img loading="lazy" src="cards/hex-magic.jpg" alt="Hex Magic" width="488" height="680"></button>
+<figcaption><span class="name">Hex Magic</span><span class="usd">$0.41</span><span class="artist">Art: Kevin Glint</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Q enters again <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(5)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/twinflame.jpg" data-name="Twinflame" aria-label="Enlarge Twinflame"><img loading="lazy" src="cards/twinflame.jpg" alt="Twinflame" width="488" height="680"></button>
+<figcaption><span class="name">Twinflame</span><span class="usd">$1.06</span><span class="artist">Art: Chase Stone</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/molten-duplication.jpg" data-name="Molten Duplication" aria-label="Enlarge Molten Duplication"><img loading="lazy" src="cards/molten-duplication.jpg" alt="Molten Duplication" width="488" height="680"></button>
+<figcaption><span class="name">Molten Duplication</span><span class="usd">$6.52</span><span class="artist">Art: Justyna Dura</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/heat-shimmer.jpg" data-name="Heat Shimmer" aria-label="Enlarge Heat Shimmer"><img loading="lazy" src="cards/heat-shimmer.jpg" alt="Heat Shimmer" width="488" height="680"></button>
+<figcaption><span class="name">Heat Shimmer</span><span class="usd">$5.98</span><span class="artist">Art: Justin Hernandez &amp; Alexis Hernandez</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/electroduplicate.jpg" data-name="Electroduplicate" aria-label="Enlarge Electroduplicate"><img loading="lazy" src="cards/electroduplicate.jpg" alt="Electroduplicate" width="488" height="680"></button>
+<figcaption><span class="name">Electroduplicate</span><span class="usd">$1.05</span><span class="artist">Art: Warren Mahy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/conjurer-s-closet.jpg" data-name="Conjurer&#39;s Closet" aria-label="Enlarge Conjurer&#39;s Closet"><img loading="lazy" src="cards/conjurer-s-closet.jpg" alt="Conjurer&#39;s Closet" width="488" height="680"></button>
+<figcaption><span class="name">Conjurer&#39;s Closet</span><span class="usd">$3.14</span><span class="artist">Art: Jason Felix</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Impulse draw: exile top cards face up <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(16)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/reckless-impulse.jpg" data-name="Reckless Impulse" aria-label="Enlarge Reckless Impulse"><img loading="lazy" src="cards/reckless-impulse.jpg" alt="Reckless Impulse" width="488" height="680"></button>
+<figcaption><span class="name">Reckless Impulse</span><span class="usd">$0.20</span><span class="artist">Art: Simon Dominic</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/wrenn-s-resolve.jpg" data-name="Wrenn&#39;s Resolve" aria-label="Enlarge Wrenn&#39;s Resolve"><img loading="lazy" src="cards/wrenn-s-resolve.jpg" alt="Wrenn&#39;s Resolve" width="488" height="680"></button>
+<figcaption><span class="name">Wrenn&#39;s Resolve</span><span class="usd">$1.13</span><span class="artist">Art: Viko Menezes</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/light-up-the-stage.jpg" data-name="Light Up the Stage" aria-label="Enlarge Light Up the Stage"><img loading="lazy" src="cards/light-up-the-stage.jpg" alt="Light Up the Stage" width="488" height="680"></button>
+<figcaption><span class="name">Light Up the Stage</span><span class="usd">$0.35</span><span class="artist">Art: Dmitry Burmak</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/opera-love-song.jpg" data-name="Opera Love Song" aria-label="Enlarge Opera Love Song"><img loading="lazy" src="cards/opera-love-song.jpg" alt="Opera Love Song" width="488" height="680"></button>
+<figcaption><span class="name">Opera Love Song</span><span class="usd">$0.30</span><span class="artist">Art: Grace Zhu</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/rob-the-archives.jpg" data-name="Rob the Archives" aria-label="Enlarge Rob the Archives"><img loading="lazy" src="cards/rob-the-archives.jpg" alt="Rob the Archives" width="488" height="680"></button>
+<figcaption><span class="name">Rob the Archives</span><span class="usd">$0.26</span><span class="artist">Art: Steve Argyle</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/encounter-the-unknown.jpg" data-name="Encounter the Unknown" aria-label="Enlarge Encounter the Unknown"><img loading="lazy" src="cards/encounter-the-unknown.jpg" alt="Encounter the Unknown" width="488" height="680"></button>
+<figcaption><span class="name">Encounter the Unknown</span><span class="usd">$0.39</span><span class="artist">Art: Neil Blevins</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/crossover-collaboration.jpg" data-name="Crossover Collaboration" aria-label="Enlarge Crossover Collaboration"><img loading="lazy" src="cards/crossover-collaboration.jpg" alt="Crossover Collaboration" width="488" height="680"></button>
+<figcaption><span class="name">Crossover Collaboration</span><span class="usd">$0.35</span><span class="artist">Art: Lee Woo-chul</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/embrace-the-unknown.jpg" data-name="Embrace the Unknown" aria-label="Enlarge Embrace the Unknown"><img loading="lazy" src="cards/embrace-the-unknown.jpg" alt="Embrace the Unknown" width="488" height="680"></button>
+<figcaption><span class="name">Embrace the Unknown</span><span class="usd">$0.91</span><span class="artist">Art: Quintin Gleim</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/seize-opportunity.jpg" data-name="Seize Opportunity" aria-label="Enlarge Seize Opportunity"><img loading="lazy" src="cards/seize-opportunity.jpg" alt="Seize Opportunity" width="488" height="680"></button>
+<figcaption><span class="name">Seize Opportunity</span><span class="usd">$0.20</span><span class="artist">Art: Josiah &#34;Jo&#34; Cameron</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/burning-curiosity.jpg" data-name="Burning Curiosity" aria-label="Enlarge Burning Curiosity"><img loading="lazy" src="cards/burning-curiosity.jpg" alt="Burning Curiosity" width="488" height="680"></button>
+<figcaption><span class="name">Burning Curiosity</span><span class="usd">$0.16</span><span class="artist">Art: Jim Pavelec</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/act-on-impulse.jpg" data-name="Act on Impulse" aria-label="Enlarge Act on Impulse"><img loading="lazy" src="cards/act-on-impulse.jpg" alt="Act on Impulse" width="488" height="680"></button>
+<figcaption><span class="name">Act on Impulse</span><span class="usd">$0.34</span><span class="artist">Art: Brad Rigney</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/ecstatic-beauty.jpg" data-name="Ecstatic Beauty" aria-label="Enlarge Ecstatic Beauty"><img loading="lazy" src="cards/ecstatic-beauty.jpg" alt="Ecstatic Beauty" width="488" height="680"></button>
+<figcaption><span class="name">Ecstatic Beauty</span><span class="usd">$0.64</span><span class="artist">Art: Alice Xia Zhang</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/monastery-raid.jpg" data-name="Monastery Raid" aria-label="Enlarge Monastery Raid"><img loading="lazy" src="cards/monastery-raid.jpg" alt="Monastery Raid" width="488" height="680"></button>
+<figcaption><span class="name">Monastery Raid</span><span class="usd">$0.19</span><span class="artist">Art: Alexandre Honoré</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/heroes-hangout.jpg" data-name="Heroes&#39; Hangout" aria-label="Enlarge Heroes&#39; Hangout"><img loading="lazy" src="cards/heroes-hangout.jpg" alt="Heroes&#39; Hangout" width="488" height="680"></button>
+<figcaption><span class="name">Heroes&#39; Hangout</span><span class="usd">$0.20</span><span class="artist">Art: Smirtouille</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/ignite-the-future.jpg" data-name="Ignite the Future" aria-label="Enlarge Ignite the Future"><img loading="lazy" src="cards/ignite-the-future.jpg" alt="Ignite the Future" width="488" height="680"></button>
+<figcaption><span class="name">Ignite the Future</span><span class="usd">$0.48</span><span class="artist">Art: Alex Konstad</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mishra-s-research-desk.jpg" data-name="Mishra&#39;s Research Desk" aria-label="Enlarge Mishra&#39;s Research Desk"><img loading="lazy" src="cards/mishra-s-research-desk.jpg" alt="Mishra&#39;s Research Desk" width="488" height="680"></button>
+<figcaption><span class="name">Mishra&#39;s Research Desk</span><span class="usd">$0.20</span><span class="artist">Art: Matt Stewart</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Draw two / looters <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(8)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/faithless-looting.jpg" data-name="Faithless Looting" aria-label="Enlarge Faithless Looting"><img loading="lazy" src="cards/faithless-looting.jpg" alt="Faithless Looting" width="488" height="680"></button>
+<figcaption><span class="name">Faithless Looting</span><span class="usd">$0.41</span><span class="artist">Art: Gabor Szikszai</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/tormenting-voice.jpg" data-name="Tormenting Voice" aria-label="Enlarge Tormenting Voice"><img loading="lazy" src="cards/tormenting-voice.jpg" alt="Tormenting Voice" width="488" height="680"></button>
+<figcaption><span class="name">Tormenting Voice</span><span class="usd">$0.20</span><span class="artist">Art: Izzy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thrill-of-possibility.jpg" data-name="Thrill of Possibility" aria-label="Enlarge Thrill of Possibility"><img loading="lazy" src="cards/thrill-of-possibility.jpg" alt="Thrill of Possibility" width="488" height="680"></button>
+<figcaption><span class="name">Thrill of Possibility</span><span class="usd">$0.35</span><span class="artist">Art: Julie Dillon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/cathartic-reunion.jpg" data-name="Cathartic Reunion" aria-label="Enlarge Cathartic Reunion"><img loading="lazy" src="cards/cathartic-reunion.jpg" alt="Cathartic Reunion" width="488" height="680"></button>
+<figcaption><span class="name">Cathartic Reunion</span><span class="usd">$0.33</span><span class="artist">Art: Jakub Kasper</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/wild-guess.jpg" data-name="Wild Guess" aria-label="Enlarge Wild Guess"><img loading="lazy" src="cards/wild-guess.jpg" alt="Wild Guess" width="488" height="680"></button>
+<figcaption><span class="name">Wild Guess</span><span class="usd">$0.28</span><span class="artist">Art: Lucas Graciano</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/demand-answers.jpg" data-name="Demand Answers" aria-label="Enlarge Demand Answers"><img loading="lazy" src="cards/demand-answers.jpg" alt="Demand Answers" width="488" height="680"></button>
+<figcaption><span class="name">Demand Answers</span><span class="usd">$0.62</span><span class="artist">Art: Justyna Dura</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/bitter-reunion.jpg" data-name="Bitter Reunion" aria-label="Enlarge Bitter Reunion"><img loading="lazy" src="cards/bitter-reunion.jpg" alt="Bitter Reunion" width="488" height="680"></button>
+<figcaption><span class="name">Bitter Reunion</span><span class="usd">$0.58</span><span class="artist">Art: Jake Murray</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/magmatic-insight.jpg" data-name="Magmatic Insight" aria-label="Enlarge Magmatic Insight"><img loading="lazy" src="cards/magmatic-insight.jpg" alt="Magmatic Insight" width="488" height="680"></button>
+<figcaption><span class="name">Magmatic Insight</span><span class="usd">$0.66</span><span class="artist">Art: Ryan Barger</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Mana rocks <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(10)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/sol-ring.jpg" data-name="Sol Ring" aria-label="Enlarge Sol Ring"><img loading="lazy" src="cards/sol-ring.jpg" alt="Sol Ring" width="488" height="680"></button>
+<figcaption><span class="name">Sol Ring</span><span class="usd">$1.14</span><span class="artist">Art: Hector Ortiz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/arcane-signet.jpg" data-name="Arcane Signet" aria-label="Enlarge Arcane Signet"><img loading="lazy" src="cards/arcane-signet.jpg" alt="Arcane Signet" width="488" height="680"></button>
+<figcaption><span class="name">Arcane Signet</span><span class="usd">$0.33</span><span class="artist">Art: Tomáš Honz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mind-stone.jpg" data-name="Mind Stone" aria-label="Enlarge Mind Stone"><img loading="lazy" src="cards/mind-stone.jpg" alt="Mind Stone" width="488" height="680"></button>
+<figcaption><span class="name">Mind Stone</span><span class="usd">$0.25</span><span class="artist">Art: Racrufi</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fellwar-stone.jpg" data-name="Fellwar Stone" aria-label="Enlarge Fellwar Stone"><img loading="lazy" src="cards/fellwar-stone.jpg" alt="Fellwar Stone" width="488" height="680"></button>
+<figcaption><span class="name">Fellwar Stone</span><span class="usd">$0.99</span><span class="artist">Art: John Avon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thought-vessel.jpg" data-name="Thought Vessel" aria-label="Enlarge Thought Vessel"><img loading="lazy" src="cards/thought-vessel.jpg" alt="Thought Vessel" width="488" height="680"></button>
+<figcaption><span class="name">Thought Vessel</span><span class="usd">$1.44</span><span class="artist">Art: Leesha Hannigan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/coldsteel-heart.jpg" data-name="Coldsteel Heart" aria-label="Enlarge Coldsteel Heart"><img loading="lazy" src="cards/coldsteel-heart.jpg" alt="Coldsteel Heart" width="488" height="680"></button>
+<figcaption><span class="name">Coldsteel Heart</span><span class="usd">$0.98</span><span class="artist">Art: Mark Romanoski</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/prismatic-lens.jpg" data-name="Prismatic Lens" aria-label="Enlarge Prismatic Lens"><img loading="lazy" src="cards/prismatic-lens.jpg" alt="Prismatic Lens" width="488" height="680"></button>
+<figcaption><span class="name">Prismatic Lens</span><span class="usd">$0.42</span><span class="artist">Art: Alan Pollack</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fractured-powerstone.jpg" data-name="Fractured Powerstone" aria-label="Enlarge Fractured Powerstone"><img loading="lazy" src="cards/fractured-powerstone.jpg" alt="Fractured Powerstone" width="488" height="680"></button>
+<figcaption><span class="name">Fractured Powerstone</span><span class="usd">$0.33</span><span class="artist">Art: Rob Alexander</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/everflowing-chalice.jpg" data-name="Everflowing Chalice" aria-label="Enlarge Everflowing Chalice"><img loading="lazy" src="cards/everflowing-chalice.jpg" alt="Everflowing Chalice" width="488" height="680"></button>
+<figcaption><span class="name">Everflowing Chalice</span><span class="usd">$0.22</span><span class="artist">Art: Jodie Muir</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fire-diamond.jpg" data-name="Fire Diamond" aria-label="Enlarge Fire Diamond"><img loading="lazy" src="cards/fire-diamond.jpg" alt="Fire Diamond" width="488" height="680"></button>
+<figcaption><span class="name">Fire Diamond</span><span class="usd">$0.32</span><span class="artist">Art: Gaboleps</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Interaction <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(14)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/lightning-bolt.jpg" data-name="Lightning Bolt" aria-label="Enlarge Lightning Bolt"><img loading="lazy" src="cards/lightning-bolt.jpg" alt="Lightning Bolt" width="488" height="680"></button>
+<figcaption><span class="name">Lightning Bolt</span><span class="usd">$0.94</span><span class="artist">Art: Milivoj Ćeran</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/chaos-warp.jpg" data-name="Chaos Warp" aria-label="Enlarge Chaos Warp"><img loading="lazy" src="cards/chaos-warp.jpg" alt="Chaos Warp" width="488" height="680"></button>
+<figcaption><span class="name">Chaos Warp</span><span class="usd">$0.70</span><span class="artist">Art: Trevor Claxton</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/abrade.jpg" data-name="Abrade" aria-label="Enlarge Abrade"><img loading="lazy" src="cards/abrade.jpg" alt="Abrade" width="488" height="680"></button>
+<figcaption><span class="name">Abrade</span><span class="usd">$0.34</span><span class="artist">Art: Bartek Fedyczak</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/blasphemous-act.jpg" data-name="Blasphemous Act" aria-label="Enlarge Blasphemous Act"><img loading="lazy" src="cards/blasphemous-act.jpg" alt="Blasphemous Act" width="488" height="680"></button>
+<figcaption><span class="name">Blasphemous Act</span><span class="usd">$0.91</span><span class="artist">Art: Immanuela Crovius</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/vandalblast.jpg" data-name="Vandalblast" aria-label="Enlarge Vandalblast"><img loading="lazy" src="cards/vandalblast.jpg" alt="Vandalblast" width="488" height="680"></button>
+<figcaption><span class="name">Vandalblast</span><span class="usd">$1.66</span><span class="artist">Art: Javier Charro</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mizzium-mortars.jpg" data-name="Mizzium Mortars" aria-label="Enlarge Mizzium Mortars"><img loading="lazy" src="cards/mizzium-mortars.jpg" alt="Mizzium Mortars" width="488" height="680"></button>
+<figcaption><span class="name">Mizzium Mortars</span><span class="usd">$0.52</span><span class="artist">Art: Christina Davis</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/brotherhood-s-end.jpg" data-name="Brotherhood&#39;s End" aria-label="Enlarge Brotherhood&#39;s End"><img loading="lazy" src="cards/brotherhood-s-end.jpg" alt="Brotherhood&#39;s End" width="488" height="680"></button>
+<figcaption><span class="name">Brotherhood&#39;s End</span><span class="usd">$0.77</span><span class="artist">Art: Bryan Sola</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/red-elemental-blast.jpg" data-name="Red Elemental Blast" aria-label="Enlarge Red Elemental Blast"><img loading="lazy" src="cards/red-elemental-blast.jpg" alt="Red Elemental Blast" width="488" height="680"></button>
+<figcaption><span class="name">Red Elemental Blast</span><span class="usd">$2.36</span><span class="artist">Art: Izzy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/roast.jpg" data-name="Roast" aria-label="Enlarge Roast"><img loading="lazy" src="cards/roast.jpg" alt="Roast" width="488" height="680"></button>
+<figcaption><span class="name">Roast</span><span class="usd">$0.22</span><span class="artist">Art: Zoltan Boros</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/return-the-favor.jpg" data-name="Return the Favor" aria-label="Enlarge Return the Favor"><img loading="lazy" src="cards/return-the-favor.jpg" alt="Return the Favor" width="488" height="680"></button>
+<figcaption><span class="name">Return the Favor</span><span class="usd">$0.58</span><span class="artist">Art: Eli Minaya</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/flame-slash.jpg" data-name="Flame Slash" aria-label="Enlarge Flame Slash"><img loading="lazy" src="cards/flame-slash.jpg" alt="Flame Slash" width="488" height="680"></button>
+<figcaption><span class="name">Flame Slash</span><span class="usd">$0.22</span><span class="artist">Art: Raymond Swanland</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fiery-confluence.jpg" data-name="Fiery Confluence" aria-label="Enlarge Fiery Confluence"><img loading="lazy" src="cards/fiery-confluence.jpg" alt="Fiery Confluence" width="488" height="680"></button>
+<figcaption><span class="name">Fiery Confluence</span><span class="usd">$0.42</span><span class="artist">Art: Salvatorre Zee Yazzie</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/smash-to-smithereens.jpg" data-name="Smash to Smithereens" aria-label="Enlarge Smash to Smithereens"><img loading="lazy" src="cards/smash-to-smithereens.jpg" alt="Smash to Smithereens" width="488" height="680"></button>
+<figcaption><span class="name">Smash to Smithereens</span><span class="usd">$0.30</span><span class="artist">Art: Pete Venters</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/volcanic-offering.jpg" data-name="Volcanic Offering" aria-label="Enlarge Volcanic Offering"><img loading="lazy" src="cards/volcanic-offering.jpg" alt="Volcanic Offering" width="488" height="680"></button>
+<figcaption><span class="name">Volcanic Offering</span><span class="usd">$1.91</span><span class="artist">Art: Eric Velhagen</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Lands <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(36)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/sanctum-of-eternity.jpg" data-name="Sanctum of Eternity" aria-label="Enlarge Sanctum of Eternity"><img loading="lazy" src="cards/sanctum-of-eternity.jpg" alt="Sanctum of Eternity" width="488" height="680"></button>
+<figcaption><span class="name">Sanctum of Eternity</span><span class="usd">$8.00</span><span class="artist">Art: Daniel Ljunggren</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/forsaken-city.jpg" data-name="Forsaken City" aria-label="Enlarge Forsaken City"><img loading="lazy" src="cards/forsaken-city.jpg" alt="Forsaken City" width="488" height="680"></button>
+<figcaption><span class="name">Forsaken City</span><span class="usd">$6.55</span><span class="artist">Art: Dana Knutson</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/eye-of-ugin.jpg" data-name="Eye of Ugin" aria-label="Enlarge Eye of Ugin"><img loading="lazy" src="cards/eye-of-ugin.jpg" alt="Eye of Ugin" width="488" height="680"></button>
+<figcaption><span class="name">Eye of Ugin</span><span class="usd">$23.64</span><span class="artist">Art: Marina Banker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/inventors-fair.jpg" data-name="Inventors&#39; Fair" aria-label="Enlarge Inventors&#39; Fair"><img loading="lazy" src="cards/inventors-fair.jpg" alt="Inventors&#39; Fair" width="488" height="680"></button>
+<figcaption><span class="name">Inventors&#39; Fair</span><span class="usd">$14.42</span><span class="artist">Art: Jonas De Ro</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/wastes.jpg" data-name="Wastes" aria-label="Enlarge Wastes"><img loading="lazy" src="cards/wastes.jpg" alt="Wastes" width="488" height="680"><span class="qty">×10</span></button>
+<figcaption><span class="name">Wastes</span><span class="artist">Art: Raymond Swanland</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mountain.jpg" data-name="Mountain" aria-label="Enlarge Mountain"><img loading="lazy" src="cards/mountain.jpg" alt="Mountain" width="488" height="680"><span class="qty">×22</span></button>
+<figcaption><span class="name">Mountain</span><span class="artist">Art: VEN</span></figcaption></figure></div>
+    
+  </section>
+  
+  <section class="deck" id="doomsday">
+    <div class="deckhead">
+      <figure class="card"><button type="button" class="zoom" data-src="cards/l-rell-fierce-visionary.jpg" data-name="L&#39;Rell, Fierce Visionary" aria-label="Enlarge L&#39;Rell, Fierce Visionary"><img loading="lazy" src="cards/l-rell-fierce-visionary.jpg" alt="L&#39;Rell, Fierce Visionary" width="488" height="680"></button>
+<figcaption><span class="name">L&#39;Rell, Fierce Visionary</span><span class="usd">$0.21</span><span class="artist">Art: Patricia Pria</span></figcaption></figure>
+      <div>
+        <span class="num">Deck 3</span> <span class="dots"><span class="dot B" title="B"></span><span class="dot R" title="R"></span></span>
+        <h2>Doomsday</h2>
+        <p class="verdict">Bad, and it finds a way to lose with nobody fighting back.</p>
+        <dl class="facts"><div><dt>Commander</dt><dd style="font-size:18px">L&#39;Rell, Fierce Visionary</dd></div><div><dt>Price</dt><dd>$96.02</dd></div>
+          <div><dt>Table dead by turn 7</dt><dd>6%</dd></div><div><dt>Table dead by turn 8</dt><dd>17%</dd></div><div><dt>Table dead by turn 10</dt><dd>35%</dd></div></dl>
+        
+      </div>
+    </div>
+    <div class="prose"><p>Rakdos, with L&#39;Rell from the same Star Trek set as the commander, and Q in the 99.</p><p>Doomsday: search your library for five cards, exile the rest, and stack those five on top. Your five are Fleshraker and four lands. One card does the whole setup, and black has thirteen budget tutors to find it.</p><p>But now your library is five cards. Q exiles the lands above Fleshraker, the copies need nine mana and five cards in hand, and nothing new comes in. Most of the lost games are lost by drawing from an empty library.</p></div>
+    
+    
+    <h3 style="font-size:20px">Key cards</h3>
+    <div class="keys"><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/doomsday.jpg" data-name="Doomsday" aria-label="Enlarge Doomsday"><img loading="lazy" src="cards/doomsday.jpg" alt="Doomsday" width="488" height="680"></button>
+<figcaption><span class="name">Doomsday</span><span class="usd">$1.12</span><span class="artist">Art: David Palumbo</span></figcaption></figure><div><h3>Doomsday</h3><p>Your library becomes five cards you choose: Fleshraker and four lands.</p><p class="artist">Art: David Palumbo</p></div></div><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure><div><h3>Q, Stacking the Deck</h3><p>In the 99 here. He finds Fleshraker in a library of five.</p><p class="artist">Art: Ryan Valle</p></div></div><div class="key"><figure class="card"><button type="button" class="zoom" data-src="cards/l-rell-fierce-visionary.jpg" data-name="L&#39;Rell, Fierce Visionary" aria-label="Enlarge L&#39;Rell, Fierce Visionary"><img loading="lazy" src="cards/l-rell-fierce-visionary.jpg" alt="L&#39;Rell, Fierce Visionary" width="488" height="680"></button>
+<figcaption><span class="name">L&#39;Rell, Fierce Visionary</span><span class="usd">$0.21</span><span class="artist">Art: Patricia Pria</span></figcaption></figure><div><h3>L&#39;Rell, Fierce Visionary</h3><p>The commander: the black and red tutors come with her colors.</p><p class="artist">Art: Patricia Pria</p></div></div></div>
+    
+    
+    <div class="h2row" style="margin-top:10px"><h2>The full list</h2><span class="count">100 cards · 34 lands · $96.02</span></div>
+    <div class="listacts"><button type="button" class="btn line copy" data-target="list-doomsday">Copy the 100 cards</button><span class="copied" aria-live="polite"></span></div>
+    <textarea id="list-doomsday" hidden>1 L&#39;Rell, Fierce Visionary
+1 Q, Stacking the Deck
+1 Doomsday
+1 Glaring Fleshraker
+1 Diabolic Tutor
+1 Wishclaw Talisman
+1 Mastermind&#39;s Acquisition
+1 Dark Petition
+1 Razaketh&#39;s Rite
+1 Illicit Shipment
+1 Increasing Ambition
+1 Insatiable Avarice
+1 Liliana Vess
+1 Dimir Machinations
+1 Gamble
+1 Scheming Symmetry
+1 Rune-Scarred Demon
+1 Dark Ritual
+1 Infernal Plunge
+1 Sol Ring
+1 Arcane Signet
+1 Rakdos Signet
+1 Talisman of Indulgence
+1 Mind Stone
+1 Fellwar Stone
+1 Thought Vessel
+1 Coldsteel Heart
+1 Charcoal Diamond
+1 Night&#39;s Whisper
+1 Sign in Blood
+1 Deadly Dispute
+1 Village Rites
+1 Altar&#39;s Reap
+1 Costly Plunder
+1 Corrupted Conviction
+1 Read the Bones
+1 Faithless Looting
+1 Thrill of Possibility
+1 Tormenting Voice
+1 Cathartic Reunion
+1 Terminate
+1 Bedevil
+1 Rakdos Charm
+1 Feed the Swarm
+1 Go for the Throat
+1 Infernal Grasp
+1 Heartless Act
+1 Bloodchief&#39;s Thirst
+1 Chaos Warp
+1 Blasphemous Act
+1 Kolaghan&#39;s Command
+1 Lightning Bolt
+1 Fire Covenant
+1 Vandalblast
+1 Lightning Greaves
+1 Swiftfoot Boots
+1 Viscera Seer
+1 Carrion Feeder
+1 Blood Artist
+1 Zulaport Cutthroat
+1 Bastion of Remembrance
+1 Goblin Bombardment
+1 Mayhem Devil
+1 Judith, the Scourge Diva
+1 Vindictive Vampire
+1 Butcher of Malakir
+1 Eldrazi Temple
+1 Command Tower
+1 Bloodfell Caves
+1 Rakdos Guildgate
+1 Rakdos Carnarium
+1 Temple of Malice
+1 Dragonskull Summit
+1 Foreboding Ruins
+1 Canyon Slough
+1 Sulfurous Springs
+1 Smoldering Marsh
+3 Wastes
+14 Swamp
+6 Mountain</textarea>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Commander <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(1)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/l-rell-fierce-visionary.jpg" data-name="L&#39;Rell, Fierce Visionary" aria-label="Enlarge L&#39;Rell, Fierce Visionary"><img loading="lazy" src="cards/l-rell-fierce-visionary.jpg" alt="L&#39;Rell, Fierce Visionary" width="488" height="680"></button>
+<figcaption><span class="name">L&#39;Rell, Fierce Visionary</span><span class="usd">$0.21</span><span class="artist">Art: Patricia Pria</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Combo <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(3)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/doomsday.jpg" data-name="Doomsday" aria-label="Enlarge Doomsday"><img loading="lazy" src="cards/doomsday.jpg" alt="Doomsday" width="488" height="680"></button>
+<figcaption><span class="name">Doomsday</span><span class="usd">$1.12</span><span class="artist">Art: David Palumbo</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/glaring-fleshraker.jpg" data-name="Glaring Fleshraker" aria-label="Enlarge Glaring Fleshraker"><img loading="lazy" src="cards/glaring-fleshraker.jpg" alt="Glaring Fleshraker" width="488" height="680"></button>
+<figcaption><span class="name">Glaring Fleshraker</span><span class="usd">$2.03</span><span class="artist">Art: Raph Lomotan</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Tutors for Doomsday <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(13)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/diabolic-tutor.jpg" data-name="Diabolic Tutor" aria-label="Enlarge Diabolic Tutor"><img loading="lazy" src="cards/diabolic-tutor.jpg" alt="Diabolic Tutor" width="488" height="680"></button>
+<figcaption><span class="name">Diabolic Tutor</span><span class="usd">$1.04</span><span class="artist">Art: Greg Staples</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/wishclaw-talisman.jpg" data-name="Wishclaw Talisman" aria-label="Enlarge Wishclaw Talisman"><img loading="lazy" src="cards/wishclaw-talisman.jpg" alt="Wishclaw Talisman" width="488" height="680"></button>
+<figcaption><span class="name">Wishclaw Talisman</span><span class="usd">$1.95</span><span class="artist">Art: Daarken</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mastermind-s-acquisition.jpg" data-name="Mastermind&#39;s Acquisition" aria-label="Enlarge Mastermind&#39;s Acquisition"><img loading="lazy" src="cards/mastermind-s-acquisition.jpg" alt="Mastermind&#39;s Acquisition" width="488" height="680"></button>
+<figcaption><span class="name">Mastermind&#39;s Acquisition</span><span class="usd">$1.52</span><span class="artist">Art: Svetlin Velinov</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dark-petition.jpg" data-name="Dark Petition" aria-label="Enlarge Dark Petition"><img loading="lazy" src="cards/dark-petition.jpg" alt="Dark Petition" width="488" height="680"></button>
+<figcaption><span class="name">Dark Petition</span><span class="usd">$2.99</span><span class="artist">Art: Igor Kieryluk</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/razaketh-s-rite.jpg" data-name="Razaketh&#39;s Rite" aria-label="Enlarge Razaketh&#39;s Rite"><img loading="lazy" src="cards/razaketh-s-rite.jpg" alt="Razaketh&#39;s Rite" width="488" height="680"></button>
+<figcaption><span class="name">Razaketh&#39;s Rite</span><span class="usd">$0.40</span><span class="artist">Art: Izzy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/illicit-shipment.jpg" data-name="Illicit Shipment" aria-label="Enlarge Illicit Shipment"><img loading="lazy" src="cards/illicit-shipment.jpg" alt="Illicit Shipment" width="488" height="680"></button>
+<figcaption><span class="name">Illicit Shipment</span><span class="usd">$0.28</span><span class="artist">Art: Josu Hernaiz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/increasing-ambition.jpg" data-name="Increasing Ambition" aria-label="Enlarge Increasing Ambition"><img loading="lazy" src="cards/increasing-ambition.jpg" alt="Increasing Ambition" width="488" height="680"></button>
+<figcaption><span class="name">Increasing Ambition</span><span class="usd">$2.20</span><span class="artist">Art: Volkan Baǵa</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/insatiable-avarice.jpg" data-name="Insatiable Avarice" aria-label="Enlarge Insatiable Avarice"><img loading="lazy" src="cards/insatiable-avarice.jpg" alt="Insatiable Avarice" width="488" height="680"></button>
+<figcaption><span class="name">Insatiable Avarice</span><span class="usd">$5.23</span><span class="artist">Art: Scott Murphy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/liliana-vess.jpg" data-name="Liliana Vess" aria-label="Enlarge Liliana Vess"><img loading="lazy" src="cards/liliana-vess.jpg" alt="Liliana Vess" width="488" height="680"></button>
+<figcaption><span class="name">Liliana Vess</span><span class="usd">$6.26</span><span class="artist">Art: Aleksi Briclot</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dimir-machinations.jpg" data-name="Dimir Machinations" aria-label="Enlarge Dimir Machinations"><img loading="lazy" src="cards/dimir-machinations.jpg" alt="Dimir Machinations" width="488" height="680"></button>
+<figcaption><span class="name">Dimir Machinations</span><span class="usd">$1.54</span><span class="artist">Art: Greg Staples</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/gamble.jpg" data-name="Gamble" aria-label="Enlarge Gamble"><img loading="lazy" src="cards/gamble.jpg" alt="Gamble" width="488" height="680"></button>
+<figcaption><span class="name">Gamble</span><span class="usd">$15.16</span><span class="artist">Art: Jason A. Engle</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/scheming-symmetry.jpg" data-name="Scheming Symmetry" aria-label="Enlarge Scheming Symmetry"><img loading="lazy" src="cards/scheming-symmetry.jpg" alt="Scheming Symmetry" width="488" height="680"></button>
+<figcaption><span class="name">Scheming Symmetry</span><span class="usd">$8.09</span><span class="artist">Art: Seb McKinnon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/rune-scarred-demon.jpg" data-name="Rune-Scarred Demon" aria-label="Enlarge Rune-Scarred Demon"><img loading="lazy" src="cards/rune-scarred-demon.jpg" alt="Rune-Scarred Demon" width="488" height="680"></button>
+<figcaption><span class="name">Rune-Scarred Demon</span><span class="usd">$1.18</span><span class="artist">Art: Michael Komarck</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Rituals <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(2)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/dark-ritual.jpg" data-name="Dark Ritual" aria-label="Enlarge Dark Ritual"><img loading="lazy" src="cards/dark-ritual.jpg" alt="Dark Ritual" width="488" height="680"></button>
+<figcaption><span class="name">Dark Ritual</span><span class="usd">$0.44</span><span class="artist">Art: Nino Is</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/infernal-plunge.jpg" data-name="Infernal Plunge" aria-label="Enlarge Infernal Plunge"><img loading="lazy" src="cards/infernal-plunge.jpg" alt="Infernal Plunge" width="488" height="680"></button>
+<figcaption><span class="name">Infernal Plunge</span><span class="usd">$0.31</span><span class="artist">Art: Daarken</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Mana rocks <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(9)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/sol-ring.jpg" data-name="Sol Ring" aria-label="Enlarge Sol Ring"><img loading="lazy" src="cards/sol-ring.jpg" alt="Sol Ring" width="488" height="680"></button>
+<figcaption><span class="name">Sol Ring</span><span class="usd">$1.14</span><span class="artist">Art: Hector Ortiz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/arcane-signet.jpg" data-name="Arcane Signet" aria-label="Enlarge Arcane Signet"><img loading="lazy" src="cards/arcane-signet.jpg" alt="Arcane Signet" width="488" height="680"></button>
+<figcaption><span class="name">Arcane Signet</span><span class="usd">$0.33</span><span class="artist">Art: Tomáš Honz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/rakdos-signet.jpg" data-name="Rakdos Signet" aria-label="Enlarge Rakdos Signet"><img loading="lazy" src="cards/rakdos-signet.jpg" alt="Rakdos Signet" width="488" height="680"></button>
+<figcaption><span class="name">Rakdos Signet</span><span class="usd">$0.48</span><span class="artist">Art: Martina Pilcerova</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/talisman-of-indulgence.jpg" data-name="Talisman of Indulgence" aria-label="Enlarge Talisman of Indulgence"><img loading="lazy" src="cards/talisman-of-indulgence.jpg" alt="Talisman of Indulgence" width="488" height="680"></button>
+<figcaption><span class="name">Talisman of Indulgence</span><span class="usd">$0.34</span><span class="artist">Art: Bartek Fedyczak</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mind-stone.jpg" data-name="Mind Stone" aria-label="Enlarge Mind Stone"><img loading="lazy" src="cards/mind-stone.jpg" alt="Mind Stone" width="488" height="680"></button>
+<figcaption><span class="name">Mind Stone</span><span class="usd">$0.25</span><span class="artist">Art: Racrufi</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fellwar-stone.jpg" data-name="Fellwar Stone" aria-label="Enlarge Fellwar Stone"><img loading="lazy" src="cards/fellwar-stone.jpg" alt="Fellwar Stone" width="488" height="680"></button>
+<figcaption><span class="name">Fellwar Stone</span><span class="usd">$0.99</span><span class="artist">Art: John Avon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thought-vessel.jpg" data-name="Thought Vessel" aria-label="Enlarge Thought Vessel"><img loading="lazy" src="cards/thought-vessel.jpg" alt="Thought Vessel" width="488" height="680"></button>
+<figcaption><span class="name">Thought Vessel</span><span class="usd">$1.44</span><span class="artist">Art: Leesha Hannigan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/coldsteel-heart.jpg" data-name="Coldsteel Heart" aria-label="Enlarge Coldsteel Heart"><img loading="lazy" src="cards/coldsteel-heart.jpg" alt="Coldsteel Heart" width="488" height="680"></button>
+<figcaption><span class="name">Coldsteel Heart</span><span class="usd">$0.98</span><span class="artist">Art: Mark Romanoski</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/charcoal-diamond.jpg" data-name="Charcoal Diamond" aria-label="Enlarge Charcoal Diamond"><img loading="lazy" src="cards/charcoal-diamond.jpg" alt="Charcoal Diamond" width="488" height="680"></button>
+<figcaption><span class="name">Charcoal Diamond</span><span class="usd">$0.35</span><span class="artist">Art: Gaboleps</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Draw two / looters <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(12)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/night-s-whisper.jpg" data-name="Night&#39;s Whisper" aria-label="Enlarge Night&#39;s Whisper"><img loading="lazy" src="cards/night-s-whisper.jpg" alt="Night&#39;s Whisper" width="488" height="680"></button>
+<figcaption><span class="name">Night&#39;s Whisper</span><span class="usd">$0.27</span><span class="artist">Art: Runa I. Rosenberger</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/sign-in-blood.jpg" data-name="Sign in Blood" aria-label="Enlarge Sign in Blood"><img loading="lazy" src="cards/sign-in-blood.jpg" alt="Sign in Blood" width="488" height="680"></button>
+<figcaption><span class="name">Sign in Blood</span><span class="usd">$1.27</span><span class="artist">Art: Howard Lyon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/deadly-dispute.jpg" data-name="Deadly Dispute" aria-label="Enlarge Deadly Dispute"><img loading="lazy" src="cards/deadly-dispute.jpg" alt="Deadly Dispute" width="488" height="680"></button>
+<figcaption><span class="name">Deadly Dispute</span><span class="usd">$0.40</span><span class="artist">Art: John Thacker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/village-rites.jpg" data-name="Village Rites" aria-label="Enlarge Village Rites"><img loading="lazy" src="cards/village-rites.jpg" alt="Village Rites" width="488" height="680"></button>
+<figcaption><span class="name">Village Rites</span><span class="usd">$0.30</span><span class="artist">Art: Bud Cook</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/altar-s-reap.jpg" data-name="Altar&#39;s Reap" aria-label="Enlarge Altar&#39;s Reap"><img loading="lazy" src="cards/altar-s-reap.jpg" alt="Altar&#39;s Reap" width="488" height="680"></button>
+<figcaption><span class="name">Altar&#39;s Reap</span><span class="usd">$0.42</span><span class="artist">Art: Donato Giancola</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/costly-plunder.jpg" data-name="Costly Plunder" aria-label="Enlarge Costly Plunder"><img loading="lazy" src="cards/costly-plunder.jpg" alt="Costly Plunder" width="488" height="680"></button>
+<figcaption><span class="name">Costly Plunder</span><span class="usd">$0.31</span><span class="artist">Art: Ben Maier</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/corrupted-conviction.jpg" data-name="Corrupted Conviction" aria-label="Enlarge Corrupted Conviction"><img loading="lazy" src="cards/corrupted-conviction.jpg" alt="Corrupted Conviction" width="488" height="680"></button>
+<figcaption><span class="name">Corrupted Conviction</span><span class="usd">$0.33</span><span class="artist">Art: Inkognit</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/read-the-bones.jpg" data-name="Read the Bones" aria-label="Enlarge Read the Bones"><img loading="lazy" src="cards/read-the-bones.jpg" alt="Read the Bones" width="488" height="680"></button>
+<figcaption><span class="name">Read the Bones</span><span class="usd">$0.35</span><span class="artist">Art: Lars Grant-West</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/faithless-looting.jpg" data-name="Faithless Looting" aria-label="Enlarge Faithless Looting"><img loading="lazy" src="cards/faithless-looting.jpg" alt="Faithless Looting" width="488" height="680"></button>
+<figcaption><span class="name">Faithless Looting</span><span class="usd">$0.41</span><span class="artist">Art: Gabor Szikszai</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thrill-of-possibility.jpg" data-name="Thrill of Possibility" aria-label="Enlarge Thrill of Possibility"><img loading="lazy" src="cards/thrill-of-possibility.jpg" alt="Thrill of Possibility" width="488" height="680"></button>
+<figcaption><span class="name">Thrill of Possibility</span><span class="usd">$0.35</span><span class="artist">Art: Julie Dillon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/tormenting-voice.jpg" data-name="Tormenting Voice" aria-label="Enlarge Tormenting Voice"><img loading="lazy" src="cards/tormenting-voice.jpg" alt="Tormenting Voice" width="488" height="680"></button>
+<figcaption><span class="name">Tormenting Voice</span><span class="usd">$0.20</span><span class="artist">Art: Izzy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/cathartic-reunion.jpg" data-name="Cathartic Reunion" aria-label="Enlarge Cathartic Reunion"><img loading="lazy" src="cards/cathartic-reunion.jpg" alt="Cathartic Reunion" width="488" height="680"></button>
+<figcaption><span class="name">Cathartic Reunion</span><span class="usd">$0.33</span><span class="artist">Art: Jakub Kasper</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Removal and protection <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(16)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/terminate.jpg" data-name="Terminate" aria-label="Enlarge Terminate"><img loading="lazy" src="cards/terminate.jpg" alt="Terminate" width="488" height="680"></button>
+<figcaption><span class="name">Terminate</span><span class="usd">$0.23</span><span class="artist">Art: Douglas Shuler</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/bedevil.jpg" data-name="Bedevil" aria-label="Enlarge Bedevil"><img loading="lazy" src="cards/bedevil.jpg" alt="Bedevil" width="488" height="680"></button>
+<figcaption><span class="name">Bedevil</span><span class="usd">$0.31</span><span class="artist">Art: Björn Barends</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/rakdos-charm.jpg" data-name="Rakdos Charm" aria-label="Enlarge Rakdos Charm"><img loading="lazy" src="cards/rakdos-charm.jpg" alt="Rakdos Charm" width="488" height="680"></button>
+<figcaption><span class="name">Rakdos Charm</span><span class="usd">$0.46</span><span class="artist">Art: Zoltan Boros</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/feed-the-swarm.jpg" data-name="Feed the Swarm" aria-label="Enlarge Feed the Swarm"><img loading="lazy" src="cards/feed-the-swarm.jpg" alt="Feed the Swarm" width="488" height="680"></button>
+<figcaption><span class="name">Feed the Swarm</span><span class="usd">$0.22</span><span class="artist">Art: Kotakan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/go-for-the-throat.jpg" data-name="Go for the Throat" aria-label="Enlarge Go for the Throat"><img loading="lazy" src="cards/go-for-the-throat.jpg" alt="Go for the Throat" width="488" height="680"></button>
+<figcaption><span class="name">Go for the Throat</span><span class="usd">$0.44</span><span class="artist">Art: Kristina Carroll</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/infernal-grasp.jpg" data-name="Infernal Grasp" aria-label="Enlarge Infernal Grasp"><img loading="lazy" src="cards/infernal-grasp.jpg" alt="Infernal Grasp" width="488" height="680"></button>
+<figcaption><span class="name">Infernal Grasp</span><span class="usd">$0.35</span><span class="artist">Art: Naomi Baker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/heartless-act.jpg" data-name="Heartless Act" aria-label="Enlarge Heartless Act"><img loading="lazy" src="cards/heartless-act.jpg" alt="Heartless Act" width="488" height="680"></button>
+<figcaption><span class="name">Heartless Act</span><span class="usd">$0.28</span><span class="artist">Art: Sylvain Sarrailh</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/bloodchief-s-thirst.jpg" data-name="Bloodchief&#39;s Thirst" aria-label="Enlarge Bloodchief&#39;s Thirst"><img loading="lazy" src="cards/bloodchief-s-thirst.jpg" alt="Bloodchief&#39;s Thirst" width="488" height="680"></button>
+<figcaption><span class="name">Bloodchief&#39;s Thirst</span><span class="usd">$0.22</span><span class="artist">Art: Jason Rainville</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/chaos-warp.jpg" data-name="Chaos Warp" aria-label="Enlarge Chaos Warp"><img loading="lazy" src="cards/chaos-warp.jpg" alt="Chaos Warp" width="488" height="680"></button>
+<figcaption><span class="name">Chaos Warp</span><span class="usd">$0.70</span><span class="artist">Art: Trevor Claxton</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/blasphemous-act.jpg" data-name="Blasphemous Act" aria-label="Enlarge Blasphemous Act"><img loading="lazy" src="cards/blasphemous-act.jpg" alt="Blasphemous Act" width="488" height="680"></button>
+<figcaption><span class="name">Blasphemous Act</span><span class="usd">$0.91</span><span class="artist">Art: Immanuela Crovius</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/kolaghan-s-command.jpg" data-name="Kolaghan&#39;s Command" aria-label="Enlarge Kolaghan&#39;s Command"><img loading="lazy" src="cards/kolaghan-s-command.jpg" alt="Kolaghan&#39;s Command" width="488" height="680"></button>
+<figcaption><span class="name">Kolaghan&#39;s Command</span><span class="usd">$0.38</span><span class="artist">Art: Daarken</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/lightning-bolt.jpg" data-name="Lightning Bolt" aria-label="Enlarge Lightning Bolt"><img loading="lazy" src="cards/lightning-bolt.jpg" alt="Lightning Bolt" width="488" height="680"></button>
+<figcaption><span class="name">Lightning Bolt</span><span class="usd">$0.94</span><span class="artist">Art: Milivoj Ćeran</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fire-covenant.jpg" data-name="Fire Covenant" aria-label="Enlarge Fire Covenant"><img loading="lazy" src="cards/fire-covenant.jpg" alt="Fire Covenant" width="488" height="680"></button>
+<figcaption><span class="name">Fire Covenant</span><span class="usd">$0.40</span><span class="artist">Art: Jeff Miracola</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/vandalblast.jpg" data-name="Vandalblast" aria-label="Enlarge Vandalblast"><img loading="lazy" src="cards/vandalblast.jpg" alt="Vandalblast" width="488" height="680"></button>
+<figcaption><span class="name">Vandalblast</span><span class="usd">$1.66</span><span class="artist">Art: Javier Charro</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/lightning-greaves.jpg" data-name="Lightning Greaves" aria-label="Enlarge Lightning Greaves"><img loading="lazy" src="cards/lightning-greaves.jpg" alt="Lightning Greaves" width="488" height="680"></button>
+<figcaption><span class="name">Lightning Greaves</span><span class="usd">$3.07</span><span class="artist">Art: Borja Pindado</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/swiftfoot-boots.jpg" data-name="Swiftfoot Boots" aria-label="Enlarge Swiftfoot Boots"><img loading="lazy" src="cards/swiftfoot-boots.jpg" alt="Swiftfoot Boots" width="488" height="680"></button>
+<figcaption><span class="name">Swiftfoot Boots</span><span class="usd">$1.67</span><span class="artist">Art: Arthur Yuan</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Sacrifice payoffs for L&#39;Rell&#39;s Klingons <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(10)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/viscera-seer.jpg" data-name="Viscera Seer" aria-label="Enlarge Viscera Seer"><img loading="lazy" src="cards/viscera-seer.jpg" alt="Viscera Seer" width="488" height="680"></button>
+<figcaption><span class="name">Viscera Seer</span><span class="usd">$0.65</span><span class="artist">Art: John Stanko</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/carrion-feeder.jpg" data-name="Carrion Feeder" aria-label="Enlarge Carrion Feeder"><img loading="lazy" src="cards/carrion-feeder.jpg" alt="Carrion Feeder" width="488" height="680"></button>
+<figcaption><span class="name">Carrion Feeder</span><span class="usd">$2.47</span><span class="artist">Art: Svetlin Velinov</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/blood-artist.jpg" data-name="Blood Artist" aria-label="Enlarge Blood Artist"><img loading="lazy" src="cards/blood-artist.jpg" alt="Blood Artist" width="488" height="680"></button>
+<figcaption><span class="name">Blood Artist</span><span class="usd">$1.97</span><span class="artist">Art: L.A. Draws</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/zulaport-cutthroat.jpg" data-name="Zulaport Cutthroat" aria-label="Enlarge Zulaport Cutthroat"><img loading="lazy" src="cards/zulaport-cutthroat.jpg" alt="Zulaport Cutthroat" width="488" height="680"></button>
+<figcaption><span class="name">Zulaport Cutthroat</span><span class="usd">$1.16</span><span class="artist">Art: Jason Rainville</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/bastion-of-remembrance.jpg" data-name="Bastion of Remembrance" aria-label="Enlarge Bastion of Remembrance"><img loading="lazy" src="cards/bastion-of-remembrance.jpg" alt="Bastion of Remembrance" width="488" height="680"></button>
+<figcaption><span class="name">Bastion of Remembrance</span><span class="usd">$0.33</span><span class="artist">Art: Yuu Fujiki</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/goblin-bombardment.jpg" data-name="Goblin Bombardment" aria-label="Enlarge Goblin Bombardment"><img loading="lazy" src="cards/goblin-bombardment.jpg" alt="Goblin Bombardment" width="488" height="680"></button>
+<figcaption><span class="name">Goblin Bombardment</span><span class="usd">$1.47</span><span class="artist">Art: Dave Kendall</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mayhem-devil.jpg" data-name="Mayhem Devil" aria-label="Enlarge Mayhem Devil"><img loading="lazy" src="cards/mayhem-devil.jpg" alt="Mayhem Devil" width="488" height="680"></button>
+<figcaption><span class="name">Mayhem Devil</span><span class="usd">$0.32</span><span class="artist">Art: Dmitry Burmak</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/judith-the-scourge-diva.jpg" data-name="Judith, the Scourge Diva" aria-label="Enlarge Judith, the Scourge Diva"><img loading="lazy" src="cards/judith-the-scourge-diva.jpg" alt="Judith, the Scourge Diva" width="488" height="680"></button>
+<figcaption><span class="name">Judith, the Scourge Diva</span><span class="usd">$0.29</span><span class="artist">Art: Wesley Burt</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/vindictive-vampire.jpg" data-name="Vindictive Vampire" aria-label="Enlarge Vindictive Vampire"><img loading="lazy" src="cards/vindictive-vampire.jpg" alt="Vindictive Vampire" width="488" height="680"></button>
+<figcaption><span class="name">Vindictive Vampire</span><span class="usd">$0.36</span><span class="artist">Art: Randy Gallegos</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/butcher-of-malakir.jpg" data-name="Butcher of Malakir" aria-label="Enlarge Butcher of Malakir"><img loading="lazy" src="cards/butcher-of-malakir.jpg" alt="Butcher of Malakir" width="488" height="680"></button>
+<figcaption><span class="name">Butcher of Malakir</span><span class="usd">$0.32</span><span class="artist">Art: Jason Chan</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Lands <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(34)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/eldrazi-temple.jpg" data-name="Eldrazi Temple" aria-label="Enlarge Eldrazi Temple"><img loading="lazy" src="cards/eldrazi-temple.jpg" alt="Eldrazi Temple" width="488" height="680"></button>
+<figcaption><span class="name">Eldrazi Temple</span><span class="usd">$3.09</span><span class="artist">Art: James Paick</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/command-tower.jpg" data-name="Command Tower" aria-label="Enlarge Command Tower"><img loading="lazy" src="cards/command-tower.jpg" alt="Command Tower" width="488" height="680"></button>
+<figcaption><span class="name">Command Tower</span><span class="usd">$0.20</span><span class="artist">Art: Arthur Yuan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/bloodfell-caves.jpg" data-name="Bloodfell Caves" aria-label="Enlarge Bloodfell Caves"><img loading="lazy" src="cards/bloodfell-caves.jpg" alt="Bloodfell Caves" width="488" height="680"></button>
+<figcaption><span class="name">Bloodfell Caves</span><span class="usd">$0.17</span><span class="artist">Art: Piotr Dura</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/rakdos-guildgate.jpg" data-name="Rakdos Guildgate" aria-label="Enlarge Rakdos Guildgate"><img loading="lazy" src="cards/rakdos-guildgate.jpg" alt="Rakdos Guildgate" width="488" height="680"></button>
+<figcaption><span class="name">Rakdos Guildgate</span><span class="usd">$0.29</span><span class="artist">Art: Jonas De Ro</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/rakdos-carnarium.jpg" data-name="Rakdos Carnarium" aria-label="Enlarge Rakdos Carnarium"><img loading="lazy" src="cards/rakdos-carnarium.jpg" alt="Rakdos Carnarium" width="488" height="680"></button>
+<figcaption><span class="name">Rakdos Carnarium</span><span class="usd">$0.37</span><span class="artist">Art: John Avon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/temple-of-malice.jpg" data-name="Temple of Malice" aria-label="Enlarge Temple of Malice"><img loading="lazy" src="cards/temple-of-malice.jpg" alt="Temple of Malice" width="488" height="680"></button>
+<figcaption><span class="name">Temple of Malice</span><span class="usd">$0.28</span><span class="artist">Art: John Di Giovanni</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dragonskull-summit.jpg" data-name="Dragonskull Summit" aria-label="Enlarge Dragonskull Summit"><img loading="lazy" src="cards/dragonskull-summit.jpg" alt="Dragonskull Summit" width="488" height="680"></button>
+<figcaption><span class="name">Dragonskull Summit</span><span class="usd">$0.34</span><span class="artist">Art: Nadia Hurianova</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/foreboding-ruins.jpg" data-name="Foreboding Ruins" aria-label="Enlarge Foreboding Ruins"><img loading="lazy" src="cards/foreboding-ruins.jpg" alt="Foreboding Ruins" width="488" height="680"></button>
+<figcaption><span class="name">Foreboding Ruins</span><span class="usd">$0.34</span><span class="artist">Art: Dofresh</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/canyon-slough.jpg" data-name="Canyon Slough" aria-label="Enlarge Canyon Slough"><img loading="lazy" src="cards/canyon-slough.jpg" alt="Canyon Slough" width="488" height="680"></button>
+<figcaption><span class="name">Canyon Slough</span><span class="usd">$0.26</span><span class="artist">Art: Rémi Jacquot</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/sulfurous-springs.jpg" data-name="Sulfurous Springs" aria-label="Enlarge Sulfurous Springs"><img loading="lazy" src="cards/sulfurous-springs.jpg" alt="Sulfurous Springs" width="488" height="680"></button>
+<figcaption><span class="name">Sulfurous Springs</span><span class="usd">$0.45</span><span class="artist">Art: Bruce Brenneise</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/smoldering-marsh.jpg" data-name="Smoldering Marsh" aria-label="Enlarge Smoldering Marsh"><img loading="lazy" src="cards/smoldering-marsh.jpg" alt="Smoldering Marsh" width="488" height="680"></button>
+<figcaption><span class="name">Smoldering Marsh</span><span class="usd">$0.32</span><span class="artist">Art: Enora Mercier</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/wastes.jpg" data-name="Wastes" aria-label="Enlarge Wastes"><img loading="lazy" src="cards/wastes.jpg" alt="Wastes" width="488" height="680"><span class="qty">×3</span></button>
+<figcaption><span class="name">Wastes</span><span class="artist">Art: Raymond Swanland</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/swamp.jpg" data-name="Swamp" aria-label="Enlarge Swamp"><img loading="lazy" src="cards/swamp.jpg" alt="Swamp" width="488" height="680"><span class="qty">×14</span></button>
+<figcaption><span class="name">Swamp</span><span class="artist">Art: Maojin Lee</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mountain.jpg" data-name="Mountain" aria-label="Enlarge Mountain"><img loading="lazy" src="cards/mountain.jpg" alt="Mountain" width="488" height="680"><span class="qty">×6</span></button>
+<figcaption><span class="name">Mountain</span><span class="artist">Art: VEN</span></figcaption></figure></div>
+    
+  </section>
+  
+  <section class="deck" id="elsha">
+    <div class="deckhead">
+      <figure class="card"><button type="button" class="zoom" data-src="cards/elsha-of-the-infinite.jpg" data-name="Elsha of the Infinite" aria-label="Enlarge Elsha of the Infinite"><img loading="lazy" src="cards/elsha-of-the-infinite.jpg" alt="Elsha of the Infinite" width="488" height="680"></button>
+<figcaption><span class="name">Elsha of the Infinite</span><span class="usd">$0.50</span><span class="artist">Art: G-host Lee</span></figcaption></figure>
+      <div>
+        <span class="num">Deck 4</span> <span class="dots"><span class="dot U" title="U"></span><span class="dot R" title="R"></span><span class="dot W" title="W"></span></span>
+        <h2>Elsha draws everything</h2>
+        <p class="verdict">The ridiculous one. The one you&#39;ll actually want to play.</p>
+        <dl class="facts"><div><dt>Commander</dt><dd style="font-size:18px">Elsha of the Infinite</dd></div><div><dt>Price</dt><dd>$270.33</dd></div>
+          <div><dt>Table dead by turn 6</dt><dd>62%</dd></div><div><dt>Table dead by turn 7</dt><dd>83%</dd></div><div><dt>Table dead by turn 8</dt><dd>91%</dd></div><div><dt>Table dead by turn 10</dt><dd>97%</dd></div></dl>
+        
+      </div>
+    </div>
+    <div class="prose"><p>Don&#39;t you lose if you draw your whole deck? No: you lose when you draw from an empty library, and the loop stops with three cards left. When the mana for the finish is short, it stops with eight left and finishes next turn.</p><p>Yes, with your whole deck in hand you could win a dozen other ways. You put Fleshraker back and let Q pick it anyway.</p><p>It has thirteen ways to find Top, ten cards that make it cost one less, and seventeen mana rocks.</p></div>
+    
+    <h3 style="font-size:20px">The combo, step by step</h3>
+    <ol class="steps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/elsha-of-the-infinite.jpg" data-name="Elsha of the Infinite" aria-label="Enlarge Elsha of the Infinite"><img loading="lazy" src="cards/elsha-of-the-infinite.jpg" alt="Elsha of the Infinite" width="488" height="680"></button>
+<figcaption><span class="name">Elsha of the Infinite</span><span class="usd">$0.50</span><span class="artist">Art: G-host Lee</span></figcaption></figure><p>You may cast noncreature spells from the top of your library.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/sensei-s-divining-top.jpg" data-name="Sensei&#39;s Divining Top" aria-label="Enlarge Sensei&#39;s Divining Top"><img loading="lazy" src="cards/sensei-s-divining-top.jpg" alt="Sensei&#39;s Divining Top" width="488" height="680"></button>
+<figcaption><span class="name">Sensei&#39;s Divining Top</span><span class="usd">$25.84</span><span class="artist">Art: Michael Sutfin</span></figcaption></figure><p>Tap it: draw a card, and Top goes on top of your library.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/helm-of-awakening.jpg" data-name="Helm of Awakening" aria-label="Enlarge Helm of Awakening"><img loading="lazy" src="cards/helm-of-awakening.jpg" alt="Helm of Awakening" width="488" height="680"></button>
+<figcaption><span class="name">Helm of Awakening</span><span class="usd">$1.39</span><span class="artist">Art: Adam Rex</span></figcaption></figure><p>Elsha casts Top again, and with anything that makes it cost one less, it&#39;s free. Again and again: the whole deck comes into your hand.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/birgi-god-of-storytelling.jpg" data-name="Birgi, God of Storytelling" aria-label="Enlarge Birgi, God of Storytelling"><img loading="lazy" src="cards/birgi-god-of-storytelling.jpg" alt="Birgi, God of Storytelling" width="488" height="680"></button>
+<figcaption><span class="name">Birgi, God of Storytelling</span><span class="usd">$25.52</span><span class="artist">Art: Eric Deschamps</span></figcaption></figure><p>A red mana for every spell you cast, so the loop pays for everything after it.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/brainstorm.jpg" data-name="Brainstorm" aria-label="Enlarge Brainstorm"><img loading="lazy" src="cards/brainstorm.jpg" alt="Brainstorm" width="488" height="680"></button>
+<figcaption><span class="name">Brainstorm</span><span class="usd">$0.36</span><span class="artist">Art: Andreas Zafiratos</span></figcaption></figure><p>Stop with three cards left. Brainstorm draws them and puts two back: Fleshraker and a land.</p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure><p>Q shuffles a library of two, skips the land, and finds Fleshraker. Every card in your hand is a copy.</p></li></ol>
+    
+    
+    
+    <div class="variant">
+      <h3>Cheaper: $171.58, table dead by turn 7 in 78% of games</h3>
+      <p>Over $100 of the list only finds Sensei&#39;s Top. With the seven cheap ways to find it, the loop still comes together by turn seven in 78% of games.</p>
+      <ul class="swaps"><li><figure class="card"><button type="button" class="zoom" data-src="cards/peek.jpg" data-name="Peek" aria-label="Enlarge Peek"><img loading="lazy" src="cards/peek.jpg" alt="Peek" width="488" height="680"></button>
+<figcaption><span class="name">Peek</span><span class="usd">$0.44</span><span class="artist">Art: Adam Rex</span></figcaption></figure><p><span class="out">Enlightened Tutor</span> $33.39<br>
+        <span class="in">Peek</span> <span class="usd">$0.44</span><br>A one-mana cantrip instead of the dearest way to find Top.<span class="artist">Art: Adam Rex</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/thoughtcast.jpg" data-name="Thoughtcast" aria-label="Enlarge Thoughtcast"><img loading="lazy" src="cards/thoughtcast.jpg" alt="Thoughtcast" width="488" height="680"></button>
+<figcaption><span class="name">Thoughtcast</span><span class="usd">$0.33</span><span class="artist">Art: Lucie Louxor</span></figcaption></figure><p><span class="out">Tezzeret the Seeker</span> $26.45<br>
+        <span class="in">Thoughtcast</span> <span class="usd">$0.33</span><br>Draws two, and costs one or nothing with this many artifacts out.<span class="artist">Art: Lucie Louxor</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/expedite.jpg" data-name="Expedite" aria-label="Enlarge Expedite"><img loading="lazy" src="cards/expedite.jpg" alt="Expedite" width="488" height="680"></button>
+<figcaption><span class="name">Expedite</span><span class="usd">$0.35</span><span class="artist">Art: Kieran Yanner</span></figcaption></figure><p><span class="out">Gamble</span> $15.16<br>
+        <span class="in">Expedite</span> <span class="usd">$0.35</span><br>A one-mana cantrip.<span class="artist">Art: Kieran Yanner</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/frantic-search.jpg" data-name="Frantic Search" aria-label="Enlarge Frantic Search"><img loading="lazy" src="cards/frantic-search.jpg" alt="Frantic Search" width="488" height="680"></button>
+<figcaption><span class="name">Frantic Search</span><span class="usd">$0.37</span><span class="artist">Art: Leonardo Santanna</span></figcaption></figure><p><span class="out">Kuldotha Forgemaster</span> $10.82<br>
+        <span class="in">Frantic Search</span> <span class="usd">$0.37</span><br>Draws two, and pays for itself.<span class="artist">Art: Leonardo Santanna</span></p></li><li><figure class="card"><button type="button" class="zoom" data-src="cards/island.jpg" data-name="Island" aria-label="Enlarge Island"><img loading="lazy" src="cards/island.jpg" alt="Island" width="488" height="680"></button>
+<figcaption><span class="name">Island</span><span class="artist">Art: Eren Arik</span></figcaption></figure><p><span class="out">Inventors&#39; Fair</span> $14.42<br>
+        <span class="in">Island</span><br>A basic in place of the dear land.<span class="artist">Art: Eren Arik</span></p></li></ul>
+      <div class="listacts"><button type="button" class="btn line copy" data-target="list-elsha-1">Copy the cheaper list</button><span class="copied" aria-live="polite"></span></div>
+      <textarea id="list-elsha-1" hidden>1 Elsha of the Infinite
+1 Sensei&#39;s Divining Top
+1 Q, Stacking the Deck
+1 Glaring Fleshraker
+1 Leashling
+1 Brainstorm
+1 Brainstone
+1 Birgi, God of Storytelling
+1 Helm of Awakening
+1 Cloud Key
+1 Foundry Inspector
+1 Etherium Sculptor
+1 Semblance Anvil
+1 Jhoira&#39;s Familiar
+1 Enthusiastic Mechanaut
+1 Herald of Kozilek
+1 Lyse Hext
+1 Artist&#39;s Talent
+1 Trinket Mage
+1 Dizzy Spell
+1 Peek
+1 Whir of Invention
+1 Fabricate
+1 Reckless Handling
+1 Expedite
+1 Artificer&#39;s Intuition
+1 Reshape
+1 Frantic Search
+1 Thoughtcast
+1 Sol Ring
+1 Mind Stone
+1 Thought Vessel
+1 Everflowing Chalice
+1 Thran Dynamo
+1 Arcane Signet
+1 Fellwar Stone
+1 Talisman of Creativity
+1 Talisman of Conviction
+1 Talisman of Progress
+1 Talisman of Indulgence
+1 Izzet Signet
+1 Boros Signet
+1 Azorius Signet
+1 Coldsteel Heart
+1 Prismatic Lens
+1 Fractured Powerstone
+1 Ponder
+1 Preordain
+1 Opt
+1 Consider
+1 Serum Visions
+1 Sleight of Hand
+1 Portent
+1 Faithless Looting
+1 Gitaxian Probe
+1 Thrill of Possibility
+1 Swords to Plowshares
+1 Path to Exile
+1 Counterspell
+1 Arcane Denial
+1 Negate
+1 Dovin&#39;s Veto
+1 Lightning Bolt
+1 Chaos Warp
+1 Boros Charm
+1 Generous Gift
+1 Urza&#39;s Saga
+6 Island
+1 Command Tower
+1 Exotic Orchard
+1 Mystic Monastery
+1 Spirebluff Canal
+1 Inspiring Vantage
+1 Sulfur Falls
+1 Clifftop Retreat
+1 Glacial Fortress
+1 Shivan Reef
+1 Battlefield Forge
+1 Adarkar Wastes
+1 Temple of Epiphany
+1 Temple of Triumph
+1 Temple of Enlightenment
+1 Path of Ancestry
+2 Wastes
+5 Mountain
+5 Plains</textarea>
+    </div>
+    
+    <div class="h2row" style="margin-top:10px"><h2>The full list</h2><span class="count">100 cards · 34 lands · $270.33</span></div>
+    <div class="listacts"><button type="button" class="btn line copy" data-target="list-elsha">Copy the 100 cards</button><span class="copied" aria-live="polite"></span></div>
+    <textarea id="list-elsha" hidden>1 Elsha of the Infinite
+1 Sensei&#39;s Divining Top
+1 Q, Stacking the Deck
+1 Glaring Fleshraker
+1 Leashling
+1 Brainstorm
+1 Brainstone
+1 Birgi, God of Storytelling
+1 Helm of Awakening
+1 Cloud Key
+1 Foundry Inspector
+1 Etherium Sculptor
+1 Semblance Anvil
+1 Jhoira&#39;s Familiar
+1 Enthusiastic Mechanaut
+1 Herald of Kozilek
+1 Lyse Hext
+1 Artist&#39;s Talent
+1 Trinket Mage
+1 Dizzy Spell
+1 Enlightened Tutor
+1 Whir of Invention
+1 Fabricate
+1 Reckless Handling
+1 Gamble
+1 Artificer&#39;s Intuition
+1 Reshape
+1 Kuldotha Forgemaster
+1 Tezzeret the Seeker
+1 Sol Ring
+1 Mind Stone
+1 Thought Vessel
+1 Everflowing Chalice
+1 Thran Dynamo
+1 Arcane Signet
+1 Fellwar Stone
+1 Talisman of Creativity
+1 Talisman of Conviction
+1 Talisman of Progress
+1 Talisman of Indulgence
+1 Izzet Signet
+1 Boros Signet
+1 Azorius Signet
+1 Coldsteel Heart
+1 Prismatic Lens
+1 Fractured Powerstone
+1 Ponder
+1 Preordain
+1 Opt
+1 Consider
+1 Serum Visions
+1 Sleight of Hand
+1 Portent
+1 Faithless Looting
+1 Gitaxian Probe
+1 Thrill of Possibility
+1 Swords to Plowshares
+1 Path to Exile
+1 Counterspell
+1 Arcane Denial
+1 Negate
+1 Dovin&#39;s Veto
+1 Lightning Bolt
+1 Chaos Warp
+1 Boros Charm
+1 Generous Gift
+1 Urza&#39;s Saga
+1 Inventors&#39; Fair
+1 Command Tower
+1 Exotic Orchard
+1 Mystic Monastery
+1 Spirebluff Canal
+1 Inspiring Vantage
+1 Sulfur Falls
+1 Clifftop Retreat
+1 Glacial Fortress
+1 Shivan Reef
+1 Battlefield Forge
+1 Adarkar Wastes
+1 Temple of Epiphany
+1 Temple of Triumph
+1 Temple of Enlightenment
+1 Path of Ancestry
+2 Wastes
+5 Island
+5 Mountain
+5 Plains</textarea>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Commander <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(1)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/elsha-of-the-infinite.jpg" data-name="Elsha of the Infinite" aria-label="Enlarge Elsha of the Infinite"><img loading="lazy" src="cards/elsha-of-the-infinite.jpg" alt="Elsha of the Infinite" width="488" height="680"></button>
+<figcaption><span class="name">Elsha of the Infinite</span><span class="usd">$0.50</span><span class="artist">Art: G-host Lee</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Combo <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(7)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/sensei-s-divining-top.jpg" data-name="Sensei&#39;s Divining Top" aria-label="Enlarge Sensei&#39;s Divining Top"><img loading="lazy" src="cards/sensei-s-divining-top.jpg" alt="Sensei&#39;s Divining Top" width="488" height="680"></button>
+<figcaption><span class="name">Sensei&#39;s Divining Top</span><span class="usd">$25.84</span><span class="artist">Art: Michael Sutfin</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/q-stacking-the-deck.jpg" data-name="Q, Stacking the Deck" aria-label="Enlarge Q, Stacking the Deck"><img loading="lazy" src="cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" width="488" height="680"></button>
+<figcaption><span class="name">Q, Stacking the Deck</span><span class="usd">$5.14</span><span class="artist">Art: Ryan Valle</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/glaring-fleshraker.jpg" data-name="Glaring Fleshraker" aria-label="Enlarge Glaring Fleshraker"><img loading="lazy" src="cards/glaring-fleshraker.jpg" alt="Glaring Fleshraker" width="488" height="680"></button>
+<figcaption><span class="name">Glaring Fleshraker</span><span class="usd">$2.03</span><span class="artist">Art: Raph Lomotan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/leashling.jpg" data-name="Leashling" aria-label="Enlarge Leashling"><img loading="lazy" src="cards/leashling.jpg" alt="Leashling" width="488" height="680"></button>
+<figcaption><span class="name">Leashling</span><span class="usd">$0.16</span><span class="artist">Art: Carl Critchlow</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/brainstorm.jpg" data-name="Brainstorm" aria-label="Enlarge Brainstorm"><img loading="lazy" src="cards/brainstorm.jpg" alt="Brainstorm" width="488" height="680"></button>
+<figcaption><span class="name">Brainstorm</span><span class="usd">$0.36</span><span class="artist">Art: Andreas Zafiratos</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/brainstone.jpg" data-name="Brainstone" aria-label="Enlarge Brainstone"><img loading="lazy" src="cards/brainstone.jpg" alt="Brainstone" width="488" height="680"></button>
+<figcaption><span class="name">Brainstone</span><span class="usd">$0.33</span><span class="artist">Art: Drew Tucker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/birgi-god-of-storytelling.jpg" data-name="Birgi, God of Storytelling" aria-label="Enlarge Birgi, God of Storytelling"><img loading="lazy" src="cards/birgi-god-of-storytelling.jpg" alt="Birgi, God of Storytelling" width="488" height="680"></button>
+<figcaption><span class="name">Birgi, God of Storytelling</span><span class="usd">$25.52</span><span class="artist">Art: Eric Deschamps</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Cost reducers <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(10)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/helm-of-awakening.jpg" data-name="Helm of Awakening" aria-label="Enlarge Helm of Awakening"><img loading="lazy" src="cards/helm-of-awakening.jpg" alt="Helm of Awakening" width="488" height="680"></button>
+<figcaption><span class="name">Helm of Awakening</span><span class="usd">$1.39</span><span class="artist">Art: Adam Rex</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/cloud-key.jpg" data-name="Cloud Key" aria-label="Enlarge Cloud Key"><img loading="lazy" src="cards/cloud-key.jpg" alt="Cloud Key" width="488" height="680"></button>
+<figcaption><span class="name">Cloud Key</span><span class="usd">$1.03</span><span class="artist">Art: Matt Stewart</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/foundry-inspector.jpg" data-name="Foundry Inspector" aria-label="Enlarge Foundry Inspector"><img loading="lazy" src="cards/foundry-inspector.jpg" alt="Foundry Inspector" width="488" height="680"></button>
+<figcaption><span class="name">Foundry Inspector</span><span class="usd">$0.40</span><span class="artist">Art: Jason A. Engle</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/etherium-sculptor.jpg" data-name="Etherium Sculptor" aria-label="Enlarge Etherium Sculptor"><img loading="lazy" src="cards/etherium-sculptor.jpg" alt="Etherium Sculptor" width="488" height="680"></button>
+<figcaption><span class="name">Etherium Sculptor</span><span class="usd">$0.75</span><span class="artist">Art: Steven Belledin</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/semblance-anvil.jpg" data-name="Semblance Anvil" aria-label="Enlarge Semblance Anvil"><img loading="lazy" src="cards/semblance-anvil.jpg" alt="Semblance Anvil" width="488" height="680"></button>
+<figcaption><span class="name">Semblance Anvil</span><span class="usd">$4.27</span><span class="artist">Art: Dan Murayama Scott</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/jhoira-s-familiar.jpg" data-name="Jhoira&#39;s Familiar" aria-label="Enlarge Jhoira&#39;s Familiar"><img loading="lazy" src="cards/jhoira-s-familiar.jpg" alt="Jhoira&#39;s Familiar" width="488" height="680"></button>
+<figcaption><span class="name">Jhoira&#39;s Familiar</span><span class="usd">$1.44</span><span class="artist">Art: Kev Walker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/enthusiastic-mechanaut.jpg" data-name="Enthusiastic Mechanaut" aria-label="Enlarge Enthusiastic Mechanaut"><img loading="lazy" src="cards/enthusiastic-mechanaut.jpg" alt="Enthusiastic Mechanaut" width="488" height="680"></button>
+<figcaption><span class="name">Enthusiastic Mechanaut</span><span class="usd">$0.33</span><span class="artist">Art: Anna Steinbauer</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/herald-of-kozilek.jpg" data-name="Herald of Kozilek" aria-label="Enlarge Herald of Kozilek"><img loading="lazy" src="cards/herald-of-kozilek.jpg" alt="Herald of Kozilek" width="488" height="680"></button>
+<figcaption><span class="name">Herald of Kozilek</span><span class="usd">$0.36</span><span class="artist">Art: Johannes Voss</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/lyse-hext.jpg" data-name="Lyse Hext" aria-label="Enlarge Lyse Hext"><img loading="lazy" src="cards/lyse-hext.jpg" alt="Lyse Hext" width="488" height="680"></button>
+<figcaption><span class="name">Lyse Hext</span><span class="usd">$0.23</span><span class="artist">Art: Ramza Psyru</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/artist-s-talent.jpg" data-name="Artist&#39;s Talent" aria-label="Enlarge Artist&#39;s Talent"><img loading="lazy" src="cards/artist-s-talent.jpg" alt="Artist&#39;s Talent" width="488" height="680"></button>
+<figcaption><span class="name">Artist&#39;s Talent</span><span class="usd">$4.62</span><span class="artist">Art: Lars Grant-West</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Find the Top <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(11)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/trinket-mage.jpg" data-name="Trinket Mage" aria-label="Enlarge Trinket Mage"><img loading="lazy" src="cards/trinket-mage.jpg" alt="Trinket Mage" width="488" height="680"></button>
+<figcaption><span class="name">Trinket Mage</span><span class="usd">$0.58</span><span class="artist">Art: Scott Chou</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dizzy-spell.jpg" data-name="Dizzy Spell" aria-label="Enlarge Dizzy Spell"><img loading="lazy" src="cards/dizzy-spell.jpg" alt="Dizzy Spell" width="488" height="680"></button>
+<figcaption><span class="name">Dizzy Spell</span><span class="usd">$1.87</span><span class="artist">Art: Christopher Moeller</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/enlightened-tutor.jpg" data-name="Enlightened Tutor" aria-label="Enlarge Enlightened Tutor"><img loading="lazy" src="cards/enlightened-tutor.jpg" alt="Enlightened Tutor" width="488" height="680"></button>
+<figcaption><span class="name">Enlightened Tutor</span><span class="usd">$33.39</span><span class="artist">Art: Howard Lyon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/whir-of-invention.jpg" data-name="Whir of Invention" aria-label="Enlarge Whir of Invention"><img loading="lazy" src="cards/whir-of-invention.jpg" alt="Whir of Invention" width="488" height="680"></button>
+<figcaption><span class="name">Whir of Invention</span><span class="usd">$5.86</span><span class="artist">Art: Brian Chippendale</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fabricate.jpg" data-name="Fabricate" aria-label="Enlarge Fabricate"><img loading="lazy" src="cards/fabricate.jpg" alt="Fabricate" width="488" height="680"></button>
+<figcaption><span class="name">Fabricate</span><span class="usd">$6.89</span><span class="artist">Art: Fajareka Setiawan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/reckless-handling.jpg" data-name="Reckless Handling" aria-label="Enlarge Reckless Handling"><img loading="lazy" src="cards/reckless-handling.jpg" alt="Reckless Handling" width="488" height="680"></button>
+<figcaption><span class="name">Reckless Handling</span><span class="usd">$0.36</span><span class="artist">Art: Miguel Mercado</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/gamble.jpg" data-name="Gamble" aria-label="Enlarge Gamble"><img loading="lazy" src="cards/gamble.jpg" alt="Gamble" width="488" height="680"></button>
+<figcaption><span class="name">Gamble</span><span class="usd">$15.16</span><span class="artist">Art: Jason A. Engle</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/artificer-s-intuition.jpg" data-name="Artificer&#39;s Intuition" aria-label="Enlarge Artificer&#39;s Intuition"><img loading="lazy" src="cards/artificer-s-intuition.jpg" alt="Artificer&#39;s Intuition" width="488" height="680"></button>
+<figcaption><span class="name">Artificer&#39;s Intuition</span><span class="usd">$4.40</span><span class="artist">Art: Wayne England</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/reshape.jpg" data-name="Reshape" aria-label="Enlarge Reshape"><img loading="lazy" src="cards/reshape.jpg" alt="Reshape" width="488" height="680"></button>
+<figcaption><span class="name">Reshape</span><span class="usd">$3.68</span><span class="artist">Art: Jon Foster</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/kuldotha-forgemaster.jpg" data-name="Kuldotha Forgemaster" aria-label="Enlarge Kuldotha Forgemaster"><img loading="lazy" src="cards/kuldotha-forgemaster.jpg" alt="Kuldotha Forgemaster" width="488" height="680"></button>
+<figcaption><span class="name">Kuldotha Forgemaster</span><span class="usd">$10.82</span><span class="artist">Art: jD</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/tezzeret-the-seeker.jpg" data-name="Tezzeret the Seeker" aria-label="Enlarge Tezzeret the Seeker"><img loading="lazy" src="cards/tezzeret-the-seeker.jpg" alt="Tezzeret the Seeker" width="488" height="680"></button>
+<figcaption><span class="name">Tezzeret the Seeker</span><span class="usd">$26.45</span><span class="artist">Art: Anthony Francisco</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Mana rocks <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(17)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/sol-ring.jpg" data-name="Sol Ring" aria-label="Enlarge Sol Ring"><img loading="lazy" src="cards/sol-ring.jpg" alt="Sol Ring" width="488" height="680"></button>
+<figcaption><span class="name">Sol Ring</span><span class="usd">$1.14</span><span class="artist">Art: Hector Ortiz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mind-stone.jpg" data-name="Mind Stone" aria-label="Enlarge Mind Stone"><img loading="lazy" src="cards/mind-stone.jpg" alt="Mind Stone" width="488" height="680"></button>
+<figcaption><span class="name">Mind Stone</span><span class="usd">$0.25</span><span class="artist">Art: Racrufi</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thought-vessel.jpg" data-name="Thought Vessel" aria-label="Enlarge Thought Vessel"><img loading="lazy" src="cards/thought-vessel.jpg" alt="Thought Vessel" width="488" height="680"></button>
+<figcaption><span class="name">Thought Vessel</span><span class="usd">$1.44</span><span class="artist">Art: Leesha Hannigan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/everflowing-chalice.jpg" data-name="Everflowing Chalice" aria-label="Enlarge Everflowing Chalice"><img loading="lazy" src="cards/everflowing-chalice.jpg" alt="Everflowing Chalice" width="488" height="680"></button>
+<figcaption><span class="name">Everflowing Chalice</span><span class="usd">$0.22</span><span class="artist">Art: Jodie Muir</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thran-dynamo.jpg" data-name="Thran Dynamo" aria-label="Enlarge Thran Dynamo"><img loading="lazy" src="cards/thran-dynamo.jpg" alt="Thran Dynamo" width="488" height="680"></button>
+<figcaption><span class="name">Thran Dynamo</span><span class="usd">$3.37</span><span class="artist">Art: Ron Spears</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/arcane-signet.jpg" data-name="Arcane Signet" aria-label="Enlarge Arcane Signet"><img loading="lazy" src="cards/arcane-signet.jpg" alt="Arcane Signet" width="488" height="680"></button>
+<figcaption><span class="name">Arcane Signet</span><span class="usd">$0.33</span><span class="artist">Art: Tomáš Honz</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fellwar-stone.jpg" data-name="Fellwar Stone" aria-label="Enlarge Fellwar Stone"><img loading="lazy" src="cards/fellwar-stone.jpg" alt="Fellwar Stone" width="488" height="680"></button>
+<figcaption><span class="name">Fellwar Stone</span><span class="usd">$0.99</span><span class="artist">Art: John Avon</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/talisman-of-creativity.jpg" data-name="Talisman of Creativity" aria-label="Enlarge Talisman of Creativity"><img loading="lazy" src="cards/talisman-of-creativity.jpg" alt="Talisman of Creativity" width="488" height="680"></button>
+<figcaption><span class="name">Talisman of Creativity</span><span class="usd">$0.33</span><span class="artist">Art: Elizabeth Peiró</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/talisman-of-conviction.jpg" data-name="Talisman of Conviction" aria-label="Enlarge Talisman of Conviction"><img loading="lazy" src="cards/talisman-of-conviction.jpg" alt="Talisman of Conviction" width="488" height="680"></button>
+<figcaption><span class="name">Talisman of Conviction</span><span class="usd">$0.22</span><span class="artist">Art: Pauline Voss</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/talisman-of-progress.jpg" data-name="Talisman of Progress" aria-label="Enlarge Talisman of Progress"><img loading="lazy" src="cards/talisman-of-progress.jpg" alt="Talisman of Progress" width="488" height="680"></button>
+<figcaption><span class="name">Talisman of Progress</span><span class="usd">$0.31</span><span class="artist">Art: Racrufi</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/talisman-of-indulgence.jpg" data-name="Talisman of Indulgence" aria-label="Enlarge Talisman of Indulgence"><img loading="lazy" src="cards/talisman-of-indulgence.jpg" alt="Talisman of Indulgence" width="488" height="680"></button>
+<figcaption><span class="name">Talisman of Indulgence</span><span class="usd">$0.34</span><span class="artist">Art: Bartek Fedyczak</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/izzet-signet.jpg" data-name="Izzet Signet" aria-label="Enlarge Izzet Signet"><img loading="lazy" src="cards/izzet-signet.jpg" alt="Izzet Signet" width="488" height="680"></button>
+<figcaption><span class="name">Izzet Signet</span><span class="usd">$0.29</span><span class="artist">Art: Raoul Vitale</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/boros-signet.jpg" data-name="Boros Signet" aria-label="Enlarge Boros Signet"><img loading="lazy" src="cards/boros-signet.jpg" alt="Boros Signet" width="488" height="680"></button>
+<figcaption><span class="name">Boros Signet</span><span class="usd">$0.66</span><span class="artist">Art: Ron Spears</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/azorius-signet.jpg" data-name="Azorius Signet" aria-label="Enlarge Azorius Signet"><img loading="lazy" src="cards/azorius-signet.jpg" alt="Azorius Signet" width="488" height="680"></button>
+<figcaption><span class="name">Azorius Signet</span><span class="usd">$0.32</span><span class="artist">Art: Raoul Vitale</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/coldsteel-heart.jpg" data-name="Coldsteel Heart" aria-label="Enlarge Coldsteel Heart"><img loading="lazy" src="cards/coldsteel-heart.jpg" alt="Coldsteel Heart" width="488" height="680"></button>
+<figcaption><span class="name">Coldsteel Heart</span><span class="usd">$0.98</span><span class="artist">Art: Mark Romanoski</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/prismatic-lens.jpg" data-name="Prismatic Lens" aria-label="Enlarge Prismatic Lens"><img loading="lazy" src="cards/prismatic-lens.jpg" alt="Prismatic Lens" width="488" height="680"></button>
+<figcaption><span class="name">Prismatic Lens</span><span class="usd">$0.42</span><span class="artist">Art: Alan Pollack</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/fractured-powerstone.jpg" data-name="Fractured Powerstone" aria-label="Enlarge Fractured Powerstone"><img loading="lazy" src="cards/fractured-powerstone.jpg" alt="Fractured Powerstone" width="488" height="680"></button>
+<figcaption><span class="name">Fractured Powerstone</span><span class="usd">$0.33</span><span class="artist">Art: Rob Alexander</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Cantrips <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(10)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/ponder.jpg" data-name="Ponder" aria-label="Enlarge Ponder"><img loading="lazy" src="cards/ponder.jpg" alt="Ponder" width="488" height="680"></button>
+<figcaption><span class="name">Ponder</span><span class="usd">$0.69</span><span class="artist">Art: Berto Martinez</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/preordain.jpg" data-name="Preordain" aria-label="Enlarge Preordain"><img loading="lazy" src="cards/preordain.jpg" alt="Preordain" width="488" height="680"></button>
+<figcaption><span class="name">Preordain</span><span class="usd">$0.78</span><span class="artist">Art: Svetlin Velinov</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/opt.jpg" data-name="Opt" aria-label="Enlarge Opt"><img loading="lazy" src="cards/opt.jpg" alt="Opt" width="488" height="680"></button>
+<figcaption><span class="name">Opt</span><span class="usd">$0.32</span><span class="artist">Art: Craig J Spearing</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/consider.jpg" data-name="Consider" aria-label="Enlarge Consider"><img loading="lazy" src="cards/consider.jpg" alt="Consider" width="488" height="680"></button>
+<figcaption><span class="name">Consider</span><span class="usd">$0.31</span><span class="artist">Art: Marina Banker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/serum-visions.jpg" data-name="Serum Visions" aria-label="Enlarge Serum Visions"><img loading="lazy" src="cards/serum-visions.jpg" alt="Serum Visions" width="488" height="680"></button>
+<figcaption><span class="name">Serum Visions</span><span class="usd">$0.62</span><span class="artist">Art: Ben Thompson</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/sleight-of-hand.jpg" data-name="Sleight of Hand" aria-label="Enlarge Sleight of Hand"><img loading="lazy" src="cards/sleight-of-hand.jpg" alt="Sleight of Hand" width="488" height="680"></button>
+<figcaption><span class="name">Sleight of Hand</span><span class="usd">$0.34</span><span class="artist">Art: Scott Murphy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/portent.jpg" data-name="Portent" aria-label="Enlarge Portent"><img loading="lazy" src="cards/portent.jpg" alt="Portent" width="488" height="680"></button>
+<figcaption><span class="name">Portent</span><span class="usd">$0.38</span><span class="artist">Art: Bartek Fedyczak</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/faithless-looting.jpg" data-name="Faithless Looting" aria-label="Enlarge Faithless Looting"><img loading="lazy" src="cards/faithless-looting.jpg" alt="Faithless Looting" width="488" height="680"></button>
+<figcaption><span class="name">Faithless Looting</span><span class="usd">$0.41</span><span class="artist">Art: Gabor Szikszai</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/gitaxian-probe.jpg" data-name="Gitaxian Probe" aria-label="Enlarge Gitaxian Probe"><img loading="lazy" src="cards/gitaxian-probe.jpg" alt="Gitaxian Probe" width="488" height="680"></button>
+<figcaption><span class="name">Gitaxian Probe</span><span class="usd">$3.09</span><span class="artist">Art: Chippy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/thrill-of-possibility.jpg" data-name="Thrill of Possibility" aria-label="Enlarge Thrill of Possibility"><img loading="lazy" src="cards/thrill-of-possibility.jpg" alt="Thrill of Possibility" width="488" height="680"></button>
+<figcaption><span class="name">Thrill of Possibility</span><span class="usd">$0.35</span><span class="artist">Art: Julie Dillon</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Interaction <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(10)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/swords-to-plowshares.jpg" data-name="Swords to Plowshares" aria-label="Enlarge Swords to Plowshares"><img loading="lazy" src="cards/swords-to-plowshares.jpg" alt="Swords to Plowshares" width="488" height="680"></button>
+<figcaption><span class="name">Swords to Plowshares</span><span class="usd">$1.93</span><span class="artist">Art: Izzy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/path-to-exile.jpg" data-name="Path to Exile" aria-label="Enlarge Path to Exile"><img loading="lazy" src="cards/path-to-exile.jpg" alt="Path to Exile" width="488" height="680"></button>
+<figcaption><span class="name">Path to Exile</span><span class="usd">$0.67</span><span class="artist">Art: Pierre Raveneau</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/counterspell.jpg" data-name="Counterspell" aria-label="Enlarge Counterspell"><img loading="lazy" src="cards/counterspell.jpg" alt="Counterspell" width="488" height="680"></button>
+<figcaption><span class="name">Counterspell</span><span class="usd">$2.06</span><span class="artist">Art: Zack Stella</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/arcane-denial.jpg" data-name="Arcane Denial" aria-label="Enlarge Arcane Denial"><img loading="lazy" src="cards/arcane-denial.jpg" alt="Arcane Denial" width="488" height="680"></button>
+<figcaption><span class="name">Arcane Denial</span><span class="usd">$1.76</span><span class="artist">Art: Bastien L. Deharme</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/negate.jpg" data-name="Negate" aria-label="Enlarge Negate"><img loading="lazy" src="cards/negate.jpg" alt="Negate" width="488" height="680"></button>
+<figcaption><span class="name">Negate</span><span class="usd">$0.32</span><span class="artist">Art: Jetfreak-7</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/dovin-s-veto.jpg" data-name="Dovin&#39;s Veto" aria-label="Enlarge Dovin&#39;s Veto"><img loading="lazy" src="cards/dovin-s-veto.jpg" alt="Dovin&#39;s Veto" width="488" height="680"></button>
+<figcaption><span class="name">Dovin&#39;s Veto</span><span class="usd">$1.71</span><span class="artist">Art: Izzy</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/lightning-bolt.jpg" data-name="Lightning Bolt" aria-label="Enlarge Lightning Bolt"><img loading="lazy" src="cards/lightning-bolt.jpg" alt="Lightning Bolt" width="488" height="680"></button>
+<figcaption><span class="name">Lightning Bolt</span><span class="usd">$0.94</span><span class="artist">Art: Milivoj Ćeran</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/chaos-warp.jpg" data-name="Chaos Warp" aria-label="Enlarge Chaos Warp"><img loading="lazy" src="cards/chaos-warp.jpg" alt="Chaos Warp" width="488" height="680"></button>
+<figcaption><span class="name">Chaos Warp</span><span class="usd">$0.70</span><span class="artist">Art: Trevor Claxton</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/boros-charm.jpg" data-name="Boros Charm" aria-label="Enlarge Boros Charm"><img loading="lazy" src="cards/boros-charm.jpg" alt="Boros Charm" width="488" height="680"></button>
+<figcaption><span class="name">Boros Charm</span><span class="usd">$0.00</span><span class="artist">Art: Zoltan Boros</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/generous-gift.jpg" data-name="Generous Gift" aria-label="Enlarge Generous Gift"><img loading="lazy" src="cards/generous-gift.jpg" alt="Generous Gift" width="488" height="680"></button>
+<figcaption><span class="name">Generous Gift</span><span class="usd">$1.03</span><span class="artist">Art: David Álvarez</span></figcaption></figure></div>
+    
+    
+    <h3 style="font-size:18px;margin-top:8px">Lands <span class="count" style="font-family:'Crimson Pro',Georgia,serif;font-weight:400;color:var(--muted)">(34)</span></h3>
+    <div class="grid small"><figure class="card"><button type="button" class="zoom" data-src="cards/urza-s-saga.jpg" data-name="Urza&#39;s Saga" aria-label="Enlarge Urza&#39;s Saga"><img loading="lazy" src="cards/urza-s-saga.jpg" alt="Urza&#39;s Saga" width="488" height="680"></button>
+<figcaption><span class="name">Urza&#39;s Saga</span><span class="usd">$31.77</span><span class="artist">Art: Titus Lunter</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/inventors-fair.jpg" data-name="Inventors&#39; Fair" aria-label="Enlarge Inventors&#39; Fair"><img loading="lazy" src="cards/inventors-fair.jpg" alt="Inventors&#39; Fair" width="488" height="680"></button>
+<figcaption><span class="name">Inventors&#39; Fair</span><span class="usd">$14.42</span><span class="artist">Art: Jonas De Ro</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/command-tower.jpg" data-name="Command Tower" aria-label="Enlarge Command Tower"><img loading="lazy" src="cards/command-tower.jpg" alt="Command Tower" width="488" height="680"></button>
+<figcaption><span class="name">Command Tower</span><span class="usd">$0.20</span><span class="artist">Art: Arthur Yuan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/exotic-orchard.jpg" data-name="Exotic Orchard" aria-label="Enlarge Exotic Orchard"><img loading="lazy" src="cards/exotic-orchard.jpg" alt="Exotic Orchard" width="488" height="680"></button>
+<figcaption><span class="name">Exotic Orchard</span><span class="usd">$0.27</span><span class="artist">Art: Leon Tukker</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mystic-monastery.jpg" data-name="Mystic Monastery" aria-label="Enlarge Mystic Monastery"><img loading="lazy" src="cards/mystic-monastery.jpg" alt="Mystic Monastery" width="488" height="680"></button>
+<figcaption><span class="name">Mystic Monastery</span><span class="usd">$0.36</span><span class="artist">Art: Enora Mercier</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/spirebluff-canal.jpg" data-name="Spirebluff Canal" aria-label="Enlarge Spirebluff Canal"><img loading="lazy" src="cards/spirebluff-canal.jpg" alt="Spirebluff Canal" width="488" height="680"></button>
+<figcaption><span class="name">Spirebluff Canal</span><span class="usd">$3.71</span><span class="artist">Art: Ron Spears</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/inspiring-vantage.jpg" data-name="Inspiring Vantage" aria-label="Enlarge Inspiring Vantage"><img loading="lazy" src="cards/inspiring-vantage.jpg" alt="Inspiring Vantage" width="488" height="680"></button>
+<figcaption><span class="name">Inspiring Vantage</span><span class="usd">$2.11</span><span class="artist">Art: Volkan Baǵa</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/sulfur-falls.jpg" data-name="Sulfur Falls" aria-label="Enlarge Sulfur Falls"><img loading="lazy" src="cards/sulfur-falls.jpg" alt="Sulfur Falls" width="488" height="680"></button>
+<figcaption><span class="name">Sulfur Falls</span><span class="usd">$0.29</span><span class="artist">Art: Henry Wong</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/clifftop-retreat.jpg" data-name="Clifftop Retreat" aria-label="Enlarge Clifftop Retreat"><img loading="lazy" src="cards/clifftop-retreat.jpg" alt="Clifftop Retreat" width="488" height="680"></button>
+<figcaption><span class="name">Clifftop Retreat</span><span class="usd">$0.26</span><span class="artist">Art: David Frasheski</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/glacial-fortress.jpg" data-name="Glacial Fortress" aria-label="Enlarge Glacial Fortress"><img loading="lazy" src="cards/glacial-fortress.jpg" alt="Glacial Fortress" width="488" height="680"></button>
+<figcaption><span class="name">Glacial Fortress</span><span class="usd">$0.30</span><span class="artist">Art: Nadia Hurianova</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/shivan-reef.jpg" data-name="Shivan Reef" aria-label="Enlarge Shivan Reef"><img loading="lazy" src="cards/shivan-reef.jpg" alt="Shivan Reef" width="488" height="680"></button>
+<figcaption><span class="name">Shivan Reef</span><span class="usd">$0.37</span><span class="artist">Art: Andrew Mar</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/battlefield-forge.jpg" data-name="Battlefield Forge" aria-label="Enlarge Battlefield Forge"><img loading="lazy" src="cards/battlefield-forge.jpg" alt="Battlefield Forge" width="488" height="680"></button>
+<figcaption><span class="name">Battlefield Forge</span><span class="usd">$0.31</span><span class="artist">Art: Dofresh</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/adarkar-wastes.jpg" data-name="Adarkar Wastes" aria-label="Enlarge Adarkar Wastes"><img loading="lazy" src="cards/adarkar-wastes.jpg" alt="Adarkar Wastes" width="488" height="680"></button>
+<figcaption><span class="name">Adarkar Wastes</span><span class="usd">$0.39</span><span class="artist">Art: Piotr Dura</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/temple-of-epiphany.jpg" data-name="Temple of Epiphany" aria-label="Enlarge Temple of Epiphany"><img loading="lazy" src="cards/temple-of-epiphany.jpg" alt="Temple of Epiphany" width="488" height="680"></button>
+<figcaption><span class="name">Temple of Epiphany</span><span class="usd">$0.30</span><span class="artist">Art: Adam Paquette</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/temple-of-triumph.jpg" data-name="Temple of Triumph" aria-label="Enlarge Temple of Triumph"><img loading="lazy" src="cards/temple-of-triumph.jpg" alt="Temple of Triumph" width="488" height="680"></button>
+<figcaption><span class="name">Temple of Triumph</span><span class="usd">$0.30</span><span class="artist">Art: Piotr Dura</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/temple-of-enlightenment.jpg" data-name="Temple of Enlightenment" aria-label="Enlarge Temple of Enlightenment"><img loading="lazy" src="cards/temple-of-enlightenment.jpg" alt="Temple of Enlightenment" width="488" height="680"></button>
+<figcaption><span class="name">Temple of Enlightenment</span><span class="usd">$0.12</span><span class="artist">Art: David Álvarez</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/path-of-ancestry.jpg" data-name="Path of Ancestry" aria-label="Enlarge Path of Ancestry"><img loading="lazy" src="cards/path-of-ancestry.jpg" alt="Path of Ancestry" width="488" height="680"></button>
+<figcaption><span class="name">Path of Ancestry</span><span class="usd">$0.34</span><span class="artist">Art: Arthur Yuan</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/wastes.jpg" data-name="Wastes" aria-label="Enlarge Wastes"><img loading="lazy" src="cards/wastes.jpg" alt="Wastes" width="488" height="680"><span class="qty">×2</span></button>
+<figcaption><span class="name">Wastes</span><span class="artist">Art: Raymond Swanland</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/island.jpg" data-name="Island" aria-label="Enlarge Island"><img loading="lazy" src="cards/island.jpg" alt="Island" width="488" height="680"><span class="qty">×5</span></button>
+<figcaption><span class="name">Island</span><span class="artist">Art: Eren Arik</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/mountain.jpg" data-name="Mountain" aria-label="Enlarge Mountain"><img loading="lazy" src="cards/mountain.jpg" alt="Mountain" width="488" height="680"><span class="qty">×5</span></button>
+<figcaption><span class="name">Mountain</span><span class="artist">Art: VEN</span></figcaption></figure><figure class="card"><button type="button" class="zoom" data-src="cards/plains.jpg" data-name="Plains" aria-label="Enlarge Plains"><img loading="lazy" src="cards/plains.jpg" alt="Plains" width="488" height="680"><span class="qty">×5</span></button>
+<figcaption><span class="name">Plains</span><span class="artist">Art: Shahab Alizadeh</span></figcaption></figure></div>
+    
+  </section>
+  
+</main>
+
+
+<footer><div class="wrap">
+  <p><b>Limited Junkyard</b> · <a href="https://www.youtube.com/@LimitedJunkyard">https://www.youtube.com/@LimitedJunkyard</a> · <a href="index.html">All Commander decks</a> · <a href="../index.html">Home</a></p>
+  <p>Card images and prices: Scryfall. Cards are shown whole and unmodified; the artist is credited under each card.</p>
+  <p>This channel is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.</p><p>Star Trek and related marks are trademarks of CBS Studios Inc. This guide is not endorsed by or affiliated with CBS or Paramount.</p><p>Cards from Universes Beyond sets are shown whole, as printed; their franchises&#39; names and marks belong to their owners.</p>
+  <p>Card art: Adam Paquette, Adam Rex, Alan Pollack, Aleksi Briclot, Alex Konstad, Alexandre Honoré, Alice Xia Zhang, Andreas Zafiratos, Andrew Mar, Anna Steinbauer, Anthony Francisco, Arthur Yuan, Bartek Fedyczak, Bastien L. Deharme, Ben Maier, Ben Thompson, Berto Martinez, Björn Barends, Borja Pindado, Brad Rigney, Brian Chippendale, Bruce Brenneise, Bryan Sola, Bud Cook, Carl Critchlow, Chase Stone, Chippy, Christina Davis, Christopher Moeller, Cliff Childs, Craig J Spearing, Daarken, Dan Murayama Scott, Dana Knutson, Daniel Ljunggren, Dave Kendall, David Frasheski, David Palumbo, David Álvarez, Dmitry Burmak, Dofresh, Donato Giancola, Douglas Shuler, Drew Tucker, Eli Minaya, Elizabeth Peiró, Enora Mercier, Eren Arik, Eric Deschamps, Eric Velhagen, Fajareka Setiawan, G-host Lee, Gaboleps, Gabor Szikszai, Grace Zhu, Greg Staples, Hector Ortiz, Henry Wong, Howard Lyon, Igor Kieryluk, Immanuela Crovius, Inkognit, Izzy, Jake Murray, Jakub Kasper, James Paick, Jason A. Engle, Jason Chan, Jason Felix, Jason Rainville, Javier Charro, Jeff Miracola, Jetfreak-7, Jim Pavelec, Jodie Muir, Johannes Voss, John Avon, John Di Giovanni, John Stanko, John Thacker, Jon Foster, Jonas De Ro, Josiah &#34;Jo&#34; Cameron, Josu Hernaiz, Julie Dillon, Justin Hernandez &amp; Alexis Hernandez, Justyna Dura, Kev Walker, Kevin Glint, Kieran Yanner, Kotakan, Kristina Carroll, L.A. Draws, Lars Grant-West, Lee Woo-chul, Leesha Hannigan, Leon Tukker, Leonardo Santanna, Lucas Graciano, Lucie Louxor, Maojin Lee, Marina Banker, Mark Romanoski, Martina Pilcerova, Matt Stewart, Michael Komarck, Michael Sutfin, Miguel Mercado, Milivoj Ćeran, Nadia Hurianova, Naomi Baker, Neil Blevins, Nino Is, Patricia Pria, Pauline Voss, Pete Venters, Pierre Raveneau, Piotr Dura, Quintin Gleim, Racrufi, Ramza Psyru, Randy Gallegos, Raoul Vitale, Raph Lomotan, Raymond Swanland, Rob Alexander, Ron Spears, Runa I. Rosenberger, Ryan Barger, Ryan Valle, Rémi Jacquot, Salvatorre Zee Yazzie, Scott Chou, Scott Murphy, Seb McKinnon, Shahab Alizadeh, Simon Dominic, Smirtouille, Steve Argyle, Steven Belledin, Svetlin Velinov, Sylvain Sarrailh, Titus Lunter, Tomáš Honz, Trevor Claxton, VEN, Viko Menezes, Volkan Baǵa, Warren Mahy, Wayne England, Wesley Burt, Yeong-Hao Han, Yuu Fujiki, Zack Stella, Zoltan Boros, jD.</p>
+  <p>Fonts: Cinzel and Crimson Pro (SIL Open Font License).</p>
+</div></footer>
+
+<dialog id="big"><button type="button" aria-label="Close"><img alt=""></button></dialog>
+<script>
+(function () {
+  var dlg = document.getElementById("big"), img = dlg.querySelector("img");
+  document.addEventListener("click", function (ev) {
+    var z = ev.target.closest(".zoom");
+    if (z) { img.src = z.dataset.src; img.alt = z.dataset.name; if (dlg.showModal) dlg.showModal(); return; }
+    if (dlg.open && ev.target.closest("dialog")) { dlg.close(); return; }
+    var b = ev.target.closest(".copy");
+    if (!b) return;
+    var t = document.getElementById(b.dataset.target).value;
+    var msg = b.parentNode.querySelector(".copied") || b.closest("article, .listacts, .variant").querySelector(".copied");
+    var done = function (m) { if (msg) { msg.textContent = m; setTimeout(function () { msg.textContent = ""; }, 2500); } };
+    var fallback = function () { var a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select();
+      try { document.execCommand("copy"); done("Copied"); } catch (e) { done("Select and copy failed"); } a.remove(); };
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () { done("Copied: paste it into Moxfield, Archidekt or TCGplayer"); }, fallback);
+    else fallback();
+  });
+})();
+</script>
+</body>
+</html>

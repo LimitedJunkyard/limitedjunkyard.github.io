@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Limited Junkyard: free Limited guides and winning decks</title>
-<meta name="description" content="Free Magic: The Gathering Limited guides from Limited Junkyard: prerelease cheat sheets, card ratings and the decks that won.">
+<title>Limited Junkyard: free Limited guides, winning decks and Commander decklists</title>
+<meta name="description" content="Free Magic: The Gathering guides from Limited Junkyard: prerelease cheat sheets, card ratings, the decks that won, and full Commander decklists with prices.">
 <link rel="icon" href="logo.png">
 <style>
   /* Display: Cinzel. Body: Crimson Pro (close to the book serif on Magic cards). Both SIL OFL, bundled. */
@@ -119,6 +119,21 @@
   .deck p { margin: 0; font-size: 16px; color: #4a443a; line-height: 1.4; }
   .deck .read { margin-top: auto; color: var(--gold); font-weight: 600; font-size: 16px; }
 
+  /* commander decks */
+  .top nav a.cmdlink { color: var(--gold-hi); font-weight: 600; }
+  .cmds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+  .cmdcard { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; align-items: center; background: var(--panel); border: 1px solid var(--line);
+             border-radius: 16px; padding: 16px; text-decoration: none; color: var(--ink); box-shadow: 0 10px 30px rgba(60,45,10,.06);
+             transition: transform .18s ease, box-shadow .18s ease; }
+  .cmdcard:hover { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(60,45,10,.14); }
+  .cmdcard .pic img { width: 100%; height: auto; display: block; border-radius: 4.75% / 3.5%; box-shadow: 0 4px 14px rgba(0,0,0,.28); }
+  .cmdcard .art { display: block; font-size: 11px; color: var(--muted); text-align: center; margin-top: 4px; }
+  .cmdcard .body { display: flex; flex-direction: column; gap: 8px; }
+  .cmdcard h3 { font-size: 21px; line-height: 1.25; }
+  .cmdcard .line { font-size: 16px; color: #4a443a; line-height: 1.4; }
+  .cmdcard .meta { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 15px; }
+  .cmdcard .read { color: var(--gold); font-weight: 600; font-size: 16px; }
+
   /* channel band */
   .band { margin: 60px 0 0; background: var(--night-2); color: #e9e3d3; }
   .band .wrap { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; padding-top: 34px; padding-bottom: 34px; }
@@ -142,7 +157,13 @@
     .hero .avatar { order: -1; }
     .hero .avatar img { width: 112px; height: 112px; }
     .hero p { font-size: 18px; }
-    .files, .decks, .vids { grid-template-columns: 1fr; }
+    .files, .decks, .vids, .cmds { grid-template-columns: 1fr; }
+    .cmdcard { grid-template-columns: 104px minmax(0, 1fr); gap: 14px; padding: 12px; }
+    .top nav a.cmdlink { font-size: 15px; }
+    .top .long { display: none; }
+  }
+  @media (max-width: 420px) {
+    .top .name { display: none; }
     .vid:only-child { display: flex; }
     .band .wrap { grid-template-columns: 1fr; }
     section.block { padding-top: 40px; }
@@ -156,6 +177,7 @@
   <a class="logo" href="https://www.youtube.com/@LimitedJunkyard"><img src="logo.png" alt="Limited Junkyard on YouTube"></a>
   <a class="name" href="https://www.youtube.com/@LimitedJunkyard">Limited Junkyard</a>
   <nav>
+    <a class="cmdlink" href="commander/index.html">Commander<span class="long"> decks</span></a>
     <a class="text" href="#guides">Guides</a>
     <a class="text" href="#videos">Videos</a>
     <a class="text" href="#decks">Decks</a>
@@ -167,9 +189,10 @@
   <div>
     <div class="kicker">Magic: The Gathering Limited</div>
     <h1>Find the gems<br>in every pool.</h1>
-    <p>Free prerelease guides, card ratings and the decks that won, from the Limited Junkyard channel. Print them, share them.</p>
+    <p>Free prerelease guides, card ratings, the decks that won, and full Commander decklists, from the Limited Junkyard channel. Print them, share them.</p>
     <div class="cta">
       <a class="btn gold" href="#guides">Get the free guides</a>
+      <a class="btn ghost" href="commander/index.html">Commander decklists</a>
       <a class="btn ghost" href="https://www.youtube.com/@LimitedJunkyard"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg>Watch on YouTube</a>
     </div>
     <div class="facts"><span>Free</span><span>No sign-up</span><span>Nothing tracked</span><span>Print-ready PDFs</span></div>
@@ -220,6 +243,37 @@
     </article>
     
   </section>
+
+  
+  <section class="block" id="commander">
+    <div class="head"><h2>Commander decks</h2><p>Every deck from the Commander videos, every version, with prices. <a href="commander/index.html">All Commander decks →</a></p></div>
+    <div class="cmds">
+      
+      <a class="cmdcard" href="commander/seven-of-nine.html">
+        <span class="pic"><img src="commander/cards/seven-of-nine.jpg" alt="Seven of Nine" loading="lazy" width="488" height="680"><span class="art">Art: Bastien L. Deharme</span></span>
+        <span class="body">
+          <span class="chip">Commander #1 · Star Trek</span>
+          <h3>Seven of Nine: the dilemma loop</h3>
+          <span class="line">A blue-black combo deck that draws its whole library with three cheap cards.</span>
+          <span class="meta"><span class="dots"><span class="dot U" title="U"></span><span class="dot B" title="B"></span></span> 3 versions · $54 to $320</span>
+          <span class="read">See the decklists →</span>
+        </span>
+      </a>
+      
+      <a class="cmdcard" href="commander/q.html">
+        <span class="pic"><img src="commander/cards/q-stacking-the-deck.jpg" alt="Q, Stacking the Deck" loading="lazy" width="488" height="680"><span class="art">Art: Ryan Valle</span></span>
+        <span class="body">
+          <span class="chip">Commander #2 · Star Trek</span>
+          <h3>Q, Stacking the Deck: four ways to break him</h3>
+          <span class="line">Four decks where Q&#39;s random card is the same card every time. One is boring, two are bad, one is ridiculous.</span>
+          <span class="meta"><span class="dots"><span class="dot R" title="R"></span></span> 4 decks · $22 to $270</span>
+          <span class="read">See the decklists →</span>
+        </span>
+      </a>
+      
+    </div>
+  </section>
+  
 
   
   <section class="block" id="videos">
