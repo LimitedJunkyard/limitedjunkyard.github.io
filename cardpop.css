@@ -1,0 +1,19 @@
+/* Card names in the words: hover, tap or focus one to see the card (scripts/site_cardlinks.py) */
+.cn { color: var(--gold, #8a6d1d); font-weight: 600; cursor: zoom-in; border-radius: 3px;
+      text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 3px;
+      text-decoration-color: currentColor; -webkit-tap-highlight-color: transparent; }
+.cn:hover, .cn[aria-expanded="true"] { background: rgba(230, 199, 102, .28); text-decoration-style: solid; }
+.cn:focus-visible { outline: 2px solid #e6c766; outline-offset: 1px; }
+.cardpop { position: fixed; z-index: 1000; width: 250px; pointer-events: none; opacity: 0; transform: translateY(4px);
+           transition: opacity .12s ease, transform .12s ease; }
+.cardpop.on { opacity: 1; transform: none; }
+.cardpop.touch { pointer-events: auto; }
+.cardpop img { display: block; width: 100%; height: auto; aspect-ratio: 488 / 680; border-radius: 4.75% / 3.5%;
+               background: #1b1a17; box-shadow: 0 10px 30px rgba(0, 0, 0, .45), 0 2px 6px rgba(0, 0, 0, .3); }
+.cardpop .cp-art { display: block; margin-top: 6px; padding: 3px 10px; border-radius: 6px; background: rgba(27, 26, 23, .92);
+                   color: #f1ead8; font: 13px/1.35 "Crimson Pro", Georgia, serif; text-align: center; }
+.cardpop .cp-close { display: none; }
+.cardpop.touch .cp-close { display: block; margin: 6px auto 0; padding: 6px 18px; border: 0; border-radius: 999px;
+                           background: #e6c766; color: #1d1b18; font: 600 15px "Crimson Pro", Georgia, serif; }
+@media (max-width: 640px) { .cardpop { width: min(280px, 74vw); } }
+@media (prefers-reduced-motion: reduce) { .cardpop { transition: none; transform: none; } }
